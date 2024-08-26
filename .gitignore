@@ -1,0 +1,11 @@
+#Genered or temp foler
+StopTheAlien/.vs
+StopTheAlien/TrainingFramework/Debug
+StopTheAlien/Utilities/Debug
+StopTheAlien/Debug
+StopTheAlien/TrainingFramework/Release
+StopTheAlien/Utilities/Release
+StopTheAlien/Release
+/.vs
+*.exe
+*.pdb
