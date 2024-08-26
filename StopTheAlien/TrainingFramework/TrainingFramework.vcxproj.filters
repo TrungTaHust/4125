@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Text Include="..\Resources\RM.txt" />
+    <Text Include="..\Resources\SM.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="SourceFile">
+      <UniqueIdentifier>{cf698a47-8390-4697-a327-255b7e23dc90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameObject">
+      <UniqueIdentifier>{5b3a6e20-fbe9-4210-af18-bb107f788e9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameState">
+      <UniqueIdentifier>{0cb14244-03ab-4856-a952-72bab42b5ee2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\GameManager">
+      <UniqueIdentifier>{d18fc840-1a56-4234-a303-f7346d527b1a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameManager\ResourceManager.cpp">
+      <Filter>SourceFile\GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager\SceneManager.cpp">
+      <Filter>SourceFile\GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GSBase.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GSIntro.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GSMachine.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GSMenu.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GSOver.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject\Animation.cpp">
+      <Filter>SourceFile\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject\BaseObject.cpp">
+      <Filter>SourceFile\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject\Camera.cpp">
+      <Filter>SourceFile\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject\GameButton.cpp">
+      <Filter>SourceFile\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject\Model.cpp">
+      <Filter>SourceFile\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject\Object.cpp">
+      <Filter>SourceFile\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject\Shaders.cpp">
+      <Filter>SourceFile\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject\Sound.cpp">
+      <Filter>SourceFile\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject\Text.cpp">
+      <Filter>SourceFile\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject\Texture.cpp">
+      <Filter>SourceFile\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseAlien.cpp">
+      <Filter>SourceFile</Filter>
+    </ClCompile>
+    <ClCompile Include="StopTheAlien.cpp">
+      <Filter>SourceFile</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>SourceFile</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GSScore.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GSTutorial.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>SourceFile</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GS_Campaign_1.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GS_Campaign_2.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GS_Campaign_3.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GS_Campaign_4.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GS_Campaign_5.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GS_Campaign_6.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GSEndless.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GSSelectMap.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GSVictory.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GSShop.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameManager\ResourceManager.h">
+      <Filter>SourceFile\GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager\SceneManager.h">
+      <Filter>SourceFile\GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager\SingletonClass.h">
+      <Filter>SourceFile\GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GSBase.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GSIntro.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GSMachine.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GSMenu.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GSOver.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject\Animation.h">
+      <Filter>SourceFile\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject\BaseObject.h">
+      <Filter>SourceFile\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject\Camera.h">
+      <Filter>SourceFile\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject\GameButton.h">
+      <Filter>SourceFile\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject\Model.h">
+      <Filter>SourceFile\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject\Object.h">
+      <Filter>SourceFile\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject\Shaders.h">
+      <Filter>SourceFile\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject\Sound.h">
+      <Filter>SourceFile\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject\Text.h">
+      <Filter>SourceFile\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject\Texture.h">
+      <Filter>SourceFile\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject\Vertex.h">
+      <Filter>SourceFile\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseAlien.h">
+      <Filter>SourceFile</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h">
+      <Filter>SourceFile</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>SourceFile</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>SourceFile</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GSScore.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GSTutorial.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>SourceFile</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GS_Campaign_1.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GS_Campaign_2.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GS_Campaign_3.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GS_Campaign_4.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GS_Campaign_5.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GS_Campaign_6.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GSEndless.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GSSelectMap.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GSVictory.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GSShop.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

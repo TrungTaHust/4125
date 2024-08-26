@@ -1,0 +1,987 @@
+﻿#CAMERA
+
+NEAR 0.1
+FAR 500.0
+FOV 1.0
+SPEED 5.0
+###########################################################################
+#Animations: 8
+
+ID loading_animation
+MODEL Sprite2D
+TEXTURES 1
+TEXTURE loading_animation
+NUM_FRAMES 30
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.01
+SHADER Animation 
+POSITION 880.0 900.0 
+ROTATION 0.0 0.0 0.0 
+SCALE 60.0 60.0 
+--------------------------------------------------------------------------
+ID fire
+MODEL Sprite2D
+TEXTURES 3
+TEXTURE burning_start_1
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.01
+
+TEXTURE burning_loop_1
+NUM_FRAMES 8
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.01
+
+TEXTURE burning_end_1
+NUM_FRAMES 5
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.01
+
+SHADER Animation 
+POSITION 0.0 00.0 
+ROTATION 0.0 0.0 0.0 
+SCALE 200.0 200.0 
+--------------------------------------------------------------------------
+ID coins
+MODEL Sprite2D
+TEXTURES 1
+TEXTURE coins
+NUM_FRAMES 5
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+SHADER Animation 
+POSITION 50.0 50.0 
+ROTATION 0.0 0.0 0.0 
+SCALE 60.0 60.0 
+--------------------------------------------------------------------------
+ID lightning_wall
+MODEL Sprite2D
+TEXTURES 1
+TEXTURE lightning_wall
+NUM_FRAMES 8
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.03
+SHADER Animation 
+POSITION 1200.0 480.0
+ROTATION 0.0 0.0 0.0
+SCALE 60.0 760.0 
+--------------------------------------------------------------------------
+ID tutorial_alien1
+MODEL Sprite2D
+TEXTURES 1
+TEXTURE mobAlien2_idle
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+SHADER Animation 
+POSITION 300.0 300.0
+ROTATION 0.0 0.0 0.0
+SCALE 60.0 60.0 
+--------------------------------------------------------------------------
+ID tutorial_alien2
+MODEL Sprite2D
+TEXTURES 1
+TEXTURE mobAlien1_idle
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+SHADER Animation 
+POSITION 400.0 300.0
+ROTATION 0.0 0.0 0.0
+SCALE 60.0 60.0 
+--------------------------------------------------------------------------
+ID tutorial_alien3
+MODEL Sprite2D
+TEXTURES 1
+TEXTURE medAlien3_idle
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+SHADER Animation 
+POSITION 300.0 400.0
+ROTATION 0.0 0.0 0.0
+SCALE 80.0 80.0 
+--------------------------------------------------------------------------
+ID tutorial_alien4
+MODEL Sprite2D
+TEXTURES 1
+TEXTURE highAlien3_idle 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+SHADER Animation 
+POSITION 300.0 500.0
+ROTATION 0.0 0.0 0.0
+SCALE 100.0 100.0 
+--------------------------------------------------------------------------
+
+
+
+muốn comment gì ở đây cũng dc
+###########################################################################
+#Aliens: 12
+
+ID mobAlien1
+
+MODEL Sprite2D
+TEXTURES 3
+TEXTURE mobAlien1_run 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+TEXTURE mobAlien1_idle 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+TEXTURE destroyed 
+NUM_FRAMES 5
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+SHADER Animation 
+SCALE 60.0 60.0 
+SPEED 60.0
+HEALTH 1
+SCORE 10
+COIN 10
+--------------------------------------------------------------------------
+ID mobAlien2
+
+MODEL Sprite2D
+TEXTURES 3
+TEXTURE mobAlien2_run 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+TEXTURE mobAlien2_idle 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+TEXTURE destroyed 
+NUM_FRAMES 5
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+SHADER Animation 
+SCALE 60.0 60.0 
+SPEED 65.0
+HEALTH 1
+SCORE 10
+COIN 10
+--------------------------------------------------------------------------
+ID mobAlien3
+
+MODEL Sprite2D
+TEXTURES 3
+TEXTURE mobAlien3_run 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+TEXTURE mobAlien3_idle 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+TEXTURE destroyed 
+NUM_FRAMES 5
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+SHADER Animation 
+SCALE 60.0 60.0 
+SPEED 70.0
+HEALTH 1
+SCORE 10
+COIN 10
+--------------------------------------------------------------------------
+ID mobAlien4
+
+MODEL Sprite2D
+TEXTURES 3
+TEXTURE mobAlien4_run 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+TEXTURE mobAlien4_idle 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+TEXTURE destroyed 
+NUM_FRAMES 5
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+SHADER Animation 
+SCALE 60.0 60.0 
+SPEED 75.0
+HEALTH 1
+SCORE 10
+COIN 10
+--------------------------------------------------------------------------
+ID medAlien1
+
+MODEL Sprite2D
+TEXTURES 3
+TEXTURE medAlien1_run 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+TEXTURE medAlien1_idle 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+TEXTURE destroyed 
+NUM_FRAMES 5
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+SHADER Animation 
+SCALE 80.0 80.0 
+SPEED 60.0
+HEALTH 2
+SCORE 50
+COIN 20
+--------------------------------------------------------------------------
+ID medAlien2
+
+MODEL Sprite2D
+TEXTURES 3
+TEXTURE medAlien2_run 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+TEXTURE medAlien2_idle 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+TEXTURE destroyed 
+NUM_FRAMES 5
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+SHADER Animation 
+SCALE 80.0 80.0 
+SPEED 65.0
+HEALTH 2
+SCORE 50
+COIN 20
+--------------------------------------------------------------------------
+ID medAlien3
+
+MODEL Sprite2D
+TEXTURES 3
+TEXTURE medAlien3_run 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+TEXTURE medAlien3_idle 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+TEXTURE destroyed 
+NUM_FRAMES 5
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+SHADER Animation 
+SCALE 80.0 80.0 
+SPEED 75.0
+HEALTH 2
+SCORE 50
+COIN 20
+--------------------------------------------------------------------------
+ID medAlien4
+
+MODEL Sprite2D
+TEXTURES 3
+TEXTURE medAlien4_run 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+TEXTURE medAlien4_idle 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+TEXTURE destroyed 
+NUM_FRAMES 5
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+SHADER Animation 
+SCALE 80.0 80.0 
+SPEED 110.0
+HEALTH 1
+SCORE 50
+COIN 20
+--------------------------------------------------------------------------
+ID highAlien1
+
+MODEL Sprite2D
+TEXTURES 3
+TEXTURE highAlien1_run 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+TEXTURE highAlien1_idle 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+TEXTURE destroyed 
+NUM_FRAMES 5
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+SHADER Animation 
+SCALE 100.0 100.0 
+SPEED 110.0
+HEALTH 3
+SCORE 100
+COIN 50
+--------------------------------------------------------------------------
+ID highAlien2
+
+MODEL Sprite2D
+TEXTURES 3
+TEXTURE highAlien2_run 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+TEXTURE highAlien2_idle 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+TEXTURE destroyed 
+NUM_FRAMES 5
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+SHADER Animation 
+SCALE 100.0 100.0 
+SPEED 120.0
+HEALTH 3
+SCORE 100
+COIN 50
+--------------------------------------------------------------------------
+ID highAlien3
+
+MODEL Sprite2D
+TEXTURES 3
+TEXTURE highAlien3_run 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+TEXTURE highAlien3_idle 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+TEXTURE destroyed 
+NUM_FRAMES 5
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+SHADER Animation 
+SCALE 100.0 100.0 
+SPEED 130.0
+HEALTH 3
+SCORE 100
+COIN 50
+--------------------------------------------------------------------------
+ID highAlien4
+
+MODEL Sprite2D
+TEXTURES 3
+TEXTURE highAlien3_run 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+TEXTURE highAlien3_idle 
+NUM_FRAMES 4
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+TEXTURE destroyed 
+NUM_FRAMES 5
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+
+SHADER Animation 
+SCALE 100.0 100.0 
+SPEED 130.0
+HEALTH 3
+SCORE 100
+COIN 50
+--------------------------------------------------------------------------
+
+
+
+
+###########################################################################
+#Objects: 36
+
+ID intro_logo
+MODEL Sprite2D
+TEXTURE logo
+SHADER TriangleShader
+POSITION 640.0 480.0
+ROTATION 0.0 0.0 0.0
+SCALE 300.0 300.0 
+--------------------------------------------------------------------------
+ID z_laser_bullet
+MODEL Sprite2D
+TEXTURE z_laser_bullet
+SHADER TriangleShader
+POSITION 1200.0 480.0
+ROTATION 0.0 0.0 0.0
+SCALE 170.0 38.0 
+--------------------------------------------------------------------------
+ID x_laser_bullet
+MODEL Sprite2D
+TEXTURE x_laser_bullet
+SHADER TriangleShader
+POSITION 1200.0 480.0
+ROTATION 0.0 0.0 0.0
+SCALE 170.0 38.0 
+--------------------------------------------------------------------------
+ID c_laser_bullet
+MODEL Sprite2D
+TEXTURE c_laser_bullet
+SHADER TriangleShader
+POSITION 1200.0 480.0
+ROTATION 0.0 0.0 0.0
+SCALE 170.0 38.0 
+--------------------------------------------------------------------------
+ID menu_background
+MODEL Sprite2D
+TEXTURE menu_background
+SHADER TriangleShader
+POSITION 640.0 480.0
+ROTATION 0.0 0.0 0.0
+SCALE 1280.0 960.0
+--------------------------------------------------------------------------
+ID play_background
+MODEL Sprite2D
+TEXTURE play_background
+SHADER TriangleShader
+POSITION 640.0 480.0
+ROTATION 0.0 0.0 0.0
+SCALE 1280.0 960.0
+--------------------------------------------------------------------------
+ID human_base
+MODEL Sprite2D
+TEXTURE base
+SHADER TriangleShader
+POSITION 1200.0 480.0
+ROTATION 0.0 0.0 0.0
+SCALE 160.0 960.0
+--------------------------------------------------------------------------
+ID play_upper_pane
+MODEL Sprite2D
+TEXTURE play_pane
+SHADER TriangleShader
+POSITION 640.0 50.0
+ROTATION 0.0 0.0 0.0
+SCALE 1280.0 100.0
+--------------------------------------------------------------------------
+ID play_lower_pane
+MODEL Sprite2D
+TEXTURE play_pane
+SHADER TriangleShader
+POSITION 640.0 910.0
+ROTATION 0.0 0.0 0.0
+SCALE 1280.0 100.0
+--------------------------------------------------------------------------
+ID over_background
+MODEL Sprite2D
+TEXTURE temp
+SHADER TriangleShader
+POSITION 640.0 480.0
+ROTATION 0.0 0.0 0.0
+SCALE 1280.0 960.0
+--------------------------------------------------------------------------
+ID heart1
+MODEL Sprite2D
+TEXTURE red_heart
+SHADER TriangleShader
+POSITION 900.0 50.0
+ROTATION 0.0 0.0 0.0
+SCALE 50.0 50.0
+--------------------------------------------------------------------------
+ID heart2
+MODEL Sprite2D
+TEXTURE red_heart
+SHADER TriangleShader
+POSITION 960.0 50.0
+ROTATION 0.0 0.0 0.0
+SCALE 50.0 50.0
+--------------------------------------------------------------------------
+ID heart3
+MODEL Sprite2D
+TEXTURE red_heart
+SHADER TriangleShader
+POSITION 1020.0 50.0
+ROTATION 0.0 0.0 0.0
+SCALE 50.0 50.0
+--------------------------------------------------------------------------
+ID heart4
+MODEL Sprite2D
+TEXTURE red_heart
+SHADER TriangleShader
+POSITION 1080.0 50.0
+ROTATION 0.0 0.0 0.0
+SCALE 50.0 50.0
+--------------------------------------------------------------------------
+ID black_heart1
+MODEL Sprite2D
+TEXTURE black_heart
+SHADER TriangleShader
+POSITION 900.0 50.0
+ROTATION 0.0 0.0 0.0
+SCALE 50.0 50.0
+--------------------------------------------------------------------------
+ID black_heart2
+MODEL Sprite2D
+TEXTURE black_heart
+SHADER TriangleShader
+POSITION 980.0 50.0
+ROTATION 0.0 0.0 0.0
+SCALE 50.0 50.0
+--------------------------------------------------------------------------
+ID black_heart3
+MODEL Sprite2D
+TEXTURE black_heart
+SHADER TriangleShader
+POSITION 1060.0 50.0
+ROTATION 0.0 0.0 0.0
+SCALE 50.0 50.0
+--------------------------------------------------------------------------
+ID score_frame
+MODEL Sprite2D
+TEXTURE score_frame
+SHADER TriangleShader
+POSITION 640.0 480.0
+ROTATION 0.0 0.0 0.0
+SCALE 700.0 700.0
+--------------------------------------------------------------------------
+ID pause_frame
+MODEL Sprite2D
+TEXTURE score_frame
+SHADER TriangleShader
+POSITION 640.0 480.0
+ROTATION 0.0 0.0 0.0
+SCALE 300.0 150.0
+--------------------------------------------------------------------------
+ID score_frame
+MODEL Sprite2D
+TEXTURE score_frame
+SHADER TriangleShader
+POSITION 640.0 480.0
+ROTATION 0.0 0.0 0.0
+SCALE 700.0 700.0
+--------------------------------------------------------------------------
+ID score_frame
+MODEL Sprite2D
+TEXTURE score_frame
+SHADER TriangleShader
+POSITION 640.0 480.0
+ROTATION 0.0 0.0 0.0
+SCALE 700.0 700.0
+--------------------------------------------------------------------------
+ID tutorial_background
+MODEL Sprite2D
+TEXTURE tutorial_background
+SHADER TriangleShader
+POSITION 640.0 480.0
+ROTATION 0.0 0.0 0.0
+SCALE 1280.0 960.0
+--------------------------------------------------------------------------
+ID tutorial_spell1
+MODEL Sprite2D
+TEXTURE fire_spell
+SHADER TriangleShader
+POSITION 480.0 620.0
+ROTATION 0.0 0.0 0.0
+SCALE 50.0 50.0
+--------------------------------------------------------------------------
+ID tutorial_spell2
+MODEL Sprite2D
+TEXTURE ice_spell
+SHADER TriangleShader
+POSITION 420.0 620.0
+ROTATION 0.0 0.0 0.0
+SCALE 50.0 50.0
+--------------------------------------------------------------------------
+ID tutorial_spell3
+MODEL Sprite2D
+TEXTURE health_upgrade
+SHADER TriangleShader
+POSITION 360.0 620.0
+ROTATION 0.0 0.0 0.0
+SCALE 50.0 50.0
+--------------------------------------------------------------------------
+ID tutorial_spell4
+MODEL Sprite2D
+TEXTURE bullet_upgrade
+SHADER TriangleShader
+POSITION 300.0 620.0
+ROTATION 0.0 0.0 0.0
+SCALE 50.0 50.0
+--------------------------------------------------------------------------
+ID map1
+MODEL Sprite2D
+TEXTURE map1
+SHADER TriangleShader
+POSITION 300.0 300.0
+ROTATION 0.0 0.0 0.0
+SCALE 200.0 150.0
+--------------------------------------------------------------------------
+ID map2
+MODEL Sprite2D
+TEXTURE map2
+SHADER TriangleShader
+POSITION 300.0 600.0
+ROTATION 0.0 0.0 0.0
+SCALE 200.0 150.0
+--------------------------------------------------------------------------
+ID map3
+MODEL Sprite2D
+TEXTURE map3
+SHADER TriangleShader
+POSITION 300.0 900.0
+ROTATION 0.0 0.0 0.0
+SCALE 200.0 150.0
+--------------------------------------------------------------------------
+ID map4
+MODEL Sprite2D
+TEXTURE map4
+SHADER TriangleShader
+POSITION 600.0 300.0
+ROTATION 0.0 0.0 0.0
+SCALE 200.0 150.0
+--------------------------------------------------------------------------
+ID map5
+MODEL Sprite2D
+TEXTURE map5
+SHADER TriangleShader
+POSITION 600.0 600.0
+ROTATION 0.0 0.0 0.0
+SCALE 200.0 150.0
+--------------------------------------------------------------------------
+ID map6
+MODEL Sprite2D
+TEXTURE map6
+SHADER TriangleShader
+POSITION 600.0 900.0
+ROTATION 0.0 0.0 0.0
+SCALE 200.0 150.0
+--------------------------------------------------------------------------
+ID z_gun
+MODEL Sprite2D
+TEXTURE z_gun
+SHADER TriangleShader
+POSITION 1200.0 480.0
+ROTATION 0.0 0.0 0.0
+SCALE 100.0 100.0
+--------------------------------------------------------------------------
+ID x_gun
+MODEL Sprite2D
+TEXTURE x_gun
+SHADER TriangleShader
+POSITION 1200.0 480.0
+ROTATION 0.0 0.0 0.0
+SCALE 100.0 100.0
+--------------------------------------------------------------------------
+ID c_gun
+MODEL Sprite2D
+TEXTURE c_gun
+SHADER TriangleShader
+POSITION 1200.0 480.0
+ROTATION 0.0 0.0 0.0
+SCALE 100.0 100.0
+--------------------------------------------------------------------------
+ID aim
+MODEL Sprite2D
+TEXTURE aim
+SHADER TriangleShader
+POSITION 1200.0 480.0
+ROTATION 0.0 0.0 0.0
+SCALE 50.0 50.0
+--------------------------------------------------------------------------
+###########################################################################
+#Buttons: 23
+
+ID button_start
+Type BUTTON_START
+MODEL Sprite2D
+TEXTURE Map_BTN
+SHADER TriangleShader
+POSITION 640.0 430.0
+ROTATION 0.0 0.0 0.0
+SCALE 200.0 80.0
+--------------------------------------------------------------------------
+ID button_endless
+Type BUTTON_ENDLESS
+MODEL Sprite2D
+TEXTURE start_button
+SHADER TriangleShader
+POSITION 640.0 530.0
+ROTATION 0.0 0.0 0.0
+SCALE 200.0 80.0
+--------------------------------------------------------------------------
+ID button_exit
+Type BUTTON_EXIT
+MODEL Sprite2D
+TEXTURE exit_button
+SHADER TriangleShader
+POSITION 640.0 730.0
+ROTATION 0.0 0.0 0.0
+SCALE 200.0 80.0
+--------------------------------------------------------------------------
+ID button_restart
+Type BUTTON_RESTART
+MODEL Sprite2D
+TEXTURE new_game_button
+SHADER TriangleShader
+POSITION 640.0 400.0
+ROTATION 0.0 0.0 0.0
+SCALE 200.0 60.0
+--------------------------------------------------------------------------
+ID button_score
+Type BUTTON_SCORE
+MODEL Sprite2D
+TEXTURE high_score_button
+SHADER TriangleShader
+POSITION 640.0 560.0
+ROTATION 0.0 0.0 0.0
+SCALE 200.0 60.0
+--------------------------------------------------------------------------
+ID button_back_to_menu
+Type BUTTON_BACK_TO_MENU
+MODEL Sprite2D
+TEXTURE menu_button
+SHADER TriangleShader
+POSITION 640.0 480.0
+ROTATION 0.0 0.0 0.0
+SCALE 200.0 60.0
+--------------------------------------------------------------------------
+ID button_pause
+Type BUTTON_PAUSE
+MODEL Sprite2D
+TEXTURE pause_col_square_button
+SHADER TriangleShader
+POSITION 1150.0 50.0
+ROTATION 0.0 0.0 0.0
+SCALE 50.0 50.0 
+--------------------------------------------------------------------------
+ID button_resume
+Type BUTTON_RESUME
+MODEL Sprite2D
+TEXTURE play_col_square_button
+SHADER TriangleShader
+POSITION 1220.0 50.0
+ROTATION 0.0 0.0 0.0
+SCALE 50.0 50.0 
+--------------------------------------------------------------------------
+ID bullet_amount
+Type BUTTON_UPGRADE_BULLET_AMOUNT
+MODEL Sprite2D
+TEXTURE bullet_upgrade
+SHADER TriangleShader
+POSITION 100.0 900.0
+ROTATION 0.0 0.0 0.0
+SCALE 50.0 50.0 
+--------------------------------------------------------------------------
+ID freeze
+Type BUTTON_SKILL_FREEZE
+MODEL Sprite2D
+TEXTURE ice_spell
+SHADER TriangleShader
+POSITION 200.0 900.0
+ROTATION 0.0 0.0 0.0
+SCALE 50.0 50.0 
+--------------------------------------------------------------------------
+ID fire
+Type BUTTON_SKILL_FIRE
+MODEL Sprite2D
+TEXTURE fire_spell
+SHADER TriangleShader
+POSITION 300.0 900.0
+ROTATION 0.0 0.0 0.0
+SCALE 50.0 50.0 
+--------------------------------------------------------------------------
+ID health_upgrade
+Type BUTTON_UPGRADE_BULLET_RELOAD
+MODEL Sprite2D
+TEXTURE health_upgrade
+SHADER TriangleShader
+POSITION 400.0 900.0
+ROTATION 0.0 0.0 0.0
+SCALE 50.0 50.0 
+--------------------------------------------------------------------------
+ID button_back
+Type BUTTON_BACK
+MODEL Sprite2D
+TEXTURE back_button
+SHADER TriangleShader
+POSITION 1100.0 900.0
+ROTATION 0.0 0.0 0.0
+SCALE 200.0 80.0
+--------------------------------------------------------------------------
+ID button_resume_2
+Type BUTTON_RESUME
+MODEL Sprite2D
+TEXTURE play_col_square_button
+SHADER TriangleShader
+POSITION 640.0 480.0
+ROTATION 0.0 0.0 0.0
+SCALE 50.0 50.0 
+--------------------------------------------------------------------------
+ID button_home
+Type BUTTON_BACK_TO_MENU
+MODEL Sprite2D
+TEXTURE menu_square
+SHADER TriangleShader
+POSITION 700.0 480.0
+ROTATION 0.0 0.0 0.0
+SCALE 50.0 50.0 
+--------------------------------------------------------------------------
+ID button_tutorial
+Type BUTTON_TUTORIAL
+MODEL Sprite2D
+TEXTURE question_mark
+SHADER TriangleShader
+POSITION 580.0 480.0
+ROTATION 0.0 0.0 0.0
+SCALE 50.0 50.0 
+--------------------------------------------------------------------------
+ID long_button_tutorial
+Type BUTTON_TUTORIAL
+MODEL Sprite2D
+TEXTURE tutorial_button
+SHADER TriangleShader
+POSITION 640.0 630.0
+ROTATION 0.0 0.0 0.0
+SCALE 200.0 80.0
+--------------------------------------------------------------------------
+ID map1
+Type BUTTON_MAP1
+MODEL Sprite2D
+TEXTURE map1
+SHADER TriangleShader
+POSITION 300.0 300.0
+ROTATION 0.0 0.0 0.0
+SCALE 250.0 200.0
+--------------------------------------------------------------------------
+ID map2
+Type BUTTON_MAP2
+MODEL Sprite2D
+TEXTURE map2
+SHADER TriangleShader
+POSITION 600.0 300.0
+ROTATION 0.0 0.0 0.0
+SCALE 250.0 200.0
+--------------------------------------------------------------------------
+ID map3
+Type BUTTON_MAP3
+MODEL Sprite2D
+TEXTURE map3
+SHADER TriangleShader
+POSITION 900.0 300.0
+ROTATION 0.0 0.0 0.0
+SCALE 250.0 200.0
+--------------------------------------------------------------------------
+ID map4
+Type BUTTON_MAP4
+MODEL Sprite2D
+TEXTURE map4
+SHADER TriangleShader
+POSITION 300.0 600.0
+ROTATION 0.0 0.0 0.0
+SCALE 250.0 200.0
+--------------------------------------------------------------------------
+ID map5
+Type BUTTON_MAP5
+MODEL Sprite2D
+TEXTURE map5
+SHADER TriangleShader
+POSITION 600.0 600.0
+ROTATION 0.0 0.0 0.0
+SCALE 250.0 200.0
+--------------------------------------------------------------------------
+ID map6
+Type BUTTON_MAP6
+MODEL Sprite2D
+TEXTURE map6
+SHADER TriangleShader
+POSITION 900.0 600.0
+ROTATION 0.0 0.0 0.0
+SCALE 250.0 200.0
+--------------------------------------------------------------------------
+###########################################################################

@@ -1,0 +1,230 @@
+﻿#Models: 2
+ID 0	FILE Sprite2D
+ID 1	FILE Rectangle
+
+#2DTextures: 94
+
+ID 0	FILE base 
+ID 1	FILE btn_exit 
+ID 2	FILE btn_quit 
+ID 3	FILE btn_start 
+ID 4	FILE destroyed 
+ID 5 	FILE highAlien1_idle 
+ID 6	FILE highAlien1_run 
+ID 7	FILE highAlien2_idle 
+ID 8	FILE highAlien2_run 
+ID 9	FILE highAlien3_idle 
+ID 10 	FILE highAlien3_run 
+ID 11	FILE logo 
+ID 12 	FILE medAlien1_idle
+ID 13 	FILE medAlien1_run
+ID 14 	FILE medAlien2_idle
+ID 15 	FILE medAlien2_run
+ID 16 	FILE medAlien3_idle
+ID 17 	FILE medAlien3_run
+ID 18 	FILE medAlien4_idle
+ID 19 	FILE medAlien4_run
+ID 20 	FILE menu_background
+ID 21 	FILE mobAlien1_idle
+ID 22 	FILE mobAlien1_run
+ID 23 	FILE mobAlien2_idle
+ID 24 	FILE mobAlien2_run
+ID 25 	FILE mobAlien3_idle 
+ID 26 	FILE mobAlien3_run
+ID 27 	FILE mobAlien4_idle
+ID 28 	FILE mobAlien4_run
+ID 29 	FILE play_background
+ID 30 	FILE temp
+ID 31	FILE loading_animation
+ID 32 	FILE back_col_button
+ID 33 	FILE continue_col_button
+ID 34 	FILE controls_col_button
+ID 35 	FILE exit_col_button
+ID 36 	FILE load_col_button
+ID 37 	FILE menu_col_button
+ID 38 	FILE new_game_col_button
+ID 39 	FILE options_col_button
+ID 40 	FILE play_col_button
+ID 41 	FILE quit_col_button
+ID 42 	FILE resume_col_button
+ID 43 	FILE settings_col_button
+ID 44	FILE start_col_button
+ID 45 	FILE back_button
+ID 46 	FILE continue_button
+ID 47 	FILE controls_button
+ID 48 	FILE exit_button
+ID 49 	FILE load_button
+ID 50 	FILE menu_button
+ID 51 	FILE new_game_button
+ID 52 	FILE options_button
+ID 53 	FILE play_button
+ID 54 	FILE quit_button
+ID 55 	FILE resume_button
+ID 56 	FILE high_score_button
+ID 57	FILE start_button
+ID 58	FILE pause_col_square_button
+ID 59	FILE play_col_square_button
+ID 60	FILE red_rectangle
+ID 61	FILE play_pane
+ID 62	FILE coins
+ID 63	FILE upgrade_frame
+ID 64	FILE burning_loop_1
+ID 65	FILE burning_end_1
+ID 66	FILE burning_start_1
+ID 67	FILE lightning_wall
+ID 68	FILE red_heart
+ID 69	FILE black_heart
+ID 70	FILE bullet_upgrade
+ID 71	FILE health_upgrade
+ID 72	FILE ice_spell
+ID 73	FILE fire_spell
+ID 74	FILE score_frame
+ID 75	FILE btn_back
+ID 76	FILE tutorial_background
+ID 77	FILE menu_square
+ID 78	FILE question_mark
+ID 79	FILE tutorial_button
+ID 80	FILE z_laser_bullet
+ID 81	FILE Map_BTN
+ID 82	FILE map1
+ID 83	FILE map2
+ID 84	FILE map3
+ID 85	FILE map4
+ID 86	FILE map5
+ID 87	FILE map6
+ID 88	FILE z_gun
+ID 89	FILE x_gun
+ID 90	FILE c_gun
+ID 91	FILE x_laser_bullet
+ID 92	FILE c_laser_bullet
+ID 93	FILE aim
+
+#Shaders: 3
+ID 0	FILE TriangleShader
+ID 1	FILE Animation
+ID 3	FILE Text
+
+#Sound: 10
+FILE tu_sena
+FILE explosion
+FILE intro
+FILE menu
+FILE play
+FILE freeze
+FILE fire
+FILE reload
+FILE more
+FILE over
+
+#Texts: 16
+ID		reloading
+POS		1000 900
+COLOR 		255 0 0 255
+SIZE		30
+MESSAGE		Reloading...
+FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
+
+ID		current_bullets
+POS		700 50
+COLOR 		255 0 0 255
+SIZE		30
+MESSAGE		Reloading...
+FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
+
+ID		scores
+POS		400 50
+COLOR 		0 128 0 255
+SIZE		30
+MESSAGE		...
+FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
+
+ID		coins
+POS		120 50
+COLOR 		255 255 0 255
+SIZE		30
+MESSAGE		coins
+FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
+
+ID		bullet_cost
+POS		100 940
+COLOR 		255 0 0 255
+SIZE		20
+MESSAGE		coins
+FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
+
+ID		freeze_cost
+POS		200 940
+COLOR 		255 0 0 255
+SIZE		20
+MESSAGE		coins
+FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
+
+ID		fire_cost
+POS		300 940
+COLOR 		255 0 0 255
+SIZE		20
+MESSAGE		coins
+FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
+
+ID		health_cost
+POS		400 940
+COLOR 		255 0 0 255
+SIZE		20
+MESSAGE		coins
+FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
+
+ID		tutorial1
+POS		800 300
+COLOR 		255 0 0 255
+SIZE		20
+MESSAGE		coins
+FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
+
+ID		tutorial2
+POS		800 420
+COLOR 		255 0 0 255
+SIZE		20
+MESSAGE		coins
+FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
+
+ID		tutorial3
+POS		800 520
+COLOR 		255 0 0 255
+SIZE		20
+MESSAGE		coins
+FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
+
+ID		tutorial4
+POS		800 620
+COLOR 		255 0 0 255
+SIZE		20
+MESSAGE		coins
+FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
+
+ID		gsplay_scores
+POS		300 50
+COLOR 		0 128 0 255
+SIZE		30
+MESSAGE		Scores:
+FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
+
+ID		over_scores
+POS		760 300
+COLOR 		255 255 255 255
+SIZE		50
+MESSAGE		...
+FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
+
+ID		your_scores
+POS		600 300
+COLOR 		255 255 255 255
+SIZE		50
+MESSAGE		Scores: 
+FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
+
+ID		your_bullets
+POS		600 50
+COLOR 		255 0 0 255
+SIZE		30
+MESSAGE		Bullets: 
+FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf

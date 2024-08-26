@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}</ProjectGuid>
+    <RootNamespace>TrainingFramework</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>StopTheAlien</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)\BIN\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\han.glschool2\Desktop\HIN032_TaTrungHieu\TrainingFramework\SDL\SDL2-devel-2.28.2-VC\SDL2-2.28.2\include;C:\Users\han.glschool2\Training\HIN032_TaTrungHieu\TrainingFramework\SDL2_ttf-devel-2.20.2-VC\SDL2_ttf-2.20.2\include</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)\BIN\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Include;$(SolutionDir)\SDL\SDL2-devel-2.28.2-VC\SDL2-2.28.2\include;$(SolutionDir)\SDL2_ttf-devel-2.20.2-VC\SDL2_ttf-2.20.2\include;$(SolutionDir)\SDL2_mixer-2.6.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <PrecompiledHeaderFile>../TrainingFramework/stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile />
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libEGL.lib;libGLESv2.lib;SDL2.lib;SDL2_ttf.lib;SDL2_mixer.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\Lib;$(SoltionDir)\SDL\SDL2-devel-2.28.2-VC\SDL2-2.28.2\lib\x64;$(SolutionDir)\SDL2_ttf-devel-2.20.2-VC\SDL2_ttf-2.20.2\lib\x64;$(SolutionDir)\SDL2_mixer-2.6.3\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>../TrainingFramework/stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalLibraryDirectories>$(SolutionDir)\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libEGL.lib;libGLESv2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Utilities\Utilities.vcxproj">
+      <Project>{0d44529e-f7dd-4454-8ead-9afd857f53b4}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Resources\RM.txt" />
+    <Text Include="..\Resources\SM.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BaseAlien.cpp" />
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="GameManager\ResourceManager.cpp" />
+    <ClCompile Include="GameManager\SceneManager.cpp" />
+    <ClCompile Include="GameObject\Animation.cpp" />
+    <ClCompile Include="GameObject\BaseObject.cpp" />
+    <ClCompile Include="GameObject\Camera.cpp" />
+    <ClCompile Include="GameObject\GameButton.cpp" />
+    <ClCompile Include="GameObject\Model.cpp" />
+    <ClCompile Include="GameObject\Object.cpp" />
+    <ClCompile Include="GameObject\Shaders.cpp" />
+    <ClCompile Include="GameObject\Sound.cpp" />
+    <ClCompile Include="GameObject\Text.cpp" />
+    <ClCompile Include="GameObject\Texture.cpp" />
+    <ClCompile Include="GameState\GSBase.cpp" />
+    <ClCompile Include="GameState\GSEndless.cpp" />
+    <ClCompile Include="GameState\GSIntro.cpp" />
+    <ClCompile Include="GameState\GSMachine.cpp" />
+    <ClCompile Include="GameState\GSMenu.cpp" />
+    <ClCompile Include="GameState\GSOver.cpp" />
+    <ClCompile Include="GameState\GSScore.cpp" />
+    <ClCompile Include="GameState\GSSelectMap.cpp" />
+    <ClCompile Include="GameState\GSShop.cpp" />
+    <ClCompile Include="GameState\GSTutorial.cpp" />
+    <ClCompile Include="GameState\GSVictory.cpp" />
+    <ClCompile Include="GameState\GS_Campaign_1.cpp" />
+    <ClCompile Include="GameState\GS_Campaign_2.cpp" />
+    <ClCompile Include="GameState\GS_Campaign_3.cpp" />
+    <ClCompile Include="GameState\GS_Campaign_4.cpp" />
+    <ClCompile Include="GameState\GS_Campaign_5.cpp" />
+    <ClCompile Include="GameState\GS_Campaign_6.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="StopTheAlien.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BaseAlien.h" />
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="GameManager\ResourceManager.h" />
+    <ClInclude Include="GameManager\SceneManager.h" />
+    <ClInclude Include="GameManager\SingletonClass.h" />
+    <ClInclude Include="GameObject\Animation.h" />
+    <ClInclude Include="GameObject\BaseObject.h" />
+    <ClInclude Include="GameObject\Camera.h" />
+    <ClInclude Include="GameObject\GameButton.h" />
+    <ClInclude Include="GameObject\Model.h" />
+    <ClInclude Include="GameObject\Object.h" />
+    <ClInclude Include="GameObject\Shaders.h" />
+    <ClInclude Include="GameObject\Sound.h" />
+    <ClInclude Include="GameObject\Text.h" />
+    <ClInclude Include="GameObject\Texture.h" />
+    <ClInclude Include="GameObject\Vertex.h" />
+    <ClInclude Include="GameState\GSBase.h" />
+    <ClInclude Include="GameState\GSEndless.h" />
+    <ClInclude Include="GameState\GSIntro.h" />
+    <ClInclude Include="GameState\GSMachine.h" />
+    <ClInclude Include="GameState\GSMenu.h" />
+    <ClInclude Include="GameState\GSOver.h" />
+    <ClInclude Include="GameState\GSScore.h" />
+    <ClInclude Include="GameState\GSSelectMap.h" />
+    <ClInclude Include="GameState\GSShop.h" />
+    <ClInclude Include="GameState\GSTutorial.h" />
+    <ClInclude Include="GameState\GSVictory.h" />
+    <ClInclude Include="GameState\GS_Campaign_1.h" />
+    <ClInclude Include="GameState\GS_Campaign_2.h" />
+    <ClInclude Include="GameState\GS_Campaign_3.h" />
+    <ClInclude Include="GameState\GS_Campaign_4.h" />
+    <ClInclude Include="GameState\GS_Campaign_5.h" />
+    <ClInclude Include="GameState\GS_Campaign_6.h" />
+    <ClInclude Include="Globals.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>
