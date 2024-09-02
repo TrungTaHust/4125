@@ -1,11 +1,11 @@
 #Genered or temp foler
-StopTheAlien/.vs
-StopTheAlien/TrainingFramework/Debug
-StopTheAlien/Utilities/Debug
-StopTheAlien/Debug
-StopTheAlien/TrainingFramework/Release
-StopTheAlien/Utilities/Release
-StopTheAlien/Release
+Puzzle/.vs
+Puzzle/TrainingFramework/Debug
+Puzzle/Utilities/Debug
+Puzzle/Debug
+Puzzle/TrainingFramework/Release
+Puzzle/Utilities/Release
+Puzzle/Release
 /.vs
 *.exe
 *.pdb
