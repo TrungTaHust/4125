@@ -10,7 +10,6 @@ public:
 	static const int screenWidth = 1280;
 	static const int screenHeight = 960;
 	static std::vector<int> topScores;
-	static std::string map;
 
 };
 #define KEY_UP				VK_UP

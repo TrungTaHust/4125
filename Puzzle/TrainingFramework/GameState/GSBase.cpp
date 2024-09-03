@@ -5,16 +5,9 @@
 #include "GSOver.h"
 #include "GSScore.h"
 #include "GSTutorial.h"
-#include "GSEndless.h"
 #include "GS_Campaign_1.h"
-#include "GS_Campaign_2.h"
-#include "GS_Campaign_3.h"
-#include "GS_Campaign_4.h"
-#include "GS_Campaign_5.h"
-#include "GS_Campaign_6.h"
 #include "GSVictory.h"
 #include "GSSelectMap.h"
-#include "GSShop.h"
 
 GSBase::GSBase()
 {
@@ -46,26 +39,12 @@ std::shared_ptr<GSBase> GSBase::CreateState(StateType stateType)
 		return std::make_shared<GSScore>();
 	case STATE_TUTORIAL:
 		return std::make_shared<GSTutorial>();
-	case STATE_ENDLESS:
-		return std::make_shared<GSEndless>();
 	case STATE_CAMPAIGN_1:
-		return std::make_shared<GSCampaign1>();
-	case STATE_CAMPAIGN_2:
-		return std::make_shared<GSCampaign2>();
-	case STATE_CAMPAIGN_3:
-		return std::make_shared<GSCampaign3>();
-	case STATE_CAMPAIGN_4:
-		return std::make_shared<GSCampaign4>();
-	case STATE_CAMPAIGN_5:
-		return std::make_shared<GSCampaign5>();
-	case STATE_CAMPAIGN_6:
-		return std::make_shared<GSCampaign6>();
+		return std::make_shared<GSCampaign1>();	
 	case STATE_SELECT_MAP:
 		return std::make_shared<GSSelectMap>();
 	case STATE_VICTORY:
 		return std::make_shared<GSVictory>();
-	case STATE_SHOP:
-		return std::make_shared<GSShop>();
 	default:
 		break;
 	}

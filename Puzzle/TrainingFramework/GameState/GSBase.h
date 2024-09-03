@@ -15,15 +15,8 @@ enum StateType {
 	STATE_SCORE,
 	STATE_TUTORIAL,
 	STATE_SELECT_MAP,
-	STATE_ENDLESS,
 	STATE_CAMPAIGN_1,
-	STATE_CAMPAIGN_2,
-	STATE_CAMPAIGN_3,
-	STATE_CAMPAIGN_4,
-	STATE_CAMPAIGN_5,
-	STATE_CAMPAIGN_6,
-	STATE_VICTORY,
-	STATE_SHOP
+	STATE_VICTORY
 };
 
 class GSBase
@@ -51,7 +44,6 @@ public:
 
 	void AddSoundByName(const char* soundName);
 	void PlaySoundByName(const char* soundName, int channel, int loop);
-	//void PlaySingleSoundByName(const char* soundName);
 	void PauseSoundByName(const char* soundName);
 	void ResumeSoundByName(const char* soundName);
 	void StopSoundByName(const char* soundName, int channel);
@@ -71,7 +63,6 @@ protected:
 	std::map<std::string, std::shared_ptr<Sound>> m_soundMap;
 	std::map<std::string, std::shared_ptr<Animation>> m_animationMap;
 	std::map<std::string, std::shared_ptr<Text>> m_textMap;
-	std::vector<std::shared_ptr<Text>> m_upgradeTextCostVector;
 
 	std::vector<int> soundChannelStates;
 

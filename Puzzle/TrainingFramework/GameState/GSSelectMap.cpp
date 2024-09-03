@@ -6,8 +6,6 @@
 #include "GSMachine.h"
 #include "../TrainingFramework/GameObject/Text.h"
 
-std::string Globals::map;
-
 GSSelectMap::GSSelectMap()
 {
 	m_stateType = STATE_SELECT_MAP;
@@ -52,18 +50,7 @@ void GSSelectMap::Resume()
 
 void GSSelectMap::Update(float deltaTime)
 {
-	std::ifstream inputFile("../TrainingFramework/map.txt");
-	if (inputFile.is_open()) {
-		Globals::map.clear();
-		getline(inputFile, Globals::map);
-		inputFile.close();
-	}
 	
-	for (int i = 0; i < strlen(Globals::map.c_str()); i++)
-		if (Globals::map[i] == '0')
-			m_buttonList[i]->SetAlpha(0.4);
-		/*else
-			m_buttonList[i]->SetAlpha(1);*/
 }
 
 void GSSelectMap::Draw()
@@ -93,29 +80,9 @@ void GSSelectMap::HandleTouchEvents(float x, float y, bool bIsPressed)
 			switch (button->m_type)
 			{
 			case BUTTON_MAP1:
-				if (Globals::map[0] == '1')
-					GSMachine::GetInstance()->PushState(StateType::STATE_CAMPAIGN_1);
-				break;
-			case BUTTON_MAP2:
-				if (Globals::map[1] == '1')
-					GSMachine::GetInstance()->PushState(StateType::STATE_CAMPAIGN_2);
-				break;
-			case BUTTON_MAP3:
-				if (Globals::map[2] == '1')
-					GSMachine::GetInstance()->PushState(StateType::STATE_CAMPAIGN_3);
-				break;
-			case BUTTON_MAP4:
-				if (Globals::map[3] == '1')
-					GSMachine::GetInstance()->PushState(StateType::STATE_CAMPAIGN_4);
-				break;
-			case BUTTON_MAP5:
-				if (Globals::map[4] == '1')
-					GSMachine::GetInstance()->PushState(StateType::STATE_CAMPAIGN_5);
-				break;
-			case BUTTON_MAP6:
-				if (Globals::map[5] == '1')
-					GSMachine::GetInstance()->PushState(StateType::STATE_CAMPAIGN_6);
-				break;
+				//currentMap = 1;
+				GSMachine::GetInstance()->PushState(StateType::STATE_CAMPAIGN_1);
+				break;			
 			case BUTTON_EXIT:
 				exit(0);
 			}
@@ -124,8 +91,5 @@ void GSSelectMap::HandleTouchEvents(float x, float y, bool bIsPressed)
 }
 
 void GSSelectMap::HandleMouseMoveEvents(float x, float y)
-{
-	for (int i = 0; i < strlen(Globals::map.c_str()); i++)
-		if (Globals::map[i] == '1')
-			m_buttonList[i]->HandleMoveEvent(x, y);		
+{	
 }
