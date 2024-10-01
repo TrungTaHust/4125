@@ -2,7 +2,7 @@
 ID 0	FILE Sprite2D
 ID 1	FILE Rectangle
 
-#2DTextures: 94
+#2DTextures: 95
 
 ID 0	FILE base 
 ID 1	FILE btn_exit 
@@ -98,6 +98,7 @@ ID 90	FILE c_gun
 ID 91	FILE x_laser_bullet
 ID 92	FILE c_laser_bullet
 ID 93	FILE aim
+ID 93	FILE a02
 
 #Shaders: 3
 ID 0	FILE TriangleShader

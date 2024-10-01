@@ -129,7 +129,7 @@ bool BaseAlien::HandleTouchEvent(GLfloat x, GLfloat y, bool bIsPressed)
 void BaseAlien::SetDeath()
 {
 	SetAliveStatus(false);
-	SetAlienAnimation(2);
+	SetAlienAnimation(1);
 }
 
 void BaseAlien::SetCoin(int coin)

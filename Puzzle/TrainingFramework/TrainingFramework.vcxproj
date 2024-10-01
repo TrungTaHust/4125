@@ -14,7 +14,7 @@
     <ProjectGuid>{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}</ProjectGuid>
     <RootNamespace>TrainingFramework</RootNamespace>
     <Keyword>Win32Proj</Keyword>
-    <ProjectName>Puzzle</ProjectName>
+    <ProjectName>StopTheAlien</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -123,15 +123,22 @@
     <ClCompile Include="GameObject\Text.cpp" />
     <ClCompile Include="GameObject\Texture.cpp" />
     <ClCompile Include="GameState\GSBase.cpp" />
+    <ClCompile Include="GameState\GSEndless.cpp" />
     <ClCompile Include="GameState\GSIntro.cpp" />
     <ClCompile Include="GameState\GSMachine.cpp" />
     <ClCompile Include="GameState\GSMenu.cpp" />
     <ClCompile Include="GameState\GSOver.cpp" />
     <ClCompile Include="GameState\GSScore.cpp" />
     <ClCompile Include="GameState\GSSelectMap.cpp" />
+    <ClCompile Include="GameState\GSShop.cpp" />
     <ClCompile Include="GameState\GSTutorial.cpp" />
     <ClCompile Include="GameState\GSVictory.cpp" />
     <ClCompile Include="GameState\GS_Campaign_1.cpp" />
+    <ClCompile Include="GameState\GS_Campaign_2.cpp" />
+    <ClCompile Include="GameState\GS_Campaign_3.cpp" />
+    <ClCompile Include="GameState\GS_Campaign_4.cpp" />
+    <ClCompile Include="GameState\GS_Campaign_5.cpp" />
+    <ClCompile Include="GameState\GS_Campaign_6.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="StopTheAlien.cpp" />
   </ItemGroup>
@@ -153,15 +160,22 @@
     <ClInclude Include="GameObject\Texture.h" />
     <ClInclude Include="GameObject\Vertex.h" />
     <ClInclude Include="GameState\GSBase.h" />
+    <ClInclude Include="GameState\GSEndless.h" />
     <ClInclude Include="GameState\GSIntro.h" />
     <ClInclude Include="GameState\GSMachine.h" />
     <ClInclude Include="GameState\GSMenu.h" />
     <ClInclude Include="GameState\GSOver.h" />
     <ClInclude Include="GameState\GSScore.h" />
     <ClInclude Include="GameState\GSSelectMap.h" />
+    <ClInclude Include="GameState\GSShop.h" />
     <ClInclude Include="GameState\GSTutorial.h" />
     <ClInclude Include="GameState\GSVictory.h" />
     <ClInclude Include="GameState\GS_Campaign_1.h" />
+    <ClInclude Include="GameState\GS_Campaign_2.h" />
+    <ClInclude Include="GameState\GS_Campaign_3.h" />
+    <ClInclude Include="GameState\GS_Campaign_4.h" />
+    <ClInclude Include="GameState\GS_Campaign_5.h" />
+    <ClInclude Include="GameState\GS_Campaign_6.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />

@@ -91,10 +91,31 @@
     <ClCompile Include="GameState\GS_Campaign_1.cpp">
       <Filter>SourceFile\GameState</Filter>
     </ClCompile>
+    <ClCompile Include="GameState\GS_Campaign_2.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GS_Campaign_3.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GS_Campaign_4.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GS_Campaign_5.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GS_Campaign_6.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GSEndless.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
     <ClCompile Include="GameState\GSSelectMap.cpp">
       <Filter>SourceFile\GameState</Filter>
     </ClCompile>
     <ClCompile Include="GameState\GSVictory.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GSShop.cpp">
       <Filter>SourceFile\GameState</Filter>
     </ClCompile>
   </ItemGroup>
@@ -180,10 +201,31 @@
     <ClInclude Include="GameState\GS_Campaign_1.h">
       <Filter>SourceFile\GameState</Filter>
     </ClInclude>
+    <ClInclude Include="GameState\GS_Campaign_2.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GS_Campaign_3.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GS_Campaign_4.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GS_Campaign_5.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GS_Campaign_6.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GSEndless.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
     <ClInclude Include="GameState\GSSelectMap.h">
       <Filter>SourceFile\GameState</Filter>
     </ClInclude>
     <ClInclude Include="GameState\GSVictory.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GSShop.h">
       <Filter>SourceFile\GameState</Filter>
     </ClInclude>
   </ItemGroup>

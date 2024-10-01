@@ -104,7 +104,10 @@ void GSMenu::HandleTouchEvents(float x, float y, bool bIsPressed)
 			{
 			case BUTTON_START:
 				GSMachine::GetInstance()->PushState(StateType::STATE_SELECT_MAP);
-				break;			
+				break;
+			case BUTTON_ENDLESS:
+				GSMachine::GetInstance()->PushState(StateType::STATE_ENDLESS);
+				break;
 			case BUTTON_TUTORIAL:
 				GSMachine::GetInstance()->PushState(StateType::STATE_TUTORIAL);
 				break;
