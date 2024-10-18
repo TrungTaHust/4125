@@ -103,7 +103,7 @@ void GSMenu::HandleTouchEvents(float x, float y, bool bIsPressed)
 			switch (button->m_type)
 			{
 			case BUTTON_START:
-				GSMachine::GetInstance()->PushState(StateType::STATE_SELECT_MAP);
+				GSMachine::GetInstance()->PushState(StateType::STATE_PUZZLE);
 				break;
 			case BUTTON_ENDLESS:
 				GSMachine::GetInstance()->PushState(StateType::STATE_ENDLESS);

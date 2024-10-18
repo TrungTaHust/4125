@@ -62,6 +62,8 @@ public:
 	GLfloat getWidth() { return m_width; }
 	GLfloat getHeight() { return m_height; } 
 
+	bool HandleTouchEvent(GLfloat x, GLfloat y, bool bIsPressed);
+
 protected:
 	std::string m_objectID;
 	std::shared_ptr <Model> m_model;
@@ -76,5 +78,8 @@ protected:
 	GLfloat m_alpha;
 	GLfloat m_width;
 	GLfloat m_height;
+
+	bool m_isHover;
+	bool m_isClick;
 };
 

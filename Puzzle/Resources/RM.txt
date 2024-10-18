@@ -2,8 +2,7 @@
 ID 0	FILE Sprite2D
 ID 1	FILE Rectangle
 
-#2DTextures: 95
-
+#2DTextures: 124
 ID 0	FILE base 
 ID 1	FILE btn_exit 
 ID 2	FILE btn_quit 
@@ -99,6 +98,38 @@ ID 91	FILE x_laser_bullet
 ID 92	FILE c_laser_bullet
 ID 93	FILE aim
 ID 93	FILE a02
+ID 94   FILE b02
+ID 95   FILE c02
+ID 96   FILE d02
+ID 97   FILE e02
+ID 98   FILE f02
+ID 99   FILE g02
+ID 100  FILE h02
+ID 101  FILE i02
+ID 102  FILE j02
+ID 103  FILE k02
+ID 104  FILE l02
+ID 105  FILE m02
+ID 106  FILE n02
+ID 107  FILE o02
+ID 108  FILE p02
+ID 109  FILE q02
+ID 110  FILE r02
+ID 111  FILE s02
+ID 112  FILE t02
+ID 113  FILE u02
+ID 114  FILE v02
+ID 115  FILE w02
+ID 116  FILE x02
+ID 117  FILE y02
+ID 118  FILE z02
+ID 119  FILE white_rectangle
+ID 120  FILE yellow_rectangle
+ID 121  FILE green_rect
+ID 122  FILE null
+ID 999  FILE alphabet
+
+
 
 #Shaders: 3
 ID 0	FILE TriangleShader

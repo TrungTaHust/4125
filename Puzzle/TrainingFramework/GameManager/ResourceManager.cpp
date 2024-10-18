@@ -55,7 +55,7 @@ void ResourceManager::LoadResource(const char* rmFile)
                 
                 // Lưu thông tin về texture vào đây
                 std::shared_ptr<Texture> newTexture = std::make_shared<Texture>(fileName.c_str());
-                newTexture->SetTextureID(id);
+                newTexture->SetTextureID(fileName);
                 m_textures.insert(std::make_pair(fileName, newTexture));
             }
         }
@@ -108,18 +108,6 @@ void ResourceManager::LoadResource(const char* rmFile)
 
                 // Lưu thông tin về model vào đây
                 std::shared_ptr<Text> newText = std::make_shared<Text>(pos, color, size, message, font);
-                /*
-                newText->SetPos(Vector3(pos.x, pos.y, 1));
-                auto x = (Uint8)color.x;
-                auto y = (Uint8)color.y;
-                auto z = (Uint8)color.z;
-                auto w = (Uint8)color.w;
-
-                newText->GetTextColor() = SDL_Color({ x, y, z, w });
-                newText->GetTextSize() = size;
-                newText->GetTextMessage() = message;
-                newText->Init(font);
-                */
                 m_texts.insert(std::make_pair(id, newText));
             }
         }

@@ -195,3 +195,18 @@ void Object::SetTexture(const char* textureName)
 	auto texture = ResourceManager::GetInstance()->GetTexturePointerByName(textureName);
 	m_texture = texture;
 }
+
+bool Object::HandleTouchEvent(GLfloat x, GLfloat y, bool bIsPressed)
+{
+	if ((m_pos.x - m_width / 2.0f <= x) && (x <= m_pos.x + m_width / 2.0f)
+		&& (m_pos.y - m_height / 2.0f <= y) && (y <= m_pos.y + m_height / 2.0f)
+		&& bIsPressed)
+	{
+		m_alpha = 2.0f;
+		return true;
+	}
+
+	if (!m_isClick) m_alpha = 1.0f;
+
+	return false;
+}
