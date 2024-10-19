@@ -5,7 +5,6 @@
 #include "../TrainingFramework/Globals.h"
 #include "GSMachine.h"
 #include "../TrainingFramework/GameObject/Text.h"
-//#include "../Resources/Fonts/orbitron/"
 
 GSMenu::GSMenu()
 {
@@ -75,23 +74,7 @@ void GSMenu::HandleEvents()
 }
 
 void GSMenu::HandleKeyEvents(int key, bool bIsPressed)
-{
-	if (bIsPressed && GSMachine::GetInstance()->IsRunning()) {
-		switch (key) {
-		case KEY_UP:
-			SceneManager::GetInstance()->GetCamera("")->Move(1, 5);
-			break;
-		case KEY_DOWN:
-			SceneManager::GetInstance()->GetCamera("")->Move(1, 6);
-			break;
-		case KEY_LEFT:
-			SceneManager::GetInstance()->GetCamera("")->Move(1, 3);
-			break;
-		case KEY_RIGHT:
-			SceneManager::GetInstance()->GetCamera("")->Move(1, 4);
-			break;
-		}
-	}
+{	
 }
 
 void GSMenu::HandleTouchEvents(float x, float y, bool bIsPressed)

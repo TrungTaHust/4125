@@ -89,7 +89,8 @@ ButtonType GameButton::StringToButtonType(const char* buttonTypeStr) {
 		{"BUTTON_MAP3", BUTTON_MAP3}, 
 		{"BUTTON_MAP4", BUTTON_MAP4}, 
 		{"BUTTON_MAP5", BUTTON_MAP5}, 
-		{"BUTTON_MAP6", BUTTON_MAP6} 
+		{"BUTTON_MAP6", BUTTON_MAP6},
+		{"BUTTON_CHECK", BUTTON_CHECK}
 		
 	};
 

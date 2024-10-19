@@ -9,7 +9,7 @@
 GSIntro::GSIntro()
 {
 	m_stateType = STATE_INTRO;
-	m_ftime = 1;
+	m_ftime = 0.3;
 }
 
 GSIntro::~GSIntro()

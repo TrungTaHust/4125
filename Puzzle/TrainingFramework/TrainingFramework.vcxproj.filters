@@ -3,6 +3,7 @@
   <ItemGroup>
     <Text Include="..\Resources\RM.txt" />
     <Text Include="..\Resources\SM.txt" />
+    <Text Include="word.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="SourceFile">

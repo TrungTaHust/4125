@@ -31,6 +31,8 @@ public:
 	void	HandleTouchEvents(float x, float y, bool bIsPressed) override;
 	void	HandleMouseMoveEvents(float x, float y) override;
 
+	void	UpdateWord(std::vector<std::string>& wordVector);
+
 private:
 	std::vector<std::shared_ptr<Object>> m_objectVector;
 	std::vector<std::shared_ptr<GameButton>> m_buttonList;
@@ -43,8 +45,13 @@ private:
 	std::map<int, std::string> fileMap;
 
 	std::string answer;
+	std::string key;
+	std::string check;
+	
+	std::vector<std::string> wordVector;
 
 	float m_time;
 	int score;
-	int count;
+	int row_count;
+	int col_count;
 };

@@ -4,27 +4,14 @@
 GSPuzzle::GSPuzzle()
 {
 	m_stateType = STATE_PUZZLE;
-}
+	row_count = 0;
+	col_count = 0;
+	m_time = 0;
+	score = 0;
 
-GSPuzzle::~GSPuzzle()
-{
-}
-
-void GSPuzzle::Init()
-{
-	int count = 0;
-	srand(static_cast<unsigned>(time(0)));
-
-	auto background = SceneManager::GetInstance()->GetObjectByID("map1");
-	background->Set2DPos(640, 480);
-	background->SetSize(1280, 960);
-	m_objectVector.push_back(background);
-
-	m_buttonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_pause"));
-
-	m_pauseButtonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_resume_2"));
-	m_pauseButtonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_home"));
-	m_pauseButtonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_tutorial"));
+	key = "anima";
+	answer = "     ";
+	check = "00000";
 
 	// Tạo tên FILE từ a02 đến z02
 	char letter = 'a';
@@ -33,6 +20,33 @@ void GSPuzzle::Init()
 		letter++;  // Chuyển sang ký tự tiếp theo
 	}
 
+	UpdateWord(wordVector);		
+}
+
+GSPuzzle::~GSPuzzle()
+{
+}
+
+void GSPuzzle::Init()
+{
+	srand(static_cast<unsigned>(time(0)));
+	int randomNum = rand() % 30;
+	key = wordVector[randomNum];
+	//key = wordVector[0];
+
+	auto background = SceneManager::GetInstance()->GetObjectByID("play_background");
+	background->Set2DPos(640, 480);
+	background->SetSize(1280, 960);
+	m_objectVector.push_back(background);
+
+	m_buttonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_pause"));
+	m_buttonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_check"));
+
+	m_pauseButtonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_resume_2"));
+	m_pauseButtonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_home"));
+	m_pauseButtonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_tutorial"));
+
+	//Word Frame
 	for (int i = 0; i < 5; i++)
 		for (int j = 0; j < 5; j++) {
 			auto slot = std::make_shared<Object>("Sprite2D", "upgrade_frame", "TriangleShader");
@@ -41,53 +55,31 @@ void GSPuzzle::Init()
 			m_frame.push_back(slot);
 		}
 
+	//Answer color
 	for (int i = 0; i < 5; i++)
 		for (int j = 0; j < 5; j++) {
-			auto slot = std::make_shared<Object>("Sprite2D", "red_rectangle", "TriangleShader");
+			auto slot = std::make_shared<Object>("Sprite2D", "white_rectangle", "TriangleShader");
 			slot->Set2DPos(440 + j * 100, 180 + i * 100);
-			slot->SetSize(72, 72);
-			int randomNum =  rand() % 4 + 1;
-			switch(randomNum) {
-			case 1:
-				slot->SetTexture("white_rectangle");
-				break;
-			case 2:
-				slot->SetTexture("yellow_rectangle");
-				break;
-			case 3:
-				slot->SetTexture("red_rectangle");
-				break;
-			case 4:
-				slot->SetTexture("green_rect");
-				break;
-			}
+			slot->SetSize(72, 72);			
 			m_color.push_back(slot);
 		}
 
+	//Answer 
 	for (int i = 0; i < 5; i++)
 		for (int j = 0; j < 5; j++) {
 			auto slot = std::make_shared<Object>("Sprite2D", "null", "TriangleShader");
 			slot->Set2DPos(440 + j * 100, 180 + i * 100);
 			slot->SetSize(50, 50);
-			
-
-			//// Gọi hàm getRandomNumber và in ra số ngẫu nhiên
-			//int randomNum = rand() % 26 + 1;
-			//std::string textureName = fileMap[randomNum];
-			//slot->SetTexture(textureName.c_str());
 			m_ans.push_back(slot);
 		}
 
-	for (int i = 0; i < 10; i++)
+	//Keyboard
+	for (int i = 0; i < 13; i++)
 		for (int j = 0; j < 2; j++) {
 			auto slot = std::make_shared<Object>("Sprite2D", "null", "TriangleShader");
-			slot->Set2DPos(190 + i * 100, 750 + j * 100);
-			slot->SetSize(50, 50);
-
-
-			//// Gọi hàm getRandomNumber và in ra số ngẫu nhiên
-			int randomNum = rand() % 26 + 1;
-			std::string textureName = fileMap[randomNum];
+			slot->Set2DPos(160 + i * 80, 750 + j * 100);
+			slot->SetSize(50, 50);			
+			std::string textureName = fileMap[j * 13 + i + 1]; 
 			slot->SetTexture(textureName.c_str());
 			m_keyboard.push_back(slot);
 		}
@@ -178,25 +170,91 @@ void GSPuzzle::HandleTouchEvents(float x, float y, bool bIsPressed)
 					GSMachine::GetInstance()->Pause();
 					button->SetAlpha(0.5f);
 					break;
+				case BUTTON_CHECK:
+					if (row_count == 5) {
+						// Gán các giá trị từ texture vào answer
+						for (int i = 0; i < 5; i++)
+							answer[i] = m_ans[col_count * 5 + i]->getTexture()->GetID()[0];
+
+						// Khởi tạo mảng check với giá trị 0
+						for (int i = 0; i < 5; i++)
+							check[i] = '0';
+
+						// Khởi tạo mảng để đánh dấu các ký tự trong key đã được khớp
+						bool used_in_key[5] = { false, false, false, false, false };
+
+						// Kiểm tra các vị trí trùng khớp chính xác
+						for (int i = 0; i < 5; i++)
+							if (answer[i] == key[i]) {
+								check[i] = '1'; // Đánh dấu khớp chính xác
+								used_in_key[i] = true; // Đánh dấu ký tự này đã được dùng
+							}
+						// Kiểm tra các vị trí trùng khớp không chính xác
+						for (int i = 0; i < 5; i++)
+							if (check[i] == '0')
+							{
+								for (int j = 0; j < 5; j++)
+									if (answer[i] == key[j] && i != j && !used_in_key[j])
+									{
+										check[i] = '2'; // Gán khớp không chính xác
+										used_in_key[j] = true; // Đánh dấu ký tự đã được dùng
+										break;
+									}
+
+								if (check[i] == '0')
+									check[i] = '3';
+							}
+
+
+						for (int i = 0; i < 5; i++)
+						{
+							switch (check[i]) {
+							case '1':
+								m_color[col_count * 5 + i]->SetTexture("green_rect");
+								break;
+							case '2':
+								m_color[col_count * 5 + i]->SetTexture("yellow_rectangle");
+								break;
+							case '3':
+								m_color[col_count * 5 + i]->SetTexture("red_rectangle");
+								break;
+							}
+						}
+
+						row_count = 0;
+						col_count++;
+						if (check == "11111")
+						{
+							GSMachine::GetInstance()->PushState(STATE_VICTORY);
+							break;
+						}
+						if (col_count == 5)
+							GSMachine::GetInstance()->PushState(STATE_GAMEOVER);
+					}
+					break;
 				}
 			};
 		}
 
-		for (auto& slot : m_ans) {
-			if (slot->HandleTouchEvent(x, y, bIsPressed))
-				if (strcmp(slot->getTexture()->GetID().c_str(), "null") != 0)
-					slot->SetTexture("null");
-		}
-
-		for (auto& slot : m_keyboard) {
-			if (slot->HandleTouchEvent(x, y, bIsPressed))
-				if (count < 5)
+		for (int i = 0; i < row_count; i++) 
+			if (m_ans[col_count * 5 + i]->HandleTouchEvent(x, y, bIsPressed))
+				if (strcmp(m_ans[col_count * 5 + i]->getTexture()->GetID().c_str(), "null") != 0)
 				{
-					m_ans[count]->SetTexture(slot->getTexture()->GetID().c_str());
-					count++;
+					for (int j = i; j < row_count; j++)
+						m_ans[col_count * 5 + j]->SetTexture("null");
+
+					row_count = i;
 				}
-				else count = 0;
-		}
+										
+
+		for (auto& slot : m_keyboard) 
+			if (slot->HandleTouchEvent(x, y, bIsPressed))
+				if (row_count < 5)
+				{
+					m_ans[col_count * 5 + row_count]->SetTexture(slot->getTexture()->GetID().c_str());
+					row_count++;					
+				}				
+		
 	}
 
 	if (!GSMachine::GetInstance()->IsRunning())
@@ -235,4 +293,26 @@ void GSPuzzle::HandleMouseMoveEvents(float x, float y)
 			button->HandleMoveEvent(x, y);
 		}
 	}
+}
+
+void GSPuzzle::UpdateWord(std::vector<std::string>& wordVector) {
+	std::ifstream inputFile("../TrainingFramework/word.txt");
+	if (inputFile.is_open()) {
+		wordVector.clear();
+		std::string line;
+		while (std::getline(inputFile, line)) {
+			if (line == "###") {
+				break;
+			}
+
+			try {				
+				wordVector.push_back(line); 
+			}
+			catch (const std::invalid_argument& e) {
+				std::cerr << "Lỗi định dạng tệp tin: " << e.what() << std::endl;
+			}
+		}
+
+		inputFile.close();
+	}	
 }
