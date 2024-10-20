@@ -55,6 +55,12 @@ void ResourceManager::LoadResource(const char* rmFile)
                 
                 // Lưu thông tin về texture vào đây
                 std::shared_ptr<Texture> newTexture = std::make_shared<Texture>(fileName.c_str());
+                size_t pos = fileName.find('/');
+
+                // Cắt chuỗi, giữ lại phần sau dấu '/'
+                if (pos != std::string::npos) {
+                    fileName = fileName.substr(pos + 1);
+                }
                 newTexture->SetTextureID(fileName);
                 m_textures.insert(std::make_pair(fileName, newTexture));
             }

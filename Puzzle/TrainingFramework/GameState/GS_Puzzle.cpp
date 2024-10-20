@@ -6,10 +6,8 @@ GSPuzzle::GSPuzzle()
 	m_stateType = STATE_PUZZLE;
 	row_count = 0;
 	col_count = 0;
-	m_time = 0;
 	score = 0;
-
-	key = "anima";
+	
 	answer = "     ";
 	check = "00000";
 
@@ -30,14 +28,11 @@ GSPuzzle::~GSPuzzle()
 void GSPuzzle::Init()
 {
 	srand(static_cast<unsigned>(time(0)));
-	int randomNum = rand() % 30;
+	int randomNum = rand() % wordVector.size();
 	key = wordVector[randomNum];
-	//key = wordVector[0];
+	//key = wordVector[1];
 
-	auto background = SceneManager::GetInstance()->GetObjectByID("play_background");
-	background->Set2DPos(640, 480);
-	background->SetSize(1280, 960);
-	m_objectVector.push_back(background);
+	m_objectVector.push_back(SceneManager::GetInstance()->GetObjectByID("play_background"));
 
 	m_buttonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_pause"));
 	m_buttonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_check"));
@@ -50,16 +45,28 @@ void GSPuzzle::Init()
 	for (int i = 0; i < 5; i++)
 		for (int j = 0; j < 5; j++) {
 			auto slot = std::make_shared<Object>("Sprite2D", "upgrade_frame", "TriangleShader");
-			slot->Set2DPos(440 + j * 100, 180 + i * 100);
+			slot->Set2DPos(300 + j * 100, 180 + i * 100);
 			slot->SetSize(80, 80);
 			m_frame.push_back(slot);
 		}
+
+	//Hint
+	
+	hint_picture = std::make_shared<Object>("Sprite2D", "white_rectangle", "TriangleShader");
+	hint_picture->Set2DPos(1000, 280);
+	hint_picture->SetSize(320, 220);
+	m_frame.push_back(hint_picture);
+
+	auto hint_frame = std::make_shared<Object>("Sprite2D", "upgrade_frame", "TriangleShader");
+	hint_frame->Set2DPos(1000, 280);
+	hint_frame->SetSize(350, 250);
+	m_frame.push_back(hint_frame);
 
 	//Answer color
 	for (int i = 0; i < 5; i++)
 		for (int j = 0; j < 5; j++) {
 			auto slot = std::make_shared<Object>("Sprite2D", "white_rectangle", "TriangleShader");
-			slot->Set2DPos(440 + j * 100, 180 + i * 100);
+			slot->Set2DPos(300 + j * 100, 180 + i * 100);
 			slot->SetSize(72, 72);			
 			m_color.push_back(slot);
 		}
@@ -68,7 +75,7 @@ void GSPuzzle::Init()
 	for (int i = 0; i < 5; i++)
 		for (int j = 0; j < 5; j++) {
 			auto slot = std::make_shared<Object>("Sprite2D", "null", "TriangleShader");
-			slot->Set2DPos(440 + j * 100, 180 + i * 100);
+			slot->Set2DPos(300 + j * 100, 180 + i * 100);
 			slot->SetSize(50, 50);
 			m_ans.push_back(slot);
 		}
@@ -92,7 +99,6 @@ void GSPuzzle::Init()
 
 	PlaySoundByName("play", 7, -1);
 
-	m_time = 1;	
 	score = 0;	
 }
 
@@ -124,6 +130,11 @@ void GSPuzzle::Resume()
 void GSPuzzle::Update(float deltaTime)
 {
 	//UpdateText("scores", score, deltaTime);	
+	if (col_count == 4)
+		hint_picture->SetTexture(key.c_str());
+	else 
+		hint_picture->SetTexture("white_rectangle");
+
 }
 
 void GSPuzzle::Draw()
@@ -282,17 +293,11 @@ void GSPuzzle::HandleTouchEvents(float x, float y, bool bIsPressed)
 void GSPuzzle::HandleMouseMoveEvents(float x, float y)
 {
 	for (auto& button : m_buttonList)
-	{
 		button->HandleMoveEvent(x, y);
-	}
 
 	if (!GSMachine::GetInstance()->IsRunning())
-	{
-		for (auto& button : m_pauseButtonList)
-		{
-			button->HandleMoveEvent(x, y);
-		}
-	}
+		for (auto& button : m_pauseButtonList)		
+			button->HandleMoveEvent(x, y);		
 }
 
 void GSPuzzle::UpdateWord(std::vector<std::string>& wordVector) {
@@ -301,10 +306,6 @@ void GSPuzzle::UpdateWord(std::vector<std::string>& wordVector) {
 		wordVector.clear();
 		std::string line;
 		while (std::getline(inputFile, line)) {
-			if (line == "###") {
-				break;
-			}
-
 			try {				
 				wordVector.push_back(line); 
 			}
@@ -312,7 +313,6 @@ void GSPuzzle::UpdateWord(std::vector<std::string>& wordVector) {
 				std::cerr << "Lỗi định dạng tệp tin: " << e.what() << std::endl;
 			}
 		}
-
 		inputFile.close();
 	}	
 }

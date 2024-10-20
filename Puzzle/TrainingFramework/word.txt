@@ -6,7 +6,7 @@ earth
 fruit
 grape
 house
-irony
+yacht
 jelly
 knife
 lemon

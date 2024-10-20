@@ -50,7 +50,8 @@ private:
 	
 	std::vector<std::string> wordVector;
 
-	float m_time;
+	std::shared_ptr<Object> hint_picture;
+
 	int score;
 	int row_count;
 	int col_count;
