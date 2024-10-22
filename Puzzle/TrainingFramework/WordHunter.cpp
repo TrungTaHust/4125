@@ -27,7 +27,7 @@ int Init ( ESContext *esContext ) {
 	ResourceManager::GetInstance()->LoadResource("../Resources/RM.txt");
 	SceneManager::GetInstance()->LoadScene("../Resources/SM.txt");
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-	GSMachine::GetInstance()->PushState(STATE_PUZZLE);
+	GSMachine::GetInstance()->PushState(STATE_INTRO);
 	return 0;
 }
 

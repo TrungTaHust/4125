@@ -8,22 +8,18 @@
 #include "../TrainingFramework/GameObject/Text.h"
 
 std::string score;
-GSOver::GSOver()
-{
+GSOver::GSOver() {
 	m_stateType = STATE_GAMEOVER;
 }
 
-GSOver::~GSOver()
-{
+GSOver::~GSOver() {
 }
 
-void GSOver::SetScore(int score)
-{
+void GSOver::SetScore(int score) {
 	m_score = score;
 }
 
-void GSOver::Init()
-{
+void GSOver::Init() {
 	m_overBackground = SceneManager::GetInstance()->GetObjectByID("over_background");
 	m_buttonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_restart"));
 	m_buttonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_back_to_menu"));
@@ -41,28 +37,23 @@ void GSOver::Init()
 	AddText("over_scores");
 }
 
-void GSOver::Exit()
-{
+void GSOver::Exit() {
 	StopSoundByName("over", 9);
 }
 
-void GSOver::Pause()
-{
+void GSOver::Pause() {
 	PauseSoundByName("over");
 }
 
-void GSOver::Resume()
-{
+void GSOver::Resume() {
 	ResumeSoundByName("over");
 }
 
-void GSOver::Update(float deltaTime)
-{
+void GSOver::Update(float deltaTime) {
 	UpdateText("over_scores", score.c_str(), deltaTime);
 }
 
-void GSOver::Draw()
-{
+void GSOver::Draw() {
 	m_overBackground->Draw();
 	m_text.Draw();
 	for (auto& button : m_buttonList)
@@ -71,25 +62,20 @@ void GSOver::Draw()
 	RenderText("your_scores");
 }
 
-void GSOver::HandleEvents()
-{
+void GSOver::HandleEvents() {
 }
 
-void GSOver::HandleKeyEvents(int key, bool bIsPressed)
-{
+void GSOver::HandleKeyEvents(int key, bool bIsPressed) {
 }
 
-void GSOver::HandleTouchEvents(float x, float y, bool bIsPressed)
-{
+void GSOver::HandleTouchEvents(float x, float y, bool bIsPressed) {
 	for (auto& button : m_buttonList) {
-		if (button->HandleTouchEvent(x, y, bIsPressed))
-		{
-			switch (button->m_type)
-			{
+		if (button->HandleTouchEvent(x, y, bIsPressed)) {
+			switch (button->m_type)	{
 			case BUTTON_RESTART:
 				GSMachine::GetInstance()->PopState();
 				GSMachine::GetInstance()->PopState();
-				GSMachine::GetInstance()->PushState(StateType::STATE_PLAY);
+				GSMachine::GetInstance()->PushState(StateType::STATE_PUZZLE);
 				break;
 			case BUTTON_BACK_TO_MENU:
 				GSMachine::GetInstance()->PopState();
@@ -103,12 +89,9 @@ void GSOver::HandleTouchEvents(float x, float y, bool bIsPressed)
 	}
 }
 
-void GSOver::HandleMouseMoveEvents(float x, float y)
-{
-	for (auto& button : m_buttonList)
-	{
-		button->HandleMoveEvent(x, y);
-	}
+void GSOver::HandleMouseMoveEvents(float x, float y) {
+	for (auto& button : m_buttonList)	
+		button->HandleMoveEvent(x, y);	
 }
 
 void GetScore() {

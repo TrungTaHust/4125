@@ -2,24 +2,17 @@
 #include "GS_Puzzle.h"
 
 GSPuzzle::GSPuzzle()
+	: row_count(0), col_count(0), score(0), answer("     "), check("00000")
 {
 	m_stateType = STATE_PUZZLE;
-	row_count = 0;
-	col_count = 0;
-	score = 0;
-	
-	answer = "     ";
-	check = "00000";
-
 	// Tạo tên FILE từ a02 đến z02
-	char letter = 'a';
-	for (int i = 1; i <= 26; ++i) {
-		fileMap[i] = std::string(1, letter) + "02";  // Tạo chuỗi FILE
-		letter++;  // Chuyển sang ký tự tiếp theo
+	for (char letter = 'a'; letter <= 'z'; ++letter) {
+		fileMap[letter - 'a' + 1] = std::string(1, letter) + "02";  // Tạo chuỗi FILE
 	}
 
-	UpdateWord(wordVector);		
+	UpdateWord(wordVector);
 }
+
 
 GSPuzzle::~GSPuzzle()
 {
@@ -28,18 +21,21 @@ GSPuzzle::~GSPuzzle()
 void GSPuzzle::Init()
 {
 	srand(static_cast<unsigned>(time(0)));
-	int randomNum = rand() % wordVector.size();
-	key = wordVector[randomNum];
-	//key = wordVector[1];
+	key = wordVector[rand() % wordVector.size()];
 
-	m_objectVector.push_back(SceneManager::GetInstance()->GetObjectByID("play_background"));
+	auto sceneManager = SceneManager::GetInstance();
+	//m_objectVector.push_back(sceneManager->GetObjectByID("play_background"));
 
-	m_buttonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_pause"));
-	m_buttonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_check"));
+	m_buttonList = {
+		sceneManager->GetButtonByID("button_pause"),
+		sceneManager->GetButtonByID("button_check")
+	};
 
-	m_pauseButtonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_resume_2"));
-	m_pauseButtonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_home"));
-	m_pauseButtonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_tutorial"));
+	m_pauseButtonList = {
+		sceneManager->GetButtonByID("button_resume_2"),
+		sceneManager->GetButtonByID("button_home"),
+		sceneManager->GetButtonByID("button_tutorial")
+	};
 
 	//Word Frame
 	for (int i = 0; i < 5; i++)
@@ -86,8 +82,7 @@ void GSPuzzle::Init()
 			auto slot = std::make_shared<Object>("Sprite2D", "null", "TriangleShader");
 			slot->Set2DPos(160 + i * 80, 750 + j * 100);
 			slot->SetSize(50, 50);			
-			std::string textureName = fileMap[j * 13 + i + 1]; 
-			slot->SetTexture(textureName.c_str());
+			slot->SetTexture(fileMap[j * 13 + i + 1].c_str());
 			m_keyboard.push_back(slot);
 		}
 
@@ -152,8 +147,7 @@ void GSPuzzle::Draw()
 	DrawVectorObject(m_keyboard);
 
 
-	if (!GSMachine::GetInstance()->IsRunning())
-	{
+	if (!GSMachine::GetInstance()->IsRunning())	{
 		SceneManager::GetInstance()->GetObjectByID("pause_frame")->Draw();
 		for (auto button : m_pauseButtonList)
 			button->Draw();

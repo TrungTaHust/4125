@@ -5,7 +5,29 @@
  
 std::vector<int> Globals::topScores;
 
+namespace {
+	const float RELOAD_TIME = 2.0f;
+	const float DESTROYED_TIME_LIMIT = 0.5f;
+	const int MAX_FIRE_COUNT = 7;
+	const int MAX_LIVES = 3;
+	const int INITIAL_BULLETS = 10;
+	const int BULLET_COST = 50;
+	const int BONUS_HEALTH_COST = 50;
+	const int FREEZE_COST = 50;
+	const int FIRE_COST = 50;
+	const int SOUND_CHANNEL_PLAY = 7;
+	const int SOUND_CHANNEL_EXPLOSION = 2;
+	const int SOUND_CHANNEL_RELOAD = 8;
+}
+
 GSEndless::GSEndless()
+	: alienCount(0), m_time(1), lives(MAX_LIVES), maxLives(MAX_LIVES),
+	alienSpawned(0), score(0), coin(0), m_currentBullets(INITIAL_BULLETS),
+	m_maxBullets(INITIAL_BULLETS), m_reloadTime(RELOAD_TIME), isBonusHealthUsed(false),
+	isBulletOut(false), isFreezed(false), isFireSpellCasted(false), freezeTime(3.0f),
+	maxFreezeTime(3.0f), fireTime(3.0f), maxFireTime(3.0f), fireCount(0),
+	bulletCost(BULLET_COST), bonusHealthCost(BONUS_HEALTH_COST), freezeCost(FREEZE_COST),
+	fireCost(FIRE_COST)
 {
 	m_stateType = STATE_ENDLESS;
 }
@@ -16,45 +38,44 @@ GSEndless::~GSEndless()
 
 void GSEndless::Init()
 {
-	m_objectVector.push_back(SceneManager::GetInstance()->GetObjectByID("play_background"));
-	m_objectVector.push_back(SceneManager::GetInstance()->GetObjectByID("human_base"));
-	m_objectVector.push_back(SceneManager::GetInstance()->GetObjectByID("play_upper_pane"));
-	m_objectVector.push_back(SceneManager::GetInstance()->GetObjectByID("play_lower_pane"));
+	auto sceneManager = SceneManager::GetInstance();
 
-	m_gun.push_back(SceneManager::GetInstance()->GetObjectByID("z_gun"));
-	m_gun.push_back(SceneManager::GetInstance()->GetObjectByID("x_gun"));
-	m_gun.push_back(SceneManager::GetInstance()->GetObjectByID("c_gun"));
+	m_objectVector.push_back(sceneManager->GetObjectByID("play_background"));
+	m_objectVector.push_back(sceneManager->GetObjectByID("human_base"));
+	m_objectVector.push_back(sceneManager->GetObjectByID("play_upper_pane"));
+	m_objectVector.push_back(sceneManager->GetObjectByID("play_lower_pane"));
 
-	m_bulletTexture.push_back(SceneManager::GetInstance()->GetObjectByID("z_laser_bullet"));
-	m_bulletTexture.push_back(SceneManager::GetInstance()->GetObjectByID("x_laser_bullet"));
-	m_bulletTexture.push_back(SceneManager::GetInstance()->GetObjectByID("c_laser_bullet"));
+	m_gun = sceneManager->GetObjectByID("z_gun");
+	m_bulletTexture = sceneManager->GetObjectByID("z_laser_bullet");
 
-	m_hearts.push_back(SceneManager::GetInstance()->GetObjectByID("heart1"));
-	m_hearts.push_back(SceneManager::GetInstance()->GetObjectByID("heart2"));
-	m_hearts.push_back(SceneManager::GetInstance()->GetObjectByID("heart3"));
-	m_hearts.push_back(SceneManager::GetInstance()->GetObjectByID("heart4"));
+	m_hearts.push_back(sceneManager->GetObjectByID("heart1"));
+	m_hearts.push_back(sceneManager->GetObjectByID("heart2"));
+	m_hearts.push_back(sceneManager->GetObjectByID("heart3"));
+	m_hearts.push_back(sceneManager->GetObjectByID("heart4"));
 	AddAnimation("loading_animation");
 	AddAnimation("coins");
 	
-	wall = SceneManager::GetInstance()->GetAnimationByID("lightning_wall");
+	wall = sceneManager->GetAnimationByID("lightning_wall");
 
-	m_buttonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_pause"));
+	m_buttonList.push_back(sceneManager->GetButtonByID("button_pause"));
+
+	m_pauseButtonList.push_back(sceneManager->GetButtonByID("button_resume_2"));
+	m_pauseButtonList.push_back(sceneManager->GetButtonByID("button_home"));
+	m_pauseButtonList.push_back(sceneManager->GetButtonByID("button_tutorial"));
+
+	m_upgradeVector.push_back(sceneManager->GetButtonByID("bullet_amount"));
+	m_upgradeVector.push_back(sceneManager->GetButtonByID("freeze"));
+	m_upgradeVector.push_back(sceneManager->GetButtonByID("fire"));
+	m_upgradeVector.push_back(sceneManager->GetButtonByID("health_upgrade"));
+
+	auto resourceManager = ResourceManager::GetInstance();
+	m_upgradeTextCostVector.push_back(resourceManager->GetTextPointerByName("bullet_cost"));
+	m_upgradeTextCostVector.push_back(resourceManager->GetTextPointerByName("freeze_cost"));
+	m_upgradeTextCostVector.push_back(resourceManager->GetTextPointerByName("fire_cost"));
+	m_upgradeTextCostVector.push_back(resourceManager->GetTextPointerByName("health_cost"));
+
+	m_aim = sceneManager->GetObjectByID("aim"); 
 	
-	m_pauseButtonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_resume_2"));
-	m_pauseButtonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_home"));
-	m_pauseButtonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_tutorial"));
-
-	m_upgradeVector.push_back(SceneManager::GetInstance()->GetButtonByID("bullet_amount"));
-	m_upgradeVector.push_back(SceneManager::GetInstance()->GetButtonByID("freeze"));
-	m_upgradeVector.push_back(SceneManager::GetInstance()->GetButtonByID("fire"));
-	m_upgradeVector.push_back(SceneManager::GetInstance()->GetButtonByID("health_upgrade"));
-
-	m_upgradeTextCostVector.push_back(ResourceManager::GetInstance()->GetTextPointerByName("bullet_cost"));
-	m_upgradeTextCostVector.push_back(ResourceManager::GetInstance()->GetTextPointerByName("freeze_cost"));
-	m_upgradeTextCostVector.push_back(ResourceManager::GetInstance()->GetTextPointerByName("fire_cost"));
-	m_upgradeTextCostVector.push_back(ResourceManager::GetInstance()->GetTextPointerByName("health_cost"));
-
-	m_aim = SceneManager::GetInstance()->GetObjectByID("aim");
 	AddText("reloading");
 	AddText("current_bullets");
 	AddText("scores");
@@ -74,46 +95,23 @@ void GSEndless::Init()
 	AddSoundByName("more");
 	AddSoundByName("reload");
 
-	PlaySoundByName("play", 7, -1);
-
-	alienCount = 0;
-	m_time = 1;
-	lives = 3;
-	maxLives = 3;
-	alienSpawned = 0;
-	score = 0;
-	coin = 0;
-	m_currentBullets = 10;
-	m_maxBullets = 10;
-	m_reloadTime = 2.0f;
-	isBonusHealthUsed = false;
-	isBulletOut = false;
-	isFreezed = false;
-	isFireSpellCasted = false;
-	freezeTime = 3.0f;
-	maxFreezeTime = 3.0f;
-	fireTime = 3.0f;
-	maxFireTime = 3.0f;
-	fireCount = 0;
-	bulletCost = 50;
-	bonusHealthCost = 50;
-	freezeCost = 50;
-	fireCost = 50;
+	PlaySoundByName("play", SOUND_CHANNEL_PLAY, -1); 
 }
 
 void GSEndless::Exit()
 {
-	StopSoundByName("explosion", 2);
+	StopSoundByName("explosion", SOUND_CHANNEL_EXPLOSION);
 	StopSoundByName("more", 3);
 	StopSoundByName("freeze", 4);
 	StopSoundByName("fire", 5);
 	StopSoundByName("more", 6);
-	StopSoundByName("play", 7);
-	StopSoundByName("reload", 8);
+	StopSoundByName("play", SOUND_CHANNEL_PLAY);
+	StopSoundByName("reload", SOUND_CHANNEL_RELOAD);
 }
 
 void GSEndless::Pause()
 {	
+	soundChannelStates.clear();
 	for (int i = 2; i < 9; i++) {
 		if (Mix_Playing(i)) {
 			Mix_Pause(i);
@@ -124,9 +122,8 @@ void GSEndless::Pause()
 
 void GSEndless::Resume()
 {
-	for (int channel : soundChannelStates) {
-		Mix_Resume(channel);
-	}
+	for (int channel : soundChannelStates) 
+		Mix_Resume(channel);	
 	soundChannelStates.clear();
 }
 
@@ -139,9 +136,7 @@ void GSEndless::GunUpdate(float deltaTime)
 			m_currentBullets = m_maxBullets;
 			isBulletOut = false;
 		}
-	}
-	else 
-	{
+	} else {
 		if (m_currentBullets == 0)	isBulletOut = true;
 		PlaySoundByName("reload", 8, 0);
 	}
@@ -168,8 +163,7 @@ void GSEndless::AlienUpdate(float deltaTime)
 	std::vector<std::shared_ptr<BaseAlien>> aliveAlien;
 	float difficult = (10.0 + alienSpawned % 10) / 10;
 	for (auto& alien : m_alien) {
-		if (alien->GetAliveStatus())
-		{
+		if (alien->GetAliveStatus()) {
 			alien->UpdatePos(deltaTime, difficult);
 			if (alien->CheckCollide(wall->GetPos(), wall->GetSize())) {
 				alien->SetDeath();
@@ -179,9 +173,7 @@ void GSEndless::AlienUpdate(float deltaTime)
 			}
 
 			aliveAlien.push_back(alien);
-		}
-		else
-		{
+		} else {
 			alien->m_destroyedTime += deltaTime;
 			if (alien->m_destroyedTime <= 0.5f)
 				aliveAlien.push_back(alien);
@@ -196,8 +188,7 @@ void GSEndless::BulletUpdate(float deltaTime)
 	std::vector<std::shared_ptr<Bullet>> currentBullets;
 	for (auto& bullet : m_bullets) {
 		auto pos = bullet->GetPos();
-		if (pos.x > 0 && (pos.y - 85 * sin(bullet->getScale().z)) > 100 && (pos.y + 85 * sin(bullet->getScale().z)) < 860)
-		{
+		if (pos.x > 0 && (pos.y - 85 * sin(bullet->getScale().z)) > 100 && (pos.y + 85 * sin(bullet->getScale().z)) < 860) {
 			bullet->UpdatePos(deltaTime);
 			currentBullets.push_back(bullet);
 		}
@@ -219,46 +210,34 @@ void GSEndless::Update(float deltaTime)
 		
 	Vector4 yellow = { 255, 255, 0, 255 };
 	Vector4 red = { 255, 0, 0, 255 };
-	if (coin < bulletCost)
-	{
+	if (coin < bulletCost)	{
 		m_upgradeVector[0]->SetAlpha(0.5f);
 		m_upgradeTextCostVector[0]->SetTextColor(red);
-	}
-	else
-	{
+	}	else	{
 		m_upgradeVector[0]->SetAlpha(1.0f);
 		m_upgradeTextCostVector[0]->SetTextColor(yellow);
 	}
 
-	if (coin < freezeCost) 
-	{
+	if (coin < freezeCost) 	{
 		m_upgradeVector[1]->SetAlpha(0.5f);
 		m_upgradeTextCostVector[1]->SetTextColor(red);
-	}
-	else
-	{
+	}	else	{
 		m_upgradeVector[1]->SetAlpha(1.0f);
 		m_upgradeTextCostVector[1]->SetTextColor(yellow);
 	}
 
-	if (coin < fireCost)
-	{
+	if (coin < fireCost)	{
 		m_upgradeVector[2]->SetAlpha(0.5f);
 		m_upgradeTextCostVector[2]->SetTextColor(red);
-	}
-	else
-	{
+	}	else	{
 		m_upgradeVector[2]->SetAlpha(1.0f);
 		m_upgradeTextCostVector[2]->SetTextColor(yellow);
 	}
 
-	if (coin < bonusHealthCost && !isBonusHealthUsed)
-	{
+	if (coin < bonusHealthCost && !isBonusHealthUsed)	{
 		m_upgradeVector[3]->SetAlpha(0.5f);
 		m_upgradeTextCostVector[3]->SetTextColor(red);
-	}
-	else
-	{
+	}	else	{
 		m_upgradeVector[3]->SetAlpha(1.0f);
 		m_upgradeTextCostVector[3]->SetTextColor(yellow);
 	}
@@ -398,7 +377,7 @@ void GSEndless::Draw()
 		for (auto button : m_pauseButtonList)
 			button->Draw();
 	}
-	m_gun[gun_index]->Draw();
+	m_gun->Draw();
 	m_aim->Draw();
 }
 
@@ -452,21 +431,7 @@ void GSEndless::HandleKeyEvents(int key, bool bIsPressed)
 				maxLives++;
 				lives++;
 			}
-			break;
-		case KEY_Z:
-			gun_index = 0;
-			printf("Z pressed\n");
-			break;
-
-		case KEY_X:
-			gun_index = 1;
-			printf("X pressed\n");
-			break;
-
-		case KEY_C:
-			gun_index = 2;
-			printf("C pressed\n");
-			break;
+			break;		
 		}
 	}
 }
@@ -477,44 +442,11 @@ void GSEndless::HandleTouchEvents(float x, float y, bool bIsPressed)
 	{
 		m_currentBullets -= 1;
 
-		auto bullet = std::make_shared<Bullet>(*m_bulletTexture[gun_index]);
+		auto bullet = std::make_shared<Bullet>(*m_bulletTexture);
 
 		bullet->SetTarget(x, y);
 		bullet->Set2DPos(1200, 480);
 		bullet->NewBullet();
-
-		if (gun_index == 1)
-			bullet->SetSpeed(bullet->GetSpeed() * 2);
-
-		if(gun_index == 2)
-		{
-			auto upper_bullet = std::make_shared<Bullet>(*m_bulletTexture[gun_index]);
-			auto lower_bullet = std::make_shared<Bullet>(*m_bulletTexture[gun_index]);
-
-			double arg = 0.05;
-
-			Vector2 AB(x - 1200, y - 480);
-			int lenAB = sqrt(AB.x * AB.x + AB.y * AB.y);
-			Vector2 normAB(AB.x / lenAB, AB.y / lenAB);
-
-			Vector2 AC(normAB.x * cos(arg) - normAB.y * sin(arg), normAB.x * sin(arg) + normAB.y * cos(arg));
-			Vector2 AD(normAB.x * cos(-arg) - normAB.y * sin(-arg), normAB.x * sin(-arg) + normAB.y * cos(-arg));
-
-			Vector2 C(1200 + lenAB * AC.x, 480 + lenAB * AC.y);
-			Vector2 D(1200 + lenAB * AD.x, 480 + lenAB * AD.y);
-
-			upper_bullet->SetTarget(C.x, C.y);
-			upper_bullet->Set2DPos(1200, 480);
-			upper_bullet->NewBullet();
-
-			lower_bullet->SetTarget(D.x, D.y);
-			lower_bullet->Set2DPos(1200, 480);
-			lower_bullet->NewBullet();
-
-			m_bullets.push_back(upper_bullet);
-			m_bullets.push_back(lower_bullet);
-		}
-
 		m_bullets.push_back(bullet);
 	}
 
@@ -575,7 +507,7 @@ void GSEndless::HandleMouseMoveEvents(float x, float y)
 	float result = atan(arctan);
 	Vector3 direction;
 	direction.z = result;
-	m_gun[gun_index]->SetRotate(direction);
+	m_gun->SetRotate(direction);
 	m_aim->Set2DPos(x, y);
 }
 

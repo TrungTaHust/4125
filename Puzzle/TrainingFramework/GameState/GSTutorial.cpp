@@ -7,25 +7,17 @@
 #include "../TrainingFramework/GameState/GSMachine.h"
 #include "../TrainingFramework/GameObject/Text.h"
 
-GSTutorial::GSTutorial()
-{
+GSTutorial::GSTutorial() {
 	m_stateType = STATE_TUTORIAL;
 }
 
-GSTutorial::~GSTutorial()
-{
+GSTutorial::~GSTutorial() {
 }
 
-void GSTutorial::Init()
-{
+void GSTutorial::Init() {
 	m_tutorialBackground = SceneManager::GetInstance()->GetObjectByID("tutorial_background");
 	m_buttonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_back"));
-
-	m_tutorialAnimation.push_back(SceneManager::GetInstance()->GetAnimationByID("tutorial_alien1"));
-	m_tutorialAnimation.push_back(SceneManager::GetInstance()->GetAnimationByID("tutorial_alien2"));
-	m_tutorialAnimation.push_back(SceneManager::GetInstance()->GetAnimationByID("tutorial_alien3"));
-	m_tutorialAnimation.push_back(SceneManager::GetInstance()->GetAnimationByID("tutorial_alien4"));
-
+	
 	m_objectVector.push_back(SceneManager::GetInstance()->GetObjectByID("tutorial_spell1"));
 	m_objectVector.push_back(SceneManager::GetInstance()->GetObjectByID("tutorial_spell2"));
 	m_objectVector.push_back(SceneManager::GetInstance()->GetObjectByID("tutorial_spell3"));
@@ -40,23 +32,17 @@ void GSTutorial::Init()
 	AddText("tutorial4");
 }
 
-void GSTutorial::Exit()
-{
+void GSTutorial::Exit() {
 	StopSoundByName("over", 10);
 }
 
-void GSTutorial::Pause()
-{
-	
+void GSTutorial::Pause() {	
 }
 
-void GSTutorial::Resume()
-{
-	
+void GSTutorial::Resume() {
 }
 
-void GSTutorial::Update(float deltaTime)
-{
+void GSTutorial::Update(float deltaTime) {
 	UpdateText("tutorial1", "Click on the aliens to destroy them before they reach the wall", deltaTime);
 	UpdateText("tutorial2", "Bigger aliens require more clicks", deltaTime);
 	UpdateText("tutorial3", "Bigger aliens also drop more coins and scores", deltaTime);
@@ -65,13 +51,10 @@ void GSTutorial::Update(float deltaTime)
 		animation->Update(deltaTime);
 }
 
-void GSTutorial::Draw()
-{
+void GSTutorial::Draw() {
 	m_tutorialBackground->Draw();
 	for (auto& button : m_buttonList)
 		button->Draw();
-	for (auto& animation : m_tutorialAnimation)
-		animation->Draw();
 	for (auto& object : m_objectVector)
 		object->Draw();
 	RenderText("tutorial1");
@@ -81,16 +64,13 @@ void GSTutorial::Draw()
 }
 
 
-void GSTutorial::HandleEvents()
-{
+void GSTutorial::HandleEvents() {
 }
 
-void GSTutorial::HandleKeyEvents(int key, bool bIsPressed)
-{
+void GSTutorial::HandleKeyEvents(int key, bool bIsPressed) {
 }
 
-void GSTutorial::HandleTouchEvents(float x, float y, bool bIsPressed)
-{
+void GSTutorial::HandleTouchEvents(float x, float y, bool bIsPressed) {
 	for (auto& button : m_buttonList) {
 		if (button->HandleTouchEvent(x, y, bIsPressed))
 		{
@@ -104,8 +84,7 @@ void GSTutorial::HandleTouchEvents(float x, float y, bool bIsPressed)
 	}
 }
 
-void GSTutorial::HandleMouseMoveEvents(float x, float y)
-{
+void GSTutorial::HandleMouseMoveEvents(float x, float y) {
 	for (auto& button : m_buttonList)
 	{
 		button->HandleMoveEvent(x, y);

@@ -134,7 +134,7 @@
     <ClCompile Include="GameState\GSVictory.cpp" />
     <ClCompile Include="GameState\GS_Puzzle.cpp" />
     <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="StopTheAlien.cpp" />
+    <ClCompile Include="WordHunter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseAlien.h" />

@@ -50,10 +50,9 @@ private:
 	std::vector<std::shared_ptr<Animation>> m_fire;
 	std::shared_ptr<Animation> wall;
 	std::vector<std::shared_ptr<GameButton>> m_pauseButtonList;
-	std::vector<std::shared_ptr<Object>> m_gun;
-	std::vector<std::shared_ptr<Object>> m_bulletTexture;
+	std::shared_ptr<Object> m_gun;
+	std::shared_ptr<Object> m_bulletTexture;
 	std::shared_ptr<Object> m_aim;
-	int gun_index = 0;
 	int alienCount;
 	float m_time;
 	int lives;

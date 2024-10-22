@@ -74,7 +74,7 @@
     <ClCompile Include="BaseAlien.cpp">
       <Filter>SourceFile</Filter>
     </ClCompile>
-    <ClCompile Include="StopTheAlien.cpp">
+    <ClCompile Include="WordHunter.cpp">
       <Filter>SourceFile</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
