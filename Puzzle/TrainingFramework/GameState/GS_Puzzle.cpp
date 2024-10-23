@@ -95,6 +95,7 @@ void GSPuzzle::Init()
 	PlaySoundByName("play", 7, -1);
 
 	score = 0;	
+	AddText("scores");
 }
 
 void GSPuzzle::Exit()
@@ -114,17 +115,15 @@ void GSPuzzle::Pause()
 	}
 }
 
-void GSPuzzle::Resume()
-{
+void GSPuzzle::Resume() {
 	for (int channel : soundChannelStates) {
 		Mix_Resume(channel);
 	}
 	soundChannelStates.clear();
 }
 
-void GSPuzzle::Update(float deltaTime)
-{
-	//UpdateText("scores", score, deltaTime);	
+void GSPuzzle::Update(float deltaTime) {
+	UpdateText("scores", score, deltaTime);	
 	if (col_count == 4)
 		hint_picture->SetTexture(key.c_str());
 	else 
@@ -132,11 +131,10 @@ void GSPuzzle::Update(float deltaTime)
 
 }
 
-void GSPuzzle::Draw()
-{
+void GSPuzzle::Draw(){
 	DrawVectorObject(m_objectVector);
 	
-	//RenderText("scores");
+	RenderText("scores");
 	
 	for (auto& button : m_buttonList)
 		button->Draw();
@@ -162,15 +160,11 @@ void GSPuzzle::HandleKeyEvents(int key, bool bIsPressed)
 {
 }
 
-void GSPuzzle::HandleTouchEvents(float x, float y, bool bIsPressed)
-{	
-	if (GSMachine::GetInstance()->IsRunning())
-	{
+void GSPuzzle::HandleTouchEvents(float x, float y, bool bIsPressed) {
+	if (GSMachine::GetInstance()->IsRunning()) {
 		for (auto& button : m_buttonList) {
-			if (button->HandleTouchEvent(x, y, bIsPressed))
-			{
-				switch (button->m_type)
-				{
+			if (button->HandleTouchEvent(x, y, bIsPressed)) {
+				switch (button->m_type) {
 				case BUTTON_PAUSE:
 					GSMachine::GetInstance()->Pause();
 					button->SetAlpha(0.5f);
@@ -212,7 +206,6 @@ void GSPuzzle::HandleTouchEvents(float x, float y, bool bIsPressed)
 
 
 						for (int i = 0; i < 5; i++)
-						{
 							switch (check[i]) {
 							case '1':
 								m_color[col_count * 5 + i]->SetTexture("green_rect");
@@ -224,24 +217,30 @@ void GSPuzzle::HandleTouchEvents(float x, float y, bool bIsPressed)
 								m_color[col_count * 5 + i]->SetTexture("red_rectangle");
 								break;
 							}
-						}
 
 						row_count = 0;
 						col_count++;
-						if (check == "11111")
-						{
-							GSMachine::GetInstance()->PushState(STATE_VICTORY);
+						if (check == "11111") {
+							score += 100;
+							col_count = 0;
+							key = wordVector[rand() % wordVector.size()];
+							for (int i = 0; i < 25; i++) {
+								m_ans[i]->SetTexture("null");
+								m_color[i]->SetTexture("white_rectangle");
+							}
+							//GSMachine::GetInstance()->PushState(STATE_VICTORY);
 							break;
 						}
 						if (col_count == 5)
 							GSMachine::GetInstance()->PushState(STATE_GAMEOVER);
+						break;
 					}
-					break;
-				}
-			};
+				};
+			}
 		}
 
-		for (int i = 0; i < row_count; i++) 
+		//Clear letter
+		for (int i = 0; i < row_count; i++)
 			if (m_ans[col_count * 5 + i]->HandleTouchEvent(x, y, bIsPressed))
 				if (strcmp(m_ans[col_count * 5 + i]->getTexture()->GetID().c_str(), "null") != 0)
 				{
@@ -250,27 +249,24 @@ void GSPuzzle::HandleTouchEvents(float x, float y, bool bIsPressed)
 
 					row_count = i;
 				}
-										
-
-		for (auto& slot : m_keyboard) 
-			if (slot->HandleTouchEvent(x, y, bIsPressed))
-				if (row_count < 5)
-				{
-					m_ans[col_count * 5 + row_count]->SetTexture(slot->getTexture()->GetID().c_str());
-					row_count++;					
-				}				
 		
+		//Add letter
+		for (auto& slot : m_keyboard)
+			if (slot->HandleTouchEvent(x, y, bIsPressed))
+				if (row_count < 5) {
+					m_ans[col_count * 5 + row_count]->SetTexture(slot->getTexture()->GetID().c_str());
+					row_count++;
+				}
 	}
-
-	if (!GSMachine::GetInstance()->IsRunning())
+	else
 	{
-		for (auto& button : m_pauseButtonList) {
+		for (auto& button : m_pauseButtonList)
 			if (button->HandleTouchEvent(x, y, bIsPressed))
 			{
-				GSMachine::GetInstance()->Resume();
 				switch (button->m_type)
 				{
 				case BUTTON_RESUME:
+					GSMachine::GetInstance()->Resume();
 					break;
 				case BUTTON_BACK_TO_MENU:
 					GSMachine::GetInstance()->PopState();
@@ -280,9 +276,9 @@ void GSPuzzle::HandleTouchEvents(float x, float y, bool bIsPressed)
 					break;
 				}
 			};
-		}
 	}
 }
+
 
 void GSPuzzle::HandleMouseMoveEvents(float x, float y)
 {
