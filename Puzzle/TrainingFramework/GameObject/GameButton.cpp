@@ -84,14 +84,9 @@ ButtonType GameButton::StringToButtonType(const char* buttonTypeStr) {
 		{"BUTTON_BACK", BUTTON_BACK},
 		{"BUTTON_ENDLESS", BUTTON_ENDLESS},
 		{"BUTTON_TUTORIAL", BUTTON_TUTORIAL},
-		{"BUTTON_MAP1", BUTTON_MAP1}, 
-		{"BUTTON_MAP2", BUTTON_MAP2}, 
-		{"BUTTON_MAP3", BUTTON_MAP3}, 
-		{"BUTTON_MAP4", BUTTON_MAP4}, 
-		{"BUTTON_MAP5", BUTTON_MAP5}, 
-		{"BUTTON_MAP6", BUTTON_MAP6},
-		{"BUTTON_CHECK", BUTTON_CHECK}
-		
+		{"BUTTON_CHECK", BUTTON_CHECK},
+		{"BUTTON_END", BUTTON_END}
+				
 	};
 
 	auto it = typeMap.find(buttonTypeStr);

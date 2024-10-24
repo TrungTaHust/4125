@@ -2,7 +2,7 @@
 ID 0	FILE Sprite2D
 ID 1	FILE Rectangle
 
-#2DTextures: 103
+#2DTextures: 131
 ID 1	FILE btn/btn_start
 ID 2	FILE btn/btn_exit
 ID 3	FILE btn/btn_menu
@@ -106,6 +106,35 @@ ID 100	FILE hint/cloud
 ID 101	FILE hint/dream
 ID 102	FILE hint/eagle
 ID 103	FILE hint/flame
+ID 104	FILE puzzle_background
+ID 105	FILE temp1
+ID 106	FILE alphabet/a01
+ID 107	FILE alphabet/b01
+ID 108	FILE alphabet/c01
+ID 109	FILE alphabet/d01
+ID 110	FILE alphabet/e01
+ID 111	FILE alphabet/f01
+ID 112	FILE alphabet/g01
+ID 113	FILE alphabet/h01
+ID 114	FILE alphabet/i01
+ID 115	FILE alphabet/j01
+ID 116	FILE alphabet/k01
+ID 117	FILE alphabet/l01
+ID 118	FILE alphabet/m01
+ID 119	FILE alphabet/n01
+ID 120	FILE alphabet/o01
+ID 121	FILE alphabet/p01
+ID 122	FILE alphabet/q01
+ID 123	FILE alphabet/r01
+ID 124	FILE alphabet/s01
+ID 125	FILE alphabet/t01
+ID 126	FILE alphabet/u01
+ID 127	FILE alphabet/v01
+ID 128	FILE alphabet/w01
+ID 129	FILE alphabet/x01
+ID 130	FILE alphabet/y01
+ID 131	FILE alphabet/z01
+
 
 
 #Shaders: 3

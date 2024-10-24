@@ -63,6 +63,7 @@ public:
 	GLfloat getHeight() { return m_height; } 
 
 	bool HandleTouchEvent(GLfloat x, GLfloat y, bool bIsPressed);
+	void HandleMoveEvent(GLfloat x, GLfloat y);
 
 protected:
 	std::string m_objectID;

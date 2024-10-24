@@ -10,6 +10,11 @@ GSPuzzle::GSPuzzle()
 		fileMap[letter - 'a' + 1] = std::string(1, letter) + "02";  // Tạo chuỗi FILE
 	}
 
+	// Tạo tên FILE từ a01 đến z01
+	for (char letter = 'a'; letter <= 'z'; ++letter) {
+		fileMapKeyboard[letter - 'a' + 1] = std::string(1, letter) + "01";  // Tạo chuỗi FILE
+	}
+
 	UpdateWord(wordVector);
 }
 
@@ -24,10 +29,11 @@ void GSPuzzle::Init()
 	key = wordVector[rand() % wordVector.size()];
 
 	auto sceneManager = SceneManager::GetInstance();
-	//m_objectVector.push_back(sceneManager->GetObjectByID("play_background"));
+	m_objectVector.push_back(sceneManager->GetObjectByID("puzzle_background"));
 
 	m_buttonList = {
 		sceneManager->GetButtonByID("button_pause"),
+		sceneManager->GetButtonByID("button_end"),
 		sceneManager->GetButtonByID("button_check")
 	};
 
@@ -51,12 +57,7 @@ void GSPuzzle::Init()
 	hint_picture = std::make_shared<Object>("Sprite2D", "white_rectangle", "TriangleShader");
 	hint_picture->Set2DPos(1000, 280);
 	hint_picture->SetSize(320, 220);
-	m_frame.push_back(hint_picture);
-
-	auto hint_frame = std::make_shared<Object>("Sprite2D", "upgrade_frame", "TriangleShader");
-	hint_frame->Set2DPos(1000, 280);
-	hint_frame->SetSize(350, 250);
-	m_frame.push_back(hint_frame);
+	m_frame.push_back(hint_picture);	
 
 	//Answer color
 	for (int i = 0; i < 5; i++)
@@ -82,11 +83,11 @@ void GSPuzzle::Init()
 			auto slot = std::make_shared<Object>("Sprite2D", "null", "TriangleShader");
 			slot->Set2DPos(160 + i * 80, 750 + j * 100);
 			slot->SetSize(50, 50);			
-			slot->SetTexture(fileMap[j * 13 + i + 1].c_str());
+			slot->SetTexture(fileMapKeyboard[j * 13 + i + 1].c_str());
 			m_keyboard.push_back(slot);
 		}
 
-	//AddText("scores");
+	AddText("scores");
 
 	AddSoundByName("play");
 	AddSoundByName("explosion");
@@ -94,8 +95,7 @@ void GSPuzzle::Init()
 
 	PlaySoundByName("play", 7, -1);
 
-	score = 0;	
-	AddText("scores");
+	score = 0;		
 }
 
 void GSPuzzle::Exit()
@@ -128,7 +128,6 @@ void GSPuzzle::Update(float deltaTime) {
 		hint_picture->SetTexture(key.c_str());
 	else 
 		hint_picture->SetTexture("white_rectangle");
-
 }
 
 void GSPuzzle::Draw(){
@@ -235,6 +234,10 @@ void GSPuzzle::HandleTouchEvents(float x, float y, bool bIsPressed) {
 							GSMachine::GetInstance()->PushState(STATE_GAMEOVER);
 						break;
 					}
+					break;
+				case BUTTON_END:
+					GSMachine::GetInstance()->PushState(STATE_GAMEOVER);
+					break;
 				};
 			}
 		}
@@ -254,8 +257,12 @@ void GSPuzzle::HandleTouchEvents(float x, float y, bool bIsPressed) {
 		for (auto& slot : m_keyboard)
 			if (slot->HandleTouchEvent(x, y, bIsPressed))
 				if (row_count < 5) {
-					m_ans[col_count * 5 + row_count]->SetTexture(slot->getTexture()->GetID().c_str());
-					row_count++;
+					std::string textureID = slot->getTexture()->GetID();
+					if (textureID.size() > 2 && textureID.substr(textureID.size() - 2) == "01") 
+						textureID.replace(textureID.size() - 2, 2, "02");
+
+					m_ans[col_count * 5 + row_count]->SetTexture(textureID.c_str());
+					row_count++;							
 				}
 	}
 	else
@@ -272,6 +279,7 @@ void GSPuzzle::HandleTouchEvents(float x, float y, bool bIsPressed) {
 					GSMachine::GetInstance()->PopState();
 					break;
 				case BUTTON_TUTORIAL:
+					GSMachine::GetInstance()->Resume();
 					GSMachine::GetInstance()->PushState(STATE_TUTORIAL);
 					break;
 				}
@@ -283,6 +291,9 @@ void GSPuzzle::HandleTouchEvents(float x, float y, bool bIsPressed) {
 void GSPuzzle::HandleMouseMoveEvents(float x, float y)
 {
 	for (auto& button : m_buttonList)
+		button->HandleMoveEvent(x, y);
+
+	for (auto& button : m_keyboard)
 		button->HandleMoveEvent(x, y);
 
 	if (!GSMachine::GetInstance()->IsRunning())

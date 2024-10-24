@@ -43,6 +43,7 @@ private:
 	std::vector<std::shared_ptr<Object>> m_keyboard;
 	
 	std::map<int, std::string> fileMap;
+	std::map<int, std::string> fileMapKeyboard;
 
 	std::string answer;
 	std::string key;

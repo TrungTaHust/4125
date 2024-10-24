@@ -207,6 +207,14 @@ bool Object::HandleTouchEvent(GLfloat x, GLfloat y, bool bIsPressed)
 	}
 
 	if (!m_isClick) m_alpha = 1.0f;
-
 	return false;
+}
+
+void Object::HandleMoveEvent(GLfloat x, GLfloat y)
+{
+	if ((m_pos.x - m_width / 2.0f <= x) && (x <= m_pos.x + m_width / 2.0f)
+		&& (m_pos.y - m_height / 2.0f <= y) && (y <= m_pos.y + m_height / 2.0f)) 
+		m_alpha = 0.8f;
+	else
+		m_alpha = 1.0f;		
 }

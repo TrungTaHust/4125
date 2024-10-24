@@ -5,7 +5,7 @@ FAR 500.0
 FOV 1.0
 SPEED 5.0
 ###########################################################################
-#Animations: 8
+#Animations: 4
 
 ID loading_animation
 MODEL Sprite2D
@@ -72,64 +72,9 @@ POSITION 1200.0 480.0
 ROTATION 0.0 0.0 0.0
 SCALE 60.0 760.0 
 --------------------------------------------------------------------------
-ID tutorial_alien1
-MODEL Sprite2D
-TEXTURES 1
-TEXTURE mobAlien2_idle
-NUM_FRAMES 4
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-SHADER Animation 
-POSITION 300.0 300.0
-ROTATION 0.0 0.0 0.0
-SCALE 60.0 60.0 
---------------------------------------------------------------------------
-ID tutorial_alien2
-MODEL Sprite2D
-TEXTURES 1
-TEXTURE mobAlien1_idle
-NUM_FRAMES 4
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-SHADER Animation 
-POSITION 400.0 300.0
-ROTATION 0.0 0.0 0.0
-SCALE 60.0 60.0 
---------------------------------------------------------------------------
-ID tutorial_alien3
-MODEL Sprite2D
-TEXTURES 1
-TEXTURE medAlien3_idle
-NUM_FRAMES 4
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-SHADER Animation 
-POSITION 300.0 400.0
-ROTATION 0.0 0.0 0.0
-SCALE 80.0 80.0 
---------------------------------------------------------------------------
-ID tutorial_alien4
-MODEL Sprite2D
-TEXTURES 1
-TEXTURE highAlien3_idle 
-NUM_FRAMES 4
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-SHADER Animation 
-POSITION 300.0 500.0
-ROTATION 0.0 0.0 0.0
-SCALE 100.0 100.0 
---------------------------------------------------------------------------
-
-
-
 muốn comment gì ở đây cũng dc
 ###########################################################################
-#Aliens: 12
+#Aliens: 1
 
 ID mobAlien1
 
@@ -154,265 +99,8 @@ HEALTH 1
 SCORE 10
 COIN 10
 --------------------------------------------------------------------------
-ID mobAlien2
-
-MODEL Sprite2D
-TEXTURES 2
-TEXTURE b02
-NUM_FRAMES 1
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-
-TEXTURE destroyed 
-NUM_FRAMES 5
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-
-SHADER Animation 
-SCALE 60.0 60.0 
-SPEED 65.0
-HEALTH 1
-SCORE 10
-COIN 10
---------------------------------------------------------------------------
-ID mobAlien3
-
-MODEL Sprite2D
-TEXTURES 2
-TEXTURE c02 
-NUM_FRAMES 1
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-
-TEXTURE destroyed 
-NUM_FRAMES 5
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-
-SHADER Animation 
-SCALE 60.0 60.0 
-SPEED 70.0
-HEALTH 1
-SCORE 10
-COIN 10
---------------------------------------------------------------------------
-ID mobAlien4
-
-MODEL Sprite2D
-TEXTURES 2
-TEXTURE d02 
-NUM_FRAMES 1
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-
-TEXTURE destroyed 
-NUM_FRAMES 5
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-
-SHADER Animation 
-SCALE 60.0 60.0 
-SPEED 75.0
-HEALTH 1
-SCORE 10
-COIN 10
---------------------------------------------------------------------------
-ID medAlien1
-
-MODEL Sprite2D
-TEXTURES 2
-TEXTURE e02
-NUM_FRAMES 1
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-
-TEXTURE destroyed 
-NUM_FRAMES 5
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-
-SHADER Animation 
-SCALE 80.0 80.0 
-SPEED 60.0
-HEALTH 2
-SCORE 50
-COIN 20
---------------------------------------------------------------------------
-ID medAlien2
-
-MODEL Sprite2D
-TEXTURES 2
-TEXTURE f02
-NUM_FRAMES 1
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-
-TEXTURE destroyed 
-NUM_FRAMES 5
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-
-SHADER Animation 
-SCALE 80.0 80.0 
-SPEED 65.0
-HEALTH 2
-SCORE 50
-COIN 20
---------------------------------------------------------------------------
-ID medAlien3
-
-MODEL Sprite2D
-TEXTURES 2
-TEXTURE g02
-NUM_FRAMES 1
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-
-TEXTURE destroyed 
-NUM_FRAMES 5
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-
-SHADER Animation 
-SCALE 80.0 80.0 
-SPEED 75.0
-HEALTH 2
-SCORE 50
-COIN 20
---------------------------------------------------------------------------
-ID medAlien4
-
-MODEL Sprite2D
-TEXTURES 2
-TEXTURE h02 
-NUM_FRAMES 1
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-
-TEXTURE destroyed 
-NUM_FRAMES 5
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-
-SHADER Animation 
-SCALE 80.0 80.0 
-SPEED 110.0
-HEALTH 1
-SCORE 50
-COIN 20
---------------------------------------------------------------------------
-ID highAlien1
-
-MODEL Sprite2D
-TEXTURES 2
-TEXTURE i02
-NUM_FRAMES 1
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-
-TEXTURE destroyed 
-NUM_FRAMES 5
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-
-SHADER Animation 
-SCALE 100.0 100.0 
-SPEED 110.0
-HEALTH 3
-SCORE 100
-COIN 50
---------------------------------------------------------------------------
-ID highAlien2
-
-MODEL Sprite2D
-TEXTURES 2
-TEXTURE j02
-NUM_FRAMES 1
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-
-TEXTURE destroyed 
-NUM_FRAMES 5
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-
-SHADER Animation 
-SCALE 100.0 100.0 
-SPEED 120.0
-HEALTH 3
-SCORE 100
-COIN 50
---------------------------------------------------------------------------
-ID highAlien3
-
-MODEL Sprite2D
-TEXTURES 2
-TEXTURE k02 
-NUM_FRAMES 1
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-
-TEXTURE destroyed 
-NUM_FRAMES 5
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-
-SHADER Animation 
-SCALE 100.0 100.0 
-SPEED 130.0
-HEALTH 3
-SCORE 100
-COIN 50
---------------------------------------------------------------------------
-ID highAlien4
-
-MODEL Sprite2D
-TEXTURES 2
-TEXTURE l02
-NUM_FRAMES 1
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-
-TEXTURE destroyed 
-NUM_FRAMES 5
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-
-SHADER Animation 
-SCALE 100.0 100.0 
-SPEED 130.0
-HEALTH 3
-SCORE 100
-COIN 50
---------------------------------------------------------------------------
-
-
-
-
 ###########################################################################
-#Objects: 36
+#Objects: 27
 
 ID intro_logo
 MODEL Sprite2D
@@ -430,25 +118,10 @@ POSITION 1200.0 480.0
 ROTATION 0.0 0.0 0.0
 SCALE 170.0 38.0 
 --------------------------------------------------------------------------
-ID x_laser_bullet
-MODEL Sprite2D
-TEXTURE x_laser_bullet
-SHADER TriangleShader
-POSITION 1200.0 480.0
-ROTATION 0.0 0.0 0.0
-SCALE 170.0 38.0 
---------------------------------------------------------------------------
-ID c_laser_bullet
-MODEL Sprite2D
-TEXTURE c_laser_bullet
-SHADER TriangleShader
-POSITION 1200.0 480.0
-ROTATION 0.0 0.0 0.0
-SCALE 170.0 38.0 
---------------------------------------------------------------------------
+
 ID menu_background
 MODEL Sprite2D
-TEXTURE menu_background
+TEXTURE puzzle_background
 SHADER TriangleShader
 POSITION 640.0 480.0
 ROTATION 0.0 0.0 0.0
@@ -457,6 +130,14 @@ SCALE 1280.0 960.0
 ID play_background
 MODEL Sprite2D
 TEXTURE play_background
+SHADER TriangleShader
+POSITION 640.0 480.0
+ROTATION 0.0 0.0 0.0
+SCALE 1280.0 960.0
+--------------------------------------------------------------------------
+ID puzzle_background
+MODEL Sprite2D
+TEXTURE puzzle_background
 SHADER TriangleShader
 POSITION 640.0 480.0
 ROTATION 0.0 0.0 0.0
@@ -622,73 +303,9 @@ POSITION 300.0 620.0
 ROTATION 0.0 0.0 0.0
 SCALE 50.0 50.0
 --------------------------------------------------------------------------
-ID map1
-MODEL Sprite2D
-TEXTURE map1
-SHADER TriangleShader
-POSITION 300.0 300.0
-ROTATION 0.0 0.0 0.0
-SCALE 200.0 150.0
---------------------------------------------------------------------------
-ID map2
-MODEL Sprite2D
-TEXTURE map2
-SHADER TriangleShader
-POSITION 300.0 600.0
-ROTATION 0.0 0.0 0.0
-SCALE 200.0 150.0
---------------------------------------------------------------------------
-ID map3
-MODEL Sprite2D
-TEXTURE map3
-SHADER TriangleShader
-POSITION 300.0 900.0
-ROTATION 0.0 0.0 0.0
-SCALE 200.0 150.0
---------------------------------------------------------------------------
-ID map4
-MODEL Sprite2D
-TEXTURE map4
-SHADER TriangleShader
-POSITION 600.0 300.0
-ROTATION 0.0 0.0 0.0
-SCALE 200.0 150.0
---------------------------------------------------------------------------
-ID map5
-MODEL Sprite2D
-TEXTURE map5
-SHADER TriangleShader
-POSITION 600.0 600.0
-ROTATION 0.0 0.0 0.0
-SCALE 200.0 150.0
---------------------------------------------------------------------------
-ID map6
-MODEL Sprite2D
-TEXTURE map6
-SHADER TriangleShader
-POSITION 600.0 900.0
-ROTATION 0.0 0.0 0.0
-SCALE 200.0 150.0
---------------------------------------------------------------------------
 ID z_gun
 MODEL Sprite2D
 TEXTURE z_gun
-SHADER TriangleShader
-POSITION 1200.0 480.0
-ROTATION 0.0 0.0 0.0
-SCALE 100.0 100.0
---------------------------------------------------------------------------
-ID x_gun
-MODEL Sprite2D
-TEXTURE x_gun
-SHADER TriangleShader
-POSITION 1200.0 480.0
-ROTATION 0.0 0.0 0.0
-SCALE 100.0 100.0
---------------------------------------------------------------------------
-ID c_gun
-MODEL Sprite2D
-TEXTURE c_gun
 SHADER TriangleShader
 POSITION 1200.0 480.0
 ROTATION 0.0 0.0 0.0
@@ -703,12 +320,12 @@ ROTATION 0.0 0.0 0.0
 SCALE 50.0 50.0
 --------------------------------------------------------------------------
 ###########################################################################
-#Buttons: 18
+#Buttons: 19
 
 ID button_start
 Type BUTTON_START
 MODEL Sprite2D
-TEXTURE btn_start
+TEXTURE Map_BTN
 SHADER TriangleShader
 POSITION 640.0 430.0
 ROTATION 0.0 0.0 0.0
@@ -865,6 +482,15 @@ TEXTURE btn_check
 SHADER TriangleShader
 POSITION 1050.0 600.0
 ROTATION 0.0 0.0 0.0
-SCALE 150.0 100.0
+SCALE 100.0 50.0
+--------------------------------------------------------------------------
+ID button_end
+Type BUTTON_END
+MODEL Sprite2D
+TEXTURE btn_check
+SHADER TriangleShader
+POSITION 1200.0 600.0
+ROTATION 0.0 0.0 0.0
+SCALE 100.0 50.0
 --------------------------------------------------------------------------
 ###########################################################################
