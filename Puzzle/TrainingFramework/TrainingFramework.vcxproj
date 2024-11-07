@@ -131,7 +131,7 @@
     <ClCompile Include="GameState\GSOver.cpp" />
     <ClCompile Include="GameState\GSScore.cpp" />
     <ClCompile Include="GameState\GSTutorial.cpp" />
-    <ClCompile Include="GameState\GSVictory.cpp" />
+    <ClCompile Include="GameState\GSWord.cpp" />
     <ClCompile Include="GameState\GS_Puzzle.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="WordHunter.cpp" />
@@ -161,7 +161,7 @@
     <ClInclude Include="GameState\GSOver.h" />
     <ClInclude Include="GameState\GSScore.h" />
     <ClInclude Include="GameState\GSTutorial.h" />
-    <ClInclude Include="GameState\GSVictory.h" />
+    <ClInclude Include="GameState\GSWord.h" />
     <ClInclude Include="GameState\GS_Puzzle.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="stdafx.h" />

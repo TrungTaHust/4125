@@ -7,7 +7,7 @@
 #include "GSTutorial.h"
 #include "GSEndless.h"
 #include "GS_Puzzle.h"
-#include "GSVictory.h"
+#include "GSWord.h"
 
 GSBase::GSBase()
 {
@@ -43,8 +43,8 @@ std::shared_ptr<GSBase> GSBase::CreateState(StateType stateType)
 		return std::make_shared<GSEndless>();
 	case STATE_PUZZLE:
 		return std::make_shared<GSPuzzle>();
-	case STATE_VICTORY:
-		return std::make_shared<GSVictory>();	
+	case STATE_WORD:
+		return std::make_shared<GSWord>();	
 	default:
 		break;
 	}

@@ -95,7 +95,7 @@
     <ClCompile Include="GameState\GSEndless.cpp">
       <Filter>SourceFile\GameState</Filter>
     </ClCompile>
-    <ClCompile Include="GameState\GSVictory.cpp">
+    <ClCompile Include="GameState\GSWord.cpp">
       <Filter>SourceFile\GameState</Filter>
     </ClCompile>
   </ItemGroup>
@@ -184,7 +184,7 @@
     <ClInclude Include="GameState\GSEndless.h">
       <Filter>SourceFile\GameState</Filter>
     </ClInclude>
-    <ClInclude Include="GameState\GSVictory.h">
+    <ClInclude Include="GameState\GSWord.h">
       <Filter>SourceFile\GameState</Filter>
     </ClInclude>
   </ItemGroup>
