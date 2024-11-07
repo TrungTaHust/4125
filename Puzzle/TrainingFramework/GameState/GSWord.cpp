@@ -56,6 +56,8 @@ void GSWord::Init()
 
 	m_objectVector.push_back(m_question);
 	AddSoundByName("play");
+
+	AddSoundByName("correct");
 	PlaySoundByName("play", 7, -1);
 }
 
@@ -82,7 +84,33 @@ void GSWord::Resume() {
 }
 
 void GSWord::Update(float deltaTime) {
-	
+	if (isCorrect) {
+		m_time -= deltaTime;
+		if (m_time <= 0) {
+			isCorrect = false;
+			m_time = 2;
+
+			key = animals[rand() % animals.size()];
+
+			m_question->SetTexture(key.c_str());
+
+			c = rand() % 26 + 'a';
+			index = rand() % key.size();
+			key.insert(index, 1, c);
+
+			int totalWidth = key.size() * 50 + (key.size() - 1) * 30;
+			int leftAlign = (1280 - totalWidth) / 2;
+			m_choice.clear();
+			for (int i = 0; i < key.size(); i++) {
+				std::string fileName = std::string(1, key[i]) + "02";
+				auto slot = std::make_shared<Object>("Sprite2D", fileName.c_str(), "TriangleShader");
+				slot->Set2DPos(leftAlign + i * 80, 400);
+				slot->SetSize(50, 50);
+				m_choice.push_back(slot);
+			}
+		}
+	}
+
 }
 
 void GSWord::Draw(){
@@ -124,6 +152,7 @@ void GSWord::HandleTouchEvents(float x, float y, bool bIsPressed) {
 		for (int i = 0; i < m_choice.size(); i++) {
 			if (m_choice[i]->HandleTouchEvent(x, y, bIsPressed)) {
 				if (i==index) {
+					PlaySoundByName("correct", 8, 0);
 					printf("Correct\n");
 					key.erase(i, 1);
 					isCorrect = true;

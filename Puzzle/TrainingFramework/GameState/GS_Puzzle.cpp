@@ -66,6 +66,7 @@ void GSPuzzle::Init()
 	m_objectVector.push_back(m_question);
 	AddSoundByName("play");
 	PlaySoundByName("play", 7, -1);
+	AddSoundByName("correct");
 }
 
 void GSPuzzle::Exit()
@@ -91,6 +92,44 @@ void GSPuzzle::Resume() {
 }
 
 void GSPuzzle::Update(float deltaTime) {
+	if (isCorrect) {
+		m_time -= deltaTime;
+		if (m_time <= 0) {
+			isCorrect = false;
+			m_time = 2;
+
+			int key = rand() % animals.size();
+
+			m_question->SetTexture(animals[key].c_str()); // Change question
+
+			std::set<int> uniqueIndices;
+			uniqueIndices.insert(key);
+			while (uniqueIndices.size() < 6) {
+				int randomIndex = rand() % animals.size();
+				if (randomIndex != key) {
+					uniqueIndices.insert(randomIndex);
+				}
+			}
+
+			std::vector<int> indices(uniqueIndices.begin(), uniqueIndices.end());
+			std::random_device rd;
+			std::mt19937 g(rd());
+			std::shuffle(indices.begin(), indices.end(), g);
+			m_choice.clear();
+
+			auto it = indices.begin();
+			for (int i = 0; i < 3; i++) {
+				for (int j = 0; j < 2; j++) {
+					std::string fileName = animals[*it];
+					auto slot = std::make_shared<Object>("Sprite2D", fileName.c_str(), "TriangleShader");
+					slot->Set2DPos(400 + i * 240, 400 + j * 200);
+					slot->SetSize(200, 200);
+					m_choice.push_back(slot);
+					++it;
+				}
+			}
+		}
+	}
 }
 
 void GSPuzzle::Draw(){
@@ -100,8 +139,6 @@ void GSPuzzle::Draw(){
 		button->Draw();
 
 	DrawVectorObject(m_choice);	
-
-	//m_question->Draw();
 
 	if (!GSMachine::GetInstance()->IsRunning())	{
 		SceneManager::GetInstance()->GetObjectByID("pause_frame")->Draw();
@@ -135,6 +172,8 @@ void GSPuzzle::HandleTouchEvents(float x, float y, bool bIsPressed) {
 			if (button->HandleTouchEvent(x, y, bIsPressed)) {
 				if (button->getTexture() == m_question->getTexture()) {
 					printf("Correct\n");
+					isCorrect = true;
+					PlaySoundByName("correct", 8, 0);
 					return;
 				}					
 			}

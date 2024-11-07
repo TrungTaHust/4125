@@ -43,6 +43,8 @@ private:
 	std::string key;
 	int keyInt;
 	std::string check;	
+	int m_time = 2;
+	bool isCorrect = false;
 
 	std::vector<std::string> animals = {
 		"bear", "cat", "cow", "crab", "deer", "dog", "dolphin", "duck",

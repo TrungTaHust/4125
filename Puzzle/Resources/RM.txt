@@ -166,12 +166,13 @@ ID 0	FILE TriangleShader
 ID 1	FILE Animation
 ID 3	FILE Text
 
-#Sound: 5
+#Sound: 6
 FILE explosion
 FILE intro
 FILE menu
 FILE play
 FILE over
+FILE correct
 
 #Texts: 9
 ID		scores

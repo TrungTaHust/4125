@@ -46,6 +46,7 @@ private:
 	int keyInt;
 	char c;
 	int index;
+	int m_time = 2;
 	bool isCorrect = false;
 	std::string check;	
 
