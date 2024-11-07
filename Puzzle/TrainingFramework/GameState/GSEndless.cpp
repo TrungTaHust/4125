@@ -37,7 +37,6 @@ void GSEndless::Init()
 	m_gun = sceneManager->GetObjectByID("z_gun");
 	m_bulletTexture = sceneManager->GetObjectByID("z_laser_bullet");
 
-	AddAnimation("loading_animation");
 	AddAnimation("coins");
 	
 	wall = sceneManager->GetAnimationByID("lightning_wall");
@@ -137,16 +136,13 @@ void GSEndless::Update(float deltaTime)
 	BulletUpdate(deltaTime);
 	AlienUpdate(deltaTime);	
 
-	//Check if bullet hit alien
-	for (auto alien : m_alien)
-	{
+	for (auto& alien : m_alien) {
 		std::vector<std::shared_ptr<Bullet>> m_bulletsShot;
-		for (auto bullet : m_bullets)
-			if (alien->GetAliveStatus() && alien->CheckCollide(bullet->GetPos(), bullet->GetSize()))
-			{
+
+		for (auto& bullet : m_bullets) {
+			if (alien->GetAliveStatus() && alien->CheckCollide(bullet->GetPos(), bullet->GetSize())) {
 				alien->TakeDmg(bullet->GetBulletDmg());
-				if(!alien->GetAliveStatus())
-				{
+				if (!alien->GetAliveStatus()) {
 					alien->SetDeath();
 					alienCount--;
 					score += alien->GetScore();
@@ -154,9 +150,10 @@ void GSEndless::Update(float deltaTime)
 					PlaySoundByName("explosion", 2, 0);
 				}
 			}
-			else m_bulletsShot.push_back(bullet);
+			else m_bulletsShot.push_back(bullet);	
+		}
 		m_bullets = m_bulletsShot;
-	}		
+	}
 
 	//Check lives
 	
@@ -187,7 +184,7 @@ void GSEndless::Draw()
 	if (!GSMachine::GetInstance()->IsRunning())
 	{
 		SceneManager::GetInstance()->GetObjectByID("pause_frame")->Draw();
-		for (auto button : m_pauseButtonList)
+		for (auto &button : m_pauseButtonList)
 			button->Draw();
 	}
 	m_gun->Draw();
@@ -216,7 +213,8 @@ void GSEndless::HandleTouchEvents(float x, float y, bool bIsPressed)
 		m_bullets.push_back(bullet);
 	}
 
-	for (auto& button : m_buttonList) {
+	else 
+		for (auto& button : m_buttonList) {
 		if (button->HandleTouchEvent(x, y, bIsPressed))
 			switch (button->m_type)	{
 			case BUTTON_PAUSE:

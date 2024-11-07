@@ -5,47 +5,7 @@ FAR 500.0
 FOV 1.0
 SPEED 5.0
 ###########################################################################
-#Animations: 4
-
-ID loading_animation
-MODEL Sprite2D
-TEXTURES 1
-TEXTURE loading_animation
-NUM_FRAMES 30
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.01
-SHADER Animation 
-POSITION 880.0 900.0 
-ROTATION 0.0 0.0 0.0 
-SCALE 60.0 60.0 
---------------------------------------------------------------------------
-ID fire
-MODEL Sprite2D
-TEXTURES 3
-TEXTURE burning_start_1
-NUM_FRAMES 4
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.01
-
-TEXTURE burning_loop_1
-NUM_FRAMES 8
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.01
-
-TEXTURE burning_end_1
-NUM_FRAMES 5
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.01
-
-SHADER Animation 
-POSITION 0.0 00.0 
-ROTATION 0.0 0.0 0.0 
-SCALE 200.0 200.0 
---------------------------------------------------------------------------
+#Animations: 2
 ID coins
 MODEL Sprite2D
 TEXTURES 1
@@ -100,8 +60,7 @@ SCORE 10
 COIN 10
 --------------------------------------------------------------------------
 ###########################################################################
-#Objects: 27
-
+#Objects: 21
 ID intro_logo
 MODEL Sprite2D
 TEXTURE logo
@@ -143,6 +102,14 @@ POSITION 640.0 480.0
 ROTATION 0.0 0.0 0.0
 SCALE 1280.0 960.0
 --------------------------------------------------------------------------
+ID zoo_background
+MODEL Sprite2D
+TEXTURE zoo_background
+SHADER TriangleShader
+POSITION 640.0 480.0
+ROTATION 0.0 0.0 0.0
+SCALE 1280.0 960.0
+--------------------------------------------------------------------------
 ID human_base
 MODEL Sprite2D
 TEXTURE base
@@ -174,62 +141,6 @@ SHADER TriangleShader
 POSITION 640.0 480.0
 ROTATION 0.0 0.0 0.0
 SCALE 1280.0 960.0
---------------------------------------------------------------------------
-ID heart1
-MODEL Sprite2D
-TEXTURE red_heart
-SHADER TriangleShader
-POSITION 900.0 50.0
-ROTATION 0.0 0.0 0.0
-SCALE 50.0 50.0
---------------------------------------------------------------------------
-ID heart2
-MODEL Sprite2D
-TEXTURE red_heart
-SHADER TriangleShader
-POSITION 960.0 50.0
-ROTATION 0.0 0.0 0.0
-SCALE 50.0 50.0
---------------------------------------------------------------------------
-ID heart3
-MODEL Sprite2D
-TEXTURE red_heart
-SHADER TriangleShader
-POSITION 1020.0 50.0
-ROTATION 0.0 0.0 0.0
-SCALE 50.0 50.0
---------------------------------------------------------------------------
-ID heart4
-MODEL Sprite2D
-TEXTURE red_heart
-SHADER TriangleShader
-POSITION 1080.0 50.0
-ROTATION 0.0 0.0 0.0
-SCALE 50.0 50.0
---------------------------------------------------------------------------
-ID black_heart1
-MODEL Sprite2D
-TEXTURE black_heart
-SHADER TriangleShader
-POSITION 900.0 50.0
-ROTATION 0.0 0.0 0.0
-SCALE 50.0 50.0
---------------------------------------------------------------------------
-ID black_heart2
-MODEL Sprite2D
-TEXTURE black_heart
-SHADER TriangleShader
-POSITION 980.0 50.0
-ROTATION 0.0 0.0 0.0
-SCALE 50.0 50.0
---------------------------------------------------------------------------
-ID black_heart3
-MODEL Sprite2D
-TEXTURE black_heart
-SHADER TriangleShader
-POSITION 1060.0 50.0
-ROTATION 0.0 0.0 0.0
-SCALE 50.0 50.0
 --------------------------------------------------------------------------
 ID score_frame
 MODEL Sprite2D
@@ -320,7 +231,7 @@ ROTATION 0.0 0.0 0.0
 SCALE 50.0 50.0
 --------------------------------------------------------------------------
 ###########################################################################
-#Buttons: 19
+#Buttons: 15
 
 ID button_start
 Type BUTTON_START
@@ -391,42 +302,6 @@ MODEL Sprite2D
 TEXTURE btn_play_col_square
 SHADER TriangleShader
 POSITION 1220.0 50.0
-ROTATION 0.0 0.0 0.0
-SCALE 50.0 50.0 
---------------------------------------------------------------------------
-ID bullet_amount
-Type BUTTON_UPGRADE_BULLET_AMOUNT
-MODEL Sprite2D
-TEXTURE bullet_upgrade
-SHADER TriangleShader
-POSITION 100.0 900.0
-ROTATION 0.0 0.0 0.0
-SCALE 50.0 50.0 
---------------------------------------------------------------------------
-ID freeze
-Type BUTTON_SKILL_FREEZE
-MODEL Sprite2D
-TEXTURE ice_spell
-SHADER TriangleShader
-POSITION 200.0 900.0
-ROTATION 0.0 0.0 0.0
-SCALE 50.0 50.0 
---------------------------------------------------------------------------
-ID fire
-Type BUTTON_SKILL_FIRE
-MODEL Sprite2D
-TEXTURE fire_spell
-SHADER TriangleShader
-POSITION 300.0 900.0
-ROTATION 0.0 0.0 0.0
-SCALE 50.0 50.0 
---------------------------------------------------------------------------
-ID health_upgrade
-Type BUTTON_UPGRADE_BULLET_RELOAD
-MODEL Sprite2D
-TEXTURE health_upgrade
-SHADER TriangleShader
-POSITION 400.0 900.0
 ROTATION 0.0 0.0 0.0
 SCALE 50.0 50.0 
 --------------------------------------------------------------------------

@@ -2,138 +2,162 @@
 ID 0	FILE Sprite2D
 ID 1	FILE Rectangle
 
-#2DTextures: 131
-ID 1	FILE btn/btn_start
-ID 2	FILE btn/btn_exit
-ID 3	FILE btn/btn_menu
-ID 4	FILE btn/btn_new_game
-ID 5	FILE btn/btn_high_score
-ID 6	FILE btn/btn_pause_col_square
-ID 7	FILE btn/btn_play_col_square
-ID 8	FILE btn/btn_check
-ID 9	FILE btn/btn_back
-ID 10	FILE btn/btn_tutorial
-ID 11	FILE red_rectangle
-ID 12	FILE white_rectangle
-ID 13	FILE yellow_rectangle
-ID 14	FILE green_rect
-ID 15	FILE base
-ID 16	FILE destroyed
-ID 17	FILE logo
-ID 18	FILE menu_background
-ID 19	FILE play_background
-ID 20	FILE temp
-ID 21	FILE loading_animation
-ID 22	FILE play_pane
-ID 23	FILE coins
-ID 24	FILE upgrade_frame
-ID 25	FILE burning_loop_1
-ID 26	FILE burning_end_1
-ID 27	FILE burning_start_1
-ID 28	FILE lightning_wall
-ID 29	FILE red_heart
-ID 30	FILE black_heart
-ID 31	FILE bullet_upgrade
-ID 32	FILE health_upgrade
-ID 33	FILE ice_spell
-ID 34	FILE fire_spell
-ID 35	FILE score_frame
-ID 36	FILE tutorial_background
-ID 37	FILE menu_square
-ID 38	FILE question_mark
-ID 39	FILE Map_BTN
-ID 40	FILE z_gun
-ID 41	FILE x_gun
-ID 42	FILE c_gun
-ID 43	FILE z_laser_bullet
-ID 44	FILE x_laser_bullet
-ID 45	FILE c_laser_bullet
-ID 46	FILE aim
-ID 47	FILE alphabet/a02
-ID 48	FILE alphabet/b02
-ID 49	FILE alphabet/c02
-ID 50	FILE alphabet/d02
-ID 51	FILE alphabet/e02
-ID 52	FILE alphabet/f02
-ID 53	FILE alphabet/g02
-ID 54	FILE alphabet/h02
-ID 55	FILE alphabet/i02
-ID 56	FILE alphabet/j02
-ID 57	FILE alphabet/k02
-ID 58	FILE alphabet/l02
-ID 59	FILE alphabet/m02
-ID 60	FILE alphabet/n02
-ID 61	FILE alphabet/o02
-ID 62	FILE alphabet/p02
-ID 63	FILE alphabet/q02
-ID 64	FILE alphabet/r02
-ID 65	FILE alphabet/s02
-ID 66	FILE alphabet/t02
-ID 67	FILE alphabet/u02
-ID 68	FILE alphabet/v02
-ID 69	FILE alphabet/w02
-ID 70	FILE alphabet/x02
-ID 71	FILE alphabet/y02
-ID 72	FILE alphabet/z02
-ID 73	FILE null
-ID 74	FILE hint/apple
-ID 75	FILE hint/bread
-ID 76	FILE hint/chair
-ID 77	FILE hint/dance
-ID 78	FILE hint/earth
-ID 79	FILE hint/fruit
-ID 80	FILE hint/grape
-ID 81	FILE hint/house
-ID 82	FILE hint/yacht
-ID 83	FILE hint/jelly
-ID 84	FILE hint/knife
-ID 85	FILE hint/lemon
-ID 86	FILE hint/magic
-ID 87	FILE hint/night
-ID 88	FILE hint/ocean
-ID 89	FILE hint/plane
-ID 90	FILE hint/queen
-ID 91	FILE hint/river
-ID 92	FILE hint/stone
-ID 93	FILE hint/table
-ID 94	FILE hint/union
-ID 95	FILE hint/voice
-ID 96	FILE hint/water
-ID 97	FILE hint/zebra
-ID 98	FILE hint/angel
-ID 99	FILE hint/brick
-ID 100	FILE hint/cloud
-ID 101	FILE hint/dream
-ID 102	FILE hint/eagle
-ID 103	FILE hint/flame
-ID 104	FILE puzzle_background
-ID 105	FILE temp1
-ID 106	FILE alphabet/a01
-ID 107	FILE alphabet/b01
-ID 108	FILE alphabet/c01
-ID 109	FILE alphabet/d01
-ID 110	FILE alphabet/e01
-ID 111	FILE alphabet/f01
-ID 112	FILE alphabet/g01
-ID 113	FILE alphabet/h01
-ID 114	FILE alphabet/i01
-ID 115	FILE alphabet/j01
-ID 116	FILE alphabet/k01
-ID 117	FILE alphabet/l01
-ID 118	FILE alphabet/m01
-ID 119	FILE alphabet/n01
-ID 120	FILE alphabet/o01
-ID 121	FILE alphabet/p01
-ID 122	FILE alphabet/q01
-ID 123	FILE alphabet/r01
-ID 124	FILE alphabet/s01
-ID 125	FILE alphabet/t01
-ID 126	FILE alphabet/u01
-ID 127	FILE alphabet/v01
-ID 128	FILE alphabet/w01
-ID 129	FILE alphabet/x01
-ID 130	FILE alphabet/y01
-ID 131	FILE alphabet/z01
+#2DTextures: 151
+ID 1 FILE btn/btn_start
+ID 2 FILE btn/btn_exit
+ID 3 FILE btn/btn_menu
+ID 4 FILE btn/btn_new_game
+ID 5 FILE btn/btn_high_score
+ID 6 FILE btn/btn_pause_col_square
+ID 7 FILE btn/btn_play_col_square
+ID 8 FILE btn/btn_check
+ID 9 FILE btn/btn_back
+ID 10 FILE btn/btn_tutorial
+ID 11 FILE red_rectangle
+ID 12 FILE white_rectangle
+ID 13 FILE yellow_rectangle
+ID 14 FILE green_rect
+ID 15 FILE base
+ID 16 FILE destroyed
+ID 17 FILE logo
+ID 18 FILE menu_background
+ID 19 FILE play_background
+ID 20 FILE temp
+ID 21 FILE loading_animation
+ID 22 FILE play_pane
+ID 23 FILE coins
+ID 24 FILE upgrade_frame
+ID 25 FILE lightning_wall
+ID 26 FILE score_frame
+ID 27 FILE tutorial_background
+ID 28 FILE menu_square
+ID 29 FILE question_mark
+ID 30 FILE Map_BTN
+ID 31 FILE z_gun
+ID 32 FILE z_laser_bullet
+ID 33 FILE aim
+ID 34 FILE alphabet/a02
+ID 35 FILE alphabet/b02
+ID 36 FILE alphabet/c02
+ID 37 FILE alphabet/d02
+ID 38 FILE alphabet/e02
+ID 39 FILE alphabet/f02
+ID 40 FILE alphabet/g02
+ID 41 FILE alphabet/h02
+ID 42 FILE alphabet/i02
+ID 43 FILE alphabet/j02
+ID 44 FILE alphabet/k02
+ID 45 FILE alphabet/l02
+ID 46 FILE alphabet/m02
+ID 47 FILE alphabet/n02
+ID 48 FILE alphabet/o02
+ID 49 FILE alphabet/p02
+ID 50 FILE alphabet/q02
+ID 51 FILE alphabet/r02
+ID 52 FILE alphabet/s02
+ID 53 FILE alphabet/t02
+ID 54 FILE alphabet/u02
+ID 55 FILE alphabet/v02
+ID 56 FILE alphabet/w02
+ID 57 FILE alphabet/x02
+ID 58 FILE alphabet/y02
+ID 59 FILE alphabet/z02
+ID 60 FILE null
+ID 61 FILE puzzle_background
+ID 62 FILE temp1
+ID 63 FILE alphabet/a01
+ID 64 FILE alphabet/b01
+ID 65 FILE alphabet/c01
+ID 66 FILE alphabet/d01
+ID 67 FILE alphabet/e01
+ID 68 FILE alphabet/f01
+ID 69 FILE alphabet/g01
+ID 70 FILE alphabet/h01
+ID 71 FILE alphabet/i01
+ID 72 FILE alphabet/j01
+ID 73 FILE alphabet/k01
+ID 74 FILE alphabet/l01
+ID 75 FILE alphabet/m01
+ID 76 FILE alphabet/n01
+ID 77 FILE alphabet/o01
+ID 78 FILE alphabet/p01
+ID 79 FILE alphabet/q01
+ID 80 FILE alphabet/r01
+ID 81 FILE alphabet/s01
+ID 82 FILE alphabet/t01
+ID 83 FILE alphabet/u01
+ID 84 FILE alphabet/v01
+ID 85 FILE alphabet/w01
+ID 86 FILE alphabet/x01
+ID 87 FILE alphabet/y01
+ID 88 FILE alphabet/z01
+ID 89 FILE animals/apple
+ID 90 FILE animals/avocado
+ID 91 FILE animals/bear
+ID 92 FILE animals/bear1
+ID 93 FILE animals/bear2
+ID 94 FILE animals/cat
+ID 95 FILE animals/cat1
+ID 96 FILE animals/cat2
+ID 97 FILE animals/cat3
+ID 98 FILE animals/cow
+ID 99 FILE animals/cow1
+ID 100 FILE animals/cow2
+ID 101 FILE animals/crab
+ID 102 FILE animals/deer
+ID 103 FILE animals/dog
+ID 104 FILE animals/dog1
+ID 105 FILE animals/dolphin
+ID 106 FILE animals/duck
+ID 107 FILE animals/elephant
+ID 108 FILE animals/elephant1
+ID 109 FILE animals/for
+ID 110 FILE animals/fox1
+ID 111 FILE animals/giraffe
+ID 112 FILE animals/giraffe1
+ID 113 FILE animals/grape
+ID 114 FILE animals/hippo
+ID 115 FILE animals/hippo1
+ID 116 FILE animals/horse
+ID 117 FILE animals/koala
+ID 118 FILE animals/lemon
+ID 119 FILE animals/lion
+ID 120 FILE animals/lion1
+ID 121 FILE animals/lion2
+ID 122 FILE animals/mango
+ID 123 FILE animals/monkey
+ID 124 FILE animals/monkey1
+ID 125 FILE animals/monkey2
+ID 126 FILE animals/mouse
+ID 127 FILE animals/mouse1
+ID 128 FILE animals/orange
+ID 129 FILE animals/owl
+ID 130 FILE animals/panda
+ID 131 FILE animals/panda1
+ID 132 FILE animals/parrot
+ID 133 FILE animals/pig
+ID 134 FILE animals/pig1
+ID 135 FILE animals/pig2
+ID 136 FILE animals/pig3
+ID 137 FILE animals/pig4
+ID 138 FILE animals/pineapple
+ID 139 FILE animals/rabbit
+ID 140 FILE animals/rabbit1
+ID 141 FILE animals/rabbit2
+ID 142 FILE animals/rhino
+ID 143 FILE animals/rhino1
+ID 144 FILE animals/sheep
+ID 145 FILE animals/tiger
+ID 146 FILE animals/tiger1
+ID 147 FILE animals/tiger2
+ID 148 FILE animals/turtle
+ID 149 FILE animals/watermelon
+ID 150 FILE animals/zebra
+ID 151 FILE zoo_background
+
+
+
+
 
 
 
@@ -142,33 +166,14 @@ ID 0	FILE TriangleShader
 ID 1	FILE Animation
 ID 3	FILE Text
 
-#Sound: 10
-FILE tu_sena
+#Sound: 5
 FILE explosion
 FILE intro
 FILE menu
 FILE play
-FILE freeze
-FILE fire
-FILE reload
-FILE more
 FILE over
 
-#Texts: 16
-ID		reloading
-POS		1000 900
-COLOR 		255 0 0 255
-SIZE		30
-MESSAGE		Reloading...
-FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
-
-ID		current_bullets
-POS		700 50
-COLOR 		255 0 0 255
-SIZE		30
-MESSAGE		Reloading...
-FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
-
+#Texts: 9
 ID		scores
 POS		400 50
 COLOR 		0 128 0 255
@@ -180,34 +185,6 @@ ID		coins
 POS		120 50
 COLOR 		255 255 0 255
 SIZE		30
-MESSAGE		coins
-FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
-
-ID		bullet_cost
-POS		100 940
-COLOR 		255 0 0 255
-SIZE		20
-MESSAGE		coins
-FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
-
-ID		freeze_cost
-POS		200 940
-COLOR 		255 0 0 255
-SIZE		20
-MESSAGE		coins
-FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
-
-ID		fire_cost
-POS		300 940
-COLOR 		255 0 0 255
-SIZE		20
-MESSAGE		coins
-FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
-
-ID		health_cost
-POS		400 940
-COLOR 		255 0 0 255
-SIZE		20
 MESSAGE		coins
 FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
 
@@ -258,11 +235,4 @@ POS		600 300
 COLOR 		255 255 255 255
 SIZE		50
 MESSAGE		Scores: 
-FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
-
-ID		your_bullets
-POS		600 50
-COLOR 		255 0 0 255
-SIZE		30
-MESSAGE		Bullets: 
 FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
