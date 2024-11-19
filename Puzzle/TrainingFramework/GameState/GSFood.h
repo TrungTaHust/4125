@@ -10,12 +10,12 @@
 #include "../TrainingFramework/Globals.h"
 #include <cstdlib>
 
-class GSWord :
+class GSFood :
 	public GSBase
 {
 public:
-	GSWord();
-	~GSWord();
+	GSFood();
+	~GSFood();
 
 	void	Init() override;
 	void	Exit() override;
@@ -41,14 +41,7 @@ private:
 	std::string key;
 	int index;
 	int m_time = 1;
-	bool isCorrect;
-
-	std::vector<std::string> animals = {
-		"bear", "cat", "cow", "crab", "deer", "dog", "dolphin", "duck",
-		"elephant", "fox", "giraffe", "hippo", "horse", "koala", "lion",
-		"monkey", "mouse", "owl", "panda", "parrot", "pig", "rabbit",
-		"rhino", "sheep", "tiger", "turtle", "zebra"
-	};
+	bool isCorrect;		
 
 	std::vector<std::string> fruits = {
 		"apple", "avocado", "grape", "lemon", "mango", "orange",

@@ -71,9 +71,6 @@
     <ClCompile Include="GameObject\Texture.cpp">
       <Filter>SourceFile\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="BaseAlien.cpp">
-      <Filter>SourceFile</Filter>
-    </ClCompile>
     <ClCompile Include="WordHunter.cpp">
       <Filter>SourceFile</Filter>
     </ClCompile>
@@ -86,16 +83,25 @@
     <ClCompile Include="GameState\GSTutorial.cpp">
       <Filter>SourceFile\GameState</Filter>
     </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>SourceFile</Filter>
-    </ClCompile>
     <ClCompile Include="GameState\GS_Puzzle.cpp">
       <Filter>SourceFile\GameState</Filter>
     </ClCompile>
-    <ClCompile Include="GameState\GSEndless.cpp">
+    <ClCompile Include="GameState\GSWord.cpp">
       <Filter>SourceFile\GameState</Filter>
     </ClCompile>
-    <ClCompile Include="GameState\GSWord.cpp">
+    <ClCompile Include="GameState\GSFood.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GSAction.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GSColor.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GSCount.cpp">
+      <Filter>SourceFile\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState\GSSelectMap.cpp">
       <Filter>SourceFile\GameState</Filter>
     </ClCompile>
   </ItemGroup>
@@ -157,9 +163,6 @@
     <ClInclude Include="GameObject\Vertex.h">
       <Filter>SourceFile\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="BaseAlien.h">
-      <Filter>SourceFile</Filter>
-    </ClInclude>
     <ClInclude Include="Globals.h">
       <Filter>SourceFile</Filter>
     </ClInclude>
@@ -175,16 +178,25 @@
     <ClInclude Include="GameState\GSTutorial.h">
       <Filter>SourceFile\GameState</Filter>
     </ClInclude>
-    <ClInclude Include="Bullet.h">
-      <Filter>SourceFile</Filter>
-    </ClInclude>
     <ClInclude Include="GameState\GS_Puzzle.h">
       <Filter>SourceFile\GameState</Filter>
     </ClInclude>
-    <ClInclude Include="GameState\GSEndless.h">
+    <ClInclude Include="GameState\GSWord.h">
       <Filter>SourceFile\GameState</Filter>
     </ClInclude>
-    <ClInclude Include="GameState\GSWord.h">
+    <ClInclude Include="GameState\GSFood.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GSAction.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GSColor.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GSCount.h">
+      <Filter>SourceFile\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState\GSSelectMap.h">
       <Filter>SourceFile\GameState</Filter>
     </ClInclude>
   </ItemGroup>

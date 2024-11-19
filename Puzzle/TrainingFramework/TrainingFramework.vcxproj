@@ -109,8 +109,6 @@
     <Text Include="word.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BaseAlien.cpp" />
-    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="GameManager\ResourceManager.cpp" />
     <ClCompile Include="GameManager\SceneManager.cpp" />
     <ClCompile Include="GameObject\Animation.cpp" />
@@ -123,13 +121,17 @@
     <ClCompile Include="GameObject\Sound.cpp" />
     <ClCompile Include="GameObject\Text.cpp" />
     <ClCompile Include="GameObject\Texture.cpp" />
+    <ClCompile Include="GameState\GSAction.cpp" />
     <ClCompile Include="GameState\GSBase.cpp" />
-    <ClCompile Include="GameState\GSEndless.cpp" />
+    <ClCompile Include="GameState\GSColor.cpp" />
+    <ClCompile Include="GameState\GSCount.cpp" />
+    <ClCompile Include="GameState\GSFood.cpp" />
     <ClCompile Include="GameState\GSIntro.cpp" />
     <ClCompile Include="GameState\GSMachine.cpp" />
     <ClCompile Include="GameState\GSMenu.cpp" />
     <ClCompile Include="GameState\GSOver.cpp" />
     <ClCompile Include="GameState\GSScore.cpp" />
+    <ClCompile Include="GameState\GSSelectMap.cpp" />
     <ClCompile Include="GameState\GSTutorial.cpp" />
     <ClCompile Include="GameState\GSWord.cpp" />
     <ClCompile Include="GameState\GS_Puzzle.cpp" />
@@ -137,8 +139,6 @@
     <ClCompile Include="WordHunter.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BaseAlien.h" />
-    <ClInclude Include="Bullet.h" />
     <ClInclude Include="GameManager\ResourceManager.h" />
     <ClInclude Include="GameManager\SceneManager.h" />
     <ClInclude Include="GameManager\SingletonClass.h" />
@@ -153,13 +153,17 @@
     <ClInclude Include="GameObject\Text.h" />
     <ClInclude Include="GameObject\Texture.h" />
     <ClInclude Include="GameObject\Vertex.h" />
+    <ClInclude Include="GameState\GSAction.h" />
     <ClInclude Include="GameState\GSBase.h" />
-    <ClInclude Include="GameState\GSEndless.h" />
+    <ClInclude Include="GameState\GSColor.h" />
+    <ClInclude Include="GameState\GSCount.h" />
+    <ClInclude Include="GameState\GSFood.h" />
     <ClInclude Include="GameState\GSIntro.h" />
     <ClInclude Include="GameState\GSMachine.h" />
     <ClInclude Include="GameState\GSMenu.h" />
     <ClInclude Include="GameState\GSOver.h" />
     <ClInclude Include="GameState\GSScore.h" />
+    <ClInclude Include="GameState\GSSelectMap.h" />
     <ClInclude Include="GameState\GSTutorial.h" />
     <ClInclude Include="GameState\GSWord.h" />
     <ClInclude Include="GameState\GS_Puzzle.h" />

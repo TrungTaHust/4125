@@ -1,20 +1,20 @@
 ﻿#include "../TrainingFramework/stdafx.h"
-#include "GSWord.h"
+#include "GSAction.h"
 #include <set>
 #include <algorithm>
 #include <random>
 #include <iterator>
 
-GSWord::GSWord() : index(0), isCorrect(false)
+GSAction::GSAction() : index(0), isCorrect(false)
 {
 	m_stateType = STATE_PUZZLE;		
 }
 
-GSWord::~GSWord()
+GSAction::~GSAction()
 {
 }
 
-void GSWord::Init()
+void GSAction::Init()
 {
 	srand(static_cast<unsigned>(time(0)));
 
@@ -45,12 +45,12 @@ void GSWord::Init()
 	PlaySoundByName("play", 7, -1);
 }
 
-void GSWord::Exit()
+void GSAction::Exit()
 {
 	StopSoundByName("play", 7);
 }
 
-void GSWord::Pause()
+void GSAction::Pause()
 {
 	for (int i = 2; i < 9; i++) {
 		if (Mix_Playing(i)) {
@@ -60,14 +60,14 @@ void GSWord::Pause()
 	}
 }
 
-void GSWord::Resume() {
+void GSAction::Resume() {
 	for (int channel : soundChannelStates) {
 		Mix_Resume(channel);
 	}
 	soundChannelStates.clear();
 }
 
-void GSWord::Update(float deltaTime) {
+void GSAction::Update(float deltaTime) {
 	if (!isCorrect) UpdateChoiceObjects();
 	else {
 		m_time -= deltaTime;
@@ -80,7 +80,7 @@ void GSWord::Update(float deltaTime) {
 
 }
 
-void GSWord::Draw(){
+void GSAction::Draw(){
 	DrawVectorObject(m_objectVector);	
 	
 	for (auto& button : m_buttonList)
@@ -95,15 +95,15 @@ void GSWord::Draw(){
 	}	
 }
 
-void GSWord::HandleEvents()
+void GSAction::HandleEvents()
 {
 }
 
-void GSWord::HandleKeyEvents(int key, bool bIsPressed)
+void GSAction::HandleKeyEvents(int key, bool bIsPressed)
 {
 }
 
-void GSWord::HandleTouchEvents(float x, float y, bool bIsPressed) {
+void GSAction::HandleTouchEvents(float x, float y, bool bIsPressed) {
 	if (GSMachine::GetInstance()->IsRunning()) {
 		for (auto& button : m_buttonList) {
 			if (button->HandleTouchEvent(x, y, bIsPressed)) {
@@ -150,7 +150,7 @@ void GSWord::HandleTouchEvents(float x, float y, bool bIsPressed) {
 	}
 }
 
-void GSWord::HandleMouseMoveEvents(float x, float y)
+void GSAction::HandleMouseMoveEvents(float x, float y)
 {
 	for (auto& button : m_buttonList)
 		button->HandleMoveEvent(x, y);
@@ -163,7 +163,7 @@ void GSWord::HandleMouseMoveEvents(float x, float y)
 			button->HandleMoveEvent(x, y);		
 }
 
-void GSWord::UpdateChoiceObjects() {
+void GSAction::UpdateChoiceObjects() {
 	int totalWidth = key.size() * 100 + (key.size() - 1) * 20;
 	int leftAlign = (1280 - totalWidth) / 2;
 	m_choice.clear();
@@ -176,7 +176,7 @@ void GSWord::UpdateChoiceObjects() {
 	}
 }
 
-void GSWord::NewQuestion() {
+void GSAction::NewQuestion() {
 	key = animals[rand() % animals.size()];
 	m_question->SetTexture(key.c_str());
 	char c = rand() % 26 + 'a';

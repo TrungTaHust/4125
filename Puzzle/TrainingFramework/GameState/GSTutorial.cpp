@@ -17,11 +17,6 @@ GSTutorial::~GSTutorial() {
 void GSTutorial::Init() {
 	m_tutorialBackground = SceneManager::GetInstance()->GetObjectByID("tutorial_background");
 	m_buttonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_back"));
-	
-	m_objectVector.push_back(SceneManager::GetInstance()->GetObjectByID("tutorial_spell1"));
-	m_objectVector.push_back(SceneManager::GetInstance()->GetObjectByID("tutorial_spell2"));
-	m_objectVector.push_back(SceneManager::GetInstance()->GetObjectByID("tutorial_spell3"));
-	m_objectVector.push_back(SceneManager::GetInstance()->GetObjectByID("tutorial_spell4"));
 
 	AddSoundByName("over");
 	PlaySoundByName("over", 10, -1);

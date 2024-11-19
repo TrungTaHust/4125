@@ -45,7 +45,7 @@ Texture::Texture(const char* strTextureFileName) {
 	}
 }
 
-GLuint Texture::getTextureId() {
+GLuint Texture::getTextureId() {	
 	return m_textureID;
 }
 

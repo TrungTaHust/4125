@@ -1,11 +1,10 @@
 ﻿#CAMERA
-
 NEAR 0.1
 FAR 500.0
 FOV 1.0
 SPEED 5.0
 ###########################################################################
-#Animations: 2
+#Animations: 1
 ID coins
 MODEL Sprite2D
 TEXTURES 1
@@ -19,48 +18,8 @@ POSITION 50.0 50.0
 ROTATION 0.0 0.0 0.0 
 SCALE 60.0 60.0 
 --------------------------------------------------------------------------
-ID lightning_wall
-MODEL Sprite2D
-TEXTURES 1
-TEXTURE lightning_wall
-NUM_FRAMES 8
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.03
-SHADER Animation 
-POSITION 1200.0 480.0
-ROTATION 0.0 0.0 0.0
-SCALE 60.0 760.0 
---------------------------------------------------------------------------
-muốn comment gì ở đây cũng dc
 ###########################################################################
-#Aliens: 1
-
-ID mobAlien1
-
-MODEL Sprite2D
-TEXTURES 2
-TEXTURE a02 
-NUM_FRAMES 1
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-
-TEXTURE destroyed 
-NUM_FRAMES 5
-NUM_ACTION 1
-CURRENT_ACTION 0 
-FRAME_TIME 0.1
-
-SHADER Animation 
-SCALE 60.0 60.0 
-SPEED 60.0
-HEALTH 1
-SCORE 10
-COIN 10
---------------------------------------------------------------------------
-###########################################################################
-#Objects: 21
+#Objects: 12
 ID intro_logo
 MODEL Sprite2D
 TEXTURE logo
@@ -69,15 +28,6 @@ POSITION 640.0 480.0
 ROTATION 0.0 0.0 0.0
 SCALE 300.0 300.0 
 --------------------------------------------------------------------------
-ID z_laser_bullet
-MODEL Sprite2D
-TEXTURE z_laser_bullet
-SHADER TriangleShader
-POSITION 1200.0 480.0
-ROTATION 0.0 0.0 0.0
-SCALE 170.0 38.0 
---------------------------------------------------------------------------
-
 ID menu_background
 MODEL Sprite2D
 TEXTURE puzzle_background
@@ -109,30 +59,6 @@ SHADER TriangleShader
 POSITION 640.0 480.0
 ROTATION 0.0 0.0 0.0
 SCALE 1280.0 960.0
---------------------------------------------------------------------------
-ID human_base
-MODEL Sprite2D
-TEXTURE base
-SHADER TriangleShader
-POSITION 1200.0 480.0
-ROTATION 0.0 0.0 0.0
-SCALE 160.0 960.0
---------------------------------------------------------------------------
-ID play_upper_pane
-MODEL Sprite2D
-TEXTURE play_pane
-SHADER TriangleShader
-POSITION 640.0 50.0
-ROTATION 0.0 0.0 0.0
-SCALE 1280.0 100.0
---------------------------------------------------------------------------
-ID play_lower_pane
-MODEL Sprite2D
-TEXTURE play_pane
-SHADER TriangleShader
-POSITION 640.0 910.0
-ROTATION 0.0 0.0 0.0
-SCALE 1280.0 100.0
 --------------------------------------------------------------------------
 ID over_background
 MODEL Sprite2D
@@ -181,46 +107,6 @@ SHADER TriangleShader
 POSITION 640.0 480.0
 ROTATION 0.0 0.0 0.0
 SCALE 1280.0 960.0
---------------------------------------------------------------------------
-ID tutorial_spell1
-MODEL Sprite2D
-TEXTURE fire_spell
-SHADER TriangleShader
-POSITION 480.0 620.0
-ROTATION 0.0 0.0 0.0
-SCALE 50.0 50.0
---------------------------------------------------------------------------
-ID tutorial_spell2
-MODEL Sprite2D
-TEXTURE ice_spell
-SHADER TriangleShader
-POSITION 420.0 620.0
-ROTATION 0.0 0.0 0.0
-SCALE 50.0 50.0
---------------------------------------------------------------------------
-ID tutorial_spell3
-MODEL Sprite2D
-TEXTURE health_upgrade
-SHADER TriangleShader
-POSITION 360.0 620.0
-ROTATION 0.0 0.0 0.0
-SCALE 50.0 50.0
---------------------------------------------------------------------------
-ID tutorial_spell4
-MODEL Sprite2D
-TEXTURE bullet_upgrade
-SHADER TriangleShader
-POSITION 300.0 620.0
-ROTATION 0.0 0.0 0.0
-SCALE 50.0 50.0
---------------------------------------------------------------------------
-ID z_gun
-MODEL Sprite2D
-TEXTURE z_gun
-SHADER TriangleShader
-POSITION 1200.0 480.0
-ROTATION 0.0 0.0 0.0
-SCALE 100.0 100.0
 --------------------------------------------------------------------------
 ID aim
 MODEL Sprite2D

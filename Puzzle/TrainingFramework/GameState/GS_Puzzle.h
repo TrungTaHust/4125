@@ -4,8 +4,6 @@
 #include "../TrainingFramework/GameObject/Animation.h"
 #include "../TrainingFramework/GameObject/GameButton.h"
 #include "../TrainingFramework/GameObject/Text.h"
-#include "../BaseAlien.h"
-#include "../Bullet.h"
 #include "GSMachine.h"
 #include "../TrainingFramework/GameManager/SceneManager.h"
 #include "../TrainingFramework/GameManager/ResourceManager.h"

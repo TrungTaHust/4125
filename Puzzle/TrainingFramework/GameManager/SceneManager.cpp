@@ -130,57 +130,7 @@ void SceneManager::LoadScene(char* smFile) {
                 newAnimation->SetObjectID(animation_id);
                 m_animations.insert(std::make_pair(animation_id, newAnimation));
             }
-        }
-        else if (type.find("Alien") != std::string::npos) {
-            int numAnimations;
-            file >> numAnimations;
-            for (int i = 0; i < numAnimations; i++) {
-                std::string alien_id;
-                std::string model_id;
-                int numTexture;
-                std::vector<std::string> textureIds;
-                std::vector<GLint> numFrames, numAction, currentAction;
-                std::vector<GLfloat> frameTime;
-                std::string shader_id;
-                Vector2 size;
-                float speed;
-                int health;
-                int score;
-                int coin;
-
-                file >> type >> alien_id >> type >> model_id >> type >> numTexture;
-                for (int j = 0; j < numTexture; ++j) {
-                    std::string textureId;
-                    GLint frame, numAct, curAct;
-                    GLfloat frTime;
-                    file >> type >> textureId;
-                    textureIds.push_back(textureId);
-                    file >> type >> frame >> type >> numAct >> type >> curAct >> type >> frTime;
-                    numFrames.push_back(frame);
-                    numAction.push_back(numAct);
-                    currentAction.push_back(curAct);
-                    frameTime.push_back(frTime);
-                }
-
-                file >> type >> shader_id >> type >> size.x >> size.y 
-                    >> type >> speed >> type >> health >> type >> score >> type >> coin >> type; //Buffer ở cuối này là dòng gạch ngang trong file
-                // Lưu thông tin về alien vào đây
-                std::shared_ptr<Model> modelPtr = ResourceManager::GetInstance()->GetModelPointerByName(model_id.c_str());
-                std::shared_ptr<Shaders> shaderPtr = ResourceManager::GetInstance()->GetShaderPointerByName(shader_id.c_str());
-                std::vector<std::shared_ptr<Texture>> textureVector;
-                std::shared_ptr<Texture> texturePtr = std::make_shared<Texture>();
-                for (int j = 0; j < numTexture; ++j) {
-                    texturePtr = ResourceManager::GetInstance()->GetTexturePointerByName(textureIds[j].c_str());
-                    textureVector.push_back(texturePtr);
-                }
-
-                std::shared_ptr<BaseAlien> newAlien = std::make_shared<BaseAlien>(modelPtr, textureVector, shaderPtr, numFrames, numAction, currentAction, frameTime, speed, health, score);
-                newAlien->SetSize(size.x, size.y);
-                newAlien->SetCoin(coin);
-                newAlien->SetObjectID(alien_id);
-                m_aliens.insert(std::make_pair(alien_id, newAlien));
-            }
-            } 
+        }        
     }
     file.close();
 }
@@ -209,18 +159,6 @@ std::shared_ptr<Animation> SceneManager::GetAnimationByID(const char* animationI
     return nullptr;
 }
 
-std::shared_ptr<BaseAlien> SceneManager::GetAlienByID(const char* alienID)
-{
-    for (auto& it : m_aliens)
-    {
-        if (it.first == alienID)
-        {
-            return it.second;
-        }
-    }
-    return nullptr;
-}
-
 std::shared_ptr<GameButton> SceneManager::GetButtonByID(const char* buttonID)
 {
     for (auto& it : m_buttons)
@@ -234,20 +172,5 @@ std::shared_ptr<GameButton> SceneManager::GetButtonByID(const char* buttonID)
 }
 
 std::shared_ptr<Camera> SceneManager::GetCamera(const char* cameraID) {
-    /*
-    if (cameraID == "2D") 
-    {
-        return m_camera2D;
-    }
-
-    else if (cameraID == "3D") 
-    {
-        return m_camera3D;
-    }
-
-    else
-    {
-    */
         return m_camera;
-    //}
 }

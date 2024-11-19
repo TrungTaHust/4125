@@ -5,9 +5,12 @@
 #include "GSOver.h"
 #include "GSScore.h"
 #include "GSTutorial.h"
-#include "GSEndless.h"
 #include "GS_Puzzle.h"
 #include "GSWord.h"
+#include "GSFood.h"
+#include "GSColor.h"
+#include "GSAction.h"
+#include "GSSelectMap.h"	
 
 GSBase::GSBase()
 {
@@ -39,12 +42,18 @@ std::shared_ptr<GSBase> GSBase::CreateState(StateType stateType)
 		return std::make_shared<GSScore>();
 	case STATE_TUTORIAL:
 		return std::make_shared<GSTutorial>();
-	case STATE_ENDLESS:
-		return std::make_shared<GSEndless>();
 	case STATE_PUZZLE:
 		return std::make_shared<GSPuzzle>();
 	case STATE_WORD:
 		return std::make_shared<GSWord>();	
+	case STATE_FOOD:
+		return std::make_shared<GSFood>();
+	case STATE_COLOR:
+		return std::make_shared<GSColor>();
+	case STATE_ACTION:
+		return std::make_shared<GSAction>();
+	case STATE_SELECT_MAP:	
+		return std::make_shared<GSSelectMap>();
 	default:
 		break;
 	}

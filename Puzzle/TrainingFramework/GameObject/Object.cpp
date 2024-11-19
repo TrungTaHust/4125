@@ -59,6 +59,10 @@ Object::Object(
 
 void Object::Draw() 
 {
+	if (m_texture == nullptr) {
+		std::cout << "Texture is null: " << m_objectID << std::endl;
+		return;
+	}
 	glUseProgram(m_shader->program);
 
 	glBindBuffer(GL_ARRAY_BUFFER, m_model->getVboId());

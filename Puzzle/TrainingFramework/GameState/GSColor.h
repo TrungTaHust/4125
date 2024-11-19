@@ -10,12 +10,12 @@
 #include "../TrainingFramework/Globals.h"
 #include <cstdlib>
 
-class GSWord :
+class GSColor :
 	public GSBase
 {
 public:
-	GSWord();
-	~GSWord();
+	GSColor();
+	~GSColor();
 
 	void	Init() override;
 	void	Exit() override;

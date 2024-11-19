@@ -13,6 +13,5 @@ public:
 protected:
 private:
 	std::string m_ID;
-
 };
 

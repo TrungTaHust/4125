@@ -3,7 +3,6 @@
 #include "../TrainingFramework/GameObject/Object.h"
 #include "../TrainingFramework/GameObject/Animation.h"
 #include "../TrainingFramework/GameObject/GameButton.h"
-#include "../BaseAlien.h"
 #include "../TrainingFramework/GameObject/Text.h"
 
 void GetScore();
@@ -30,7 +29,6 @@ public:
 	void	SetScore(int score);
 private:
 	std::shared_ptr<Object> m_overBackground;
-	std::vector<std::shared_ptr<BaseAlien>> m_overAnimation;
 	std::vector<std::shared_ptr<GameButton>> m_buttonList;
 	Text m_text;
 	int m_score;

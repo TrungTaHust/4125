@@ -24,12 +24,3 @@ public:
 #define KEY_Z				'Z'
 #define KEY_X				'X'
 #define KEY_C				'C'
-
-//void Write(std::string& map) {
-//	std::ofstream outputFile("../TrainingFramework/map.txt");
-//	if (outputFile.is_open()) {
-//		outputFile << map << std::endl;
-//		outputFile.close();
-//	}
-//	return;
-//}
