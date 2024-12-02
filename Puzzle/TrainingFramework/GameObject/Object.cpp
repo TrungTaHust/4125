@@ -222,3 +222,21 @@ void Object::HandleMoveEvent(GLfloat x, GLfloat y)
 	else
 		m_alpha = 1.0f;		
 }
+
+bool Object::CheckCollide(std::shared_ptr<Object> target)
+{
+	float leftA = m_pos.x - m_width / 2;
+	float rightA = m_pos.x + m_width / 2;
+	float topA = m_pos.y - m_height / 2;
+	float bottomA = m_pos.y + m_height / 2;
+
+	float leftB = target->m_pos.x - target->m_width / 2;
+	float rightB = target->m_pos.x + target->m_width / 2;
+	float topB = target->m_pos.y - target->m_height / 2;
+	float bottomB = target->m_pos.y + target->m_height / 2;
+
+	if (rightA < leftB || leftA > rightB || bottomA < topB || topA > bottomB) {
+		return false; 
+	}
+	return true; 
+}

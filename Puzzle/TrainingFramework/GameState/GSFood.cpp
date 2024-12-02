@@ -31,18 +31,14 @@ void GSFood::Init()
 		sceneManager->GetButtonByID("button_tutorial")
 	};
 
-	m_question = std::make_shared<Object>("Sprite2D", "null", "TriangleShader");
-	m_question->Set2DPos(640, 200);
-	m_question->SetSize(200, 200);
+	m_basket = std::make_shared<Object>("Sprite2D", "basket", "TriangleShader");
+	m_basket->SetSize(200, 200);
 
-	NewQuestion();	
-	UpdateChoiceObjects();	
-
-	m_objectVector.push_back(m_question);
 	AddSoundByName("play");
 
 	AddSoundByName("correct");
 	PlaySoundByName("play", 7, -1);
+	m_time = 1;
 }
 
 void GSFood::Exit()
@@ -68,16 +64,20 @@ void GSFood::Resume() {
 }
 
 void GSFood::Update(float deltaTime) {
-	if (!isCorrect) UpdateChoiceObjects();
-	else {
-		m_time -= deltaTime;
-		if (m_time <= 0) {
-			isCorrect = false;
-			m_time = 1;
-			NewQuestion();			
-		}
+	m_time -= deltaTime;
+	if (m_time <= 0) {
+		m_time += 1.5;
+		NewFruit();
+	}
+	std::vector<std::shared_ptr<Object>> falling;
+
+	for (auto &fruit : m_falling) {
+		fruit->Set2DPos(fruit->GetPos().x, fruit->GetPos().y + deltaTime * 200);
+		if (fruit->GetPos().y <= 900 && !fruit->CheckCollide(m_basket))
+			falling.push_back(fruit);
 	}
 
+	m_falling = falling;
 }
 
 void GSFood::Draw(){
@@ -86,13 +86,13 @@ void GSFood::Draw(){
 	for (auto& button : m_buttonList)
 		button->Draw();
 
-	DrawVectorObject(m_choice);	
-
 	if (!GSMachine::GetInstance()->IsRunning())	{
 		SceneManager::GetInstance()->GetObjectByID("pause_frame")->Draw();
 		for (auto &button : m_pauseButtonList)
 			button->Draw();
 	}	
+	m_basket->Draw();
+	DrawVectorObject(m_falling);
 }
 
 void GSFood::HandleEvents()
@@ -114,19 +114,7 @@ void GSFood::HandleTouchEvents(float x, float y, bool bIsPressed) {
 					break;
 				};
 			}
-		}
-		
-		for (int i = 0; i < m_choice.size(); i++) {
-			if (m_choice[i]->HandleTouchEvent(x, y, bIsPressed)) {
-				if (i==index) {
-					PlaySoundByName("correct", 8, 0);
-					printf("Correct\n");
-					key.erase(i, 1);
-					isCorrect = true;
-					return;
-				}					
-			}
-		}
+		}		
 	}
 	else
 	{
@@ -152,30 +140,23 @@ void GSFood::HandleTouchEvents(float x, float y, bool bIsPressed) {
 
 void GSFood::HandleMouseMoveEvents(float x, float y)
 {
-	for (auto& button : m_buttonList)
-		button->HandleMoveEvent(x, y);
-
-	for (auto& button : m_choice)
-		button->HandleMoveEvent(x, y);
-
 	if (!GSMachine::GetInstance()->IsRunning())
 		for (auto& button : m_pauseButtonList)		
 			button->HandleMoveEvent(x, y);		
-}
-
-void GSFood::UpdateChoiceObjects() {
-	int totalWidth = key.size() * 100 + (key.size() - 1) * 20;
-	int leftAlign = (1280 - totalWidth) / 2;
-	m_choice.clear();
-	for (int i = 0; i < key.size(); i++) {
-		std::string fileName = std::string(1, key[i]);
-		auto slot = std::make_shared<Object>("Sprite2D", fileName.c_str(), "TriangleShader");
-		slot->Set2DPos(leftAlign + i * 120, 400);
-		slot->SetSize(100, 100);
-		m_choice.push_back(slot);
+	else {
+		for (auto& button : m_buttonList)
+			button->HandleMoveEvent(x, y);
+		m_basket->Set2DPos(x, 800);
 	}
 }
 
-void GSFood::NewQuestion() {
-	
+void GSFood::NewFruit() {
+	if (m_falling.size() >= 7) return;
+	key = fruits[rand() % fruits.size()];
+	auto fruit = std::make_shared<Object>("Sprite2D", key.c_str(), "TriangleShader");
+	int x = (rand() % 5) * 150 + 340;
+	fruit->Set2DPos(x, 50);
+	fruit->SetSize(100, 100);
+	m_falling.push_back(fruit);
 }
+

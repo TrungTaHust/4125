@@ -40,7 +40,7 @@ private:
 	std::shared_ptr<Object>m_question;
 	std::string key;
 	int index;
-	int m_time = 1;
+	float m_time = 1;
 	bool isCorrect;
 
 	std::vector<std::string> animals = {

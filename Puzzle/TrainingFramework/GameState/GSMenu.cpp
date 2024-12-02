@@ -18,10 +18,19 @@ GSMenu::~GSMenu()
 void GSMenu::Init()
 {
 	m_menuBackground = SceneManager::GetInstance()->GetObjectByID("menu_background");
-	m_buttonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_start"));
-	m_buttonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_endless"));
-	m_buttonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_exit"));
-	m_buttonList.push_back(SceneManager::GetInstance()->GetButtonByID("long_button_tutorial"));
+
+	auto sceneManager = SceneManager::GetInstance();
+	
+	m_buttonList = {
+		sceneManager->GetButtonByID("button_animals1"),
+		sceneManager->GetButtonByID("button_animals2"),
+		sceneManager->GetButtonByID("button_action"),
+		sceneManager->GetButtonByID("button_food"),
+		sceneManager->GetButtonByID("button_vehicles"),
+		sceneManager->GetButtonByID("button_number"),
+		sceneManager->GetButtonByID("button_exit")
+	};
+
 	m_text.SetPos({ 640, 190, 1 }); // Đặt vị trí của văn bản
 	m_text.GetTextColor() = SDL_Color({ 255, 255, 255, 255 }); // Đặt màu sắc của văn bản
 	m_text.GetTextSize() = 80; // Đặt kích thước của văn bản
@@ -85,14 +94,23 @@ void GSMenu::HandleTouchEvents(float x, float y, bool bIsPressed)
 		{
 			switch (button->m_type)
 			{
-			case BUTTON_START:
+			case BUTTON_ANIMALS1:
 				GSMachine::GetInstance()->PushState(StateType::STATE_PUZZLE);
 				break;
-			case BUTTON_ENDLESS:
+			case BUTTON_ANIMALS2:
 				GSMachine::GetInstance()->PushState(StateType::STATE_WORD);
 				break;
-			case BUTTON_TUTORIAL:
-				GSMachine::GetInstance()->PushState(StateType::STATE_TUTORIAL);
+			case BUTTON_ACTION:
+				GSMachine::GetInstance()->PushState(StateType::STATE_ACTION);
+				break;
+			case BUTTON_FOOD:
+				GSMachine::GetInstance()->PushState(StateType::STATE_FOOD);
+				break;
+			case BUTTON_VEHICLES:
+				GSMachine::GetInstance()->PushState(StateType::STATE_COLOR);
+				break;
+			case BUTTON_NUMBER:
+				GSMachine::GetInstance()->PushState(StateType::STATE_COUNT);
 				break;
 			case BUTTON_EXIT:
 				exit(0);

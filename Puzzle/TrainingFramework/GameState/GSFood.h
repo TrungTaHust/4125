@@ -29,18 +29,19 @@ public:
 	void	HandleTouchEvents(float x, float y, bool bIsPressed) override;
 	void	HandleMouseMoveEvents(float x, float y) override;
 
-	void	UpdateChoiceObjects();
-	void	NewQuestion();
+	void	NewFruit();
 private:
 	std::vector<std::shared_ptr<Object>> m_objectVector;
 	std::vector<std::shared_ptr<GameButton>> m_buttonList;
 	std::vector<std::shared_ptr<GameButton>> m_pauseButtonList;
-	std::vector<std::shared_ptr<Object>> m_choice;
+	std::vector<std::shared_ptr<Object>> m_falling;
+	std::shared_ptr<Object> m_basket;
 
+	
 	std::shared_ptr<Object>m_question;
 	std::string key;
 	int index;
-	int m_time = 1;
+	float m_time;
 	bool isCorrect;		
 
 	std::vector<std::string> fruits = {

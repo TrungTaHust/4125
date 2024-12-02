@@ -39,6 +39,7 @@ public:
 	void Set2DPos(GLfloat x, GLfloat y);
 	void Set2DPosV(Vector2 m_Pos);
 	void SetTexture(const char* textureName);
+	bool CheckCollide(std::shared_ptr<Object> target);
 	Vector2 GetPos() { return Vector2(m_pos.x, m_pos.y); }
 	Vector2 GetSize() const {
 		return Vector2(m_width, m_height);

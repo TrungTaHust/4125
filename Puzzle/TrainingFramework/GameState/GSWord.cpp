@@ -43,6 +43,7 @@ void GSWord::Init()
 
 	AddSoundByName("correct");
 	PlaySoundByName("play", 7, -1);
+	m_time = 1;
 }
 
 void GSWord::Exit()
@@ -68,12 +69,12 @@ void GSWord::Resume() {
 }
 
 void GSWord::Update(float deltaTime) {
-	if (!isCorrect) UpdateChoiceObjects();
-	else {
+	UpdateChoiceObjects();
+	if (isCorrect) {
 		m_time -= deltaTime;
 		if (m_time <= 0) {
 			isCorrect = false;
-			m_time = 1;
+			m_time += 1;
 			NewQuestion();			
 		}
 	}
@@ -178,8 +179,12 @@ void GSWord::UpdateChoiceObjects() {
 
 void GSWord::NewQuestion() {
 	key = animals[rand() % animals.size()];
-	m_question->SetTexture(key.c_str());
-	char c = rand() % 26 + 'a';
-	index = rand() % key.size();
-	key.insert(index, 1, c);
+	m_question->SetTexture(key.c_str());	
+	char c;
+	do {
+		c = rand() % 26 + 'a'; 
+		index = rand() % (key.size() + 1); 
+	} while ((index > 0 && c == key[index - 1]) || (index < key.size() && c == key[index])); 
+
+	key.insert(index, 1, c); 
 }

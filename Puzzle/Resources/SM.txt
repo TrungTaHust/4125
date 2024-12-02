@@ -117,7 +117,7 @@ ROTATION 0.0 0.0 0.0
 SCALE 50.0 50.0
 --------------------------------------------------------------------------
 ###########################################################################
-#Buttons: 15
+#Buttons: 21
 
 ID button_start
 Type BUTTON_START
@@ -253,5 +253,59 @@ SHADER TriangleShader
 POSITION 1200.0 600.0
 ROTATION 0.0 0.0 0.0
 SCALE 100.0 50.0
+--------------------------------------------------------------------------
+ID button_animals1
+Type BUTTON_ANIMALS1
+MODEL Sprite2D
+TEXTURE btn_animals1
+SHADER TriangleShader
+POSITION 500.0 500.0
+ROTATION 0.0 0.0 0.0
+SCALE 250.0 70.0
+--------------------------------------------------------------------------
+ID button_animals2
+Type BUTTON_ANIMALS2
+MODEL Sprite2D
+TEXTURE btn_animals2
+SHADER TriangleShader
+POSITION 500.0 600.0
+ROTATION 0.0 0.0 0.0
+SCALE 250.0 70.0
+--------------------------------------------------------------------------
+ID button_action
+Type BUTTON_ACTION
+MODEL Sprite2D
+TEXTURE btn_action
+SHADER TriangleShader
+POSITION 500.0 700.0
+ROTATION 0.0 0.0 0.0
+SCALE 250.0 70.0
+--------------------------------------------------------------------------
+ID button_food
+Type BUTTON_FOOD
+MODEL Sprite2D
+TEXTURE btn_food
+SHADER TriangleShader
+POSITION 780.0 500.0
+ROTATION 0.0 0.0 0.0
+SCALE 250.0 70.0
+--------------------------------------------------------------------------
+ID button_vehicles
+Type BUTTON_VEHICLES
+MODEL Sprite2D
+TEXTURE btn_vehicles
+SHADER TriangleShader
+POSITION 780.0 600.0
+ROTATION 0.0 0.0 0.0
+SCALE 250.0 70.0
+--------------------------------------------------------------------------
+ID button_number
+Type BUTTON_NUMBER
+MODEL Sprite2D
+TEXTURE btn_number
+SHADER TriangleShader
+POSITION 780.0 700.0
+ROTATION 0.0 0.0 0.0
+SCALE 250.0 70.0
 --------------------------------------------------------------------------
 ###########################################################################

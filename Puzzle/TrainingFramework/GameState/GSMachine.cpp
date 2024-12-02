@@ -46,8 +46,6 @@ void GSMachine::PopState()
 		m_StateStack.back()->Resume();
 		m_pActiveState = m_StateStack.back();
 	}
-
-
 }
 
 void GSMachine::PerformStateChange()
@@ -62,7 +60,6 @@ void GSMachine::PerformStateChange()
 		m_pActiveState = m_pNextState;
 		m_StateStack.push_back(m_pNextState);
 	}
-
 	m_pNextState = 0;
 }
 
@@ -91,7 +88,6 @@ void	GSMachine::Pause()
 {
 	if (IsRunning())
 	{
-		// Trò chơi đang chạy, tạm dừng nó và cài đặt trạng thái pause
 		m_running = false;
 		if (m_pActiveState)
 		{
@@ -104,7 +100,6 @@ void	GSMachine::Resume()
 {
 	if (!IsRunning())
 	{
-		// Trò chơi đã tạm dừng, tiếp tục nó và cài đặt trạng thái running
 		m_running = true;
 		if (m_pActiveState)
 		{
