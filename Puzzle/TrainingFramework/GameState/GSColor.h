@@ -36,22 +36,19 @@ private:
 	std::vector<std::shared_ptr<GameButton>> m_buttonList;
 	std::vector<std::shared_ptr<GameButton>> m_pauseButtonList;
 	std::vector<std::shared_ptr<Object>> m_choice;
+	std::vector<std::shared_ptr<Object>> m_question;
 
-	std::shared_ptr<Object>m_question;
 	std::string key;
 	int index;
 	int m_time = 1;
 	bool isCorrect;
 
-	std::vector<std::string> animals = {
-		"bear", "cat", "cow", "crab", "deer", "dog", "dolphin", "duck",
-		"elephant", "fox", "giraffe", "hippo", "horse", "koala", "lion",
-		"monkey", "mouse", "owl", "panda", "parrot", "pig", "rabbit",
-		"rhino", "sheep", "tiger", "turtle", "zebra"
+	std::vector<std::string> color = {
+		"black", "blue", "brown", "cyan", 
+		"dark_blue", "green", "grey", "lime", 
+		"orange", "pink", "purple", "red",
+		"white", "yellow"
 	};
 
-	std::vector<std::string> fruits = {
-		"apple", "avocado", "grape", "lemon", "mango", "orange",
-		"pineapple", "watermelon"
-	};	
+	
 };

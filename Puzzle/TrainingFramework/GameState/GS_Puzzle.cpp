@@ -121,7 +121,7 @@ void GSPuzzle::Update(float deltaTime) {
 			for (int i = 0; i < 3; i++) {
 				for (int j = 0; j < 2; j++) {
 					std::string fileName = animals[*it];
-					auto slot = std::make_shared<Object>("Sprite2D", fileName.c_str(), "TriangleShader");
+					auto slot = std::make_shared<Object>("Sprite2D", fileName.c_str(), "TriangleShader");					
 					slot->Set2DPos(400 + i * 240, 400 + j * 200);
 					slot->SetSize(200, 200);
 					m_choice.push_back(slot);

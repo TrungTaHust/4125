@@ -31,14 +31,47 @@ void GSColor::Init()
 		sceneManager->GetButtonByID("button_tutorial")
 	};
 
-	m_question = std::make_shared<Object>("Sprite2D", "null", "TriangleShader");
-	m_question->Set2DPos(640, 200);
-	m_question->SetSize(200, 200);
+	std::vector<int> uniqueIndices;
+	while (uniqueIndices.size() < 6) {
+		int randomIndex = rand() % color.size();
+		if (std::find(uniqueIndices.begin(), uniqueIndices.end(), randomIndex) == uniqueIndices.end()) {
+			uniqueIndices.push_back(randomIndex);
+		}
+	}
+
+	for (int i = 0; i < 6; i++) {
+		std::string fileName = color[uniqueIndices[i]];
+		auto slot = std::make_shared<Object>("Sprite2D", fileName.c_str(), "TriangleShader");
+		slot->Set2DPos(390 + i * 100, 300);
+		slot->SetSize(100, 100);
+		m_choice.push_back(slot);
+	}
+
+	for (int i = 0; i < 6; i++) {
+		std::string fileName = color[uniqueIndices[i]];
+		auto slot = std::make_shared<Object>("Sprite2D", fileName.c_str(), "TriangleShader");
+		slot->Set2DPos(390 + i * 100, 600);
+		slot->SetSize(100, 100);
+		m_question.push_back(slot);
+	}
+
+	/*for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 2; j++) {
+			int index = i * 2 + j; 
+			if (index < uniqueIndices.size()) {
+				std::string fileName = color[uniqueIndices[index]];
+				auto slot = std::make_shared<Object>("Sprite2D", fileName.c_str(), "TriangleShader");
+				slot->Set2DPos(400 + i * 240, 600 + j * 200);
+				slot->SetSize(200, 200);
+				m_question.push_back(slot);
+			}
+		}
+	}*/
+
 
 	NewQuestion();	
 	UpdateChoiceObjects();	
 
-	m_objectVector.push_back(m_question);
 	AddSoundByName("play");
 
 	AddSoundByName("correct");
@@ -68,21 +101,13 @@ void GSColor::Resume() {
 }
 
 void GSColor::Update(float deltaTime) {
-	if (!isCorrect) UpdateChoiceObjects();
-	else {
-		m_time -= deltaTime;
-		if (m_time <= 0) {
-			isCorrect = false;
-			m_time = 1;
-			NewQuestion();			
-		}
-	}
-
+	
 }
 
 void GSColor::Draw(){
-	DrawVectorObject(m_objectVector);	
-	
+	DrawVectorObject(m_objectVector);
+	DrawVectorObject(m_question);
+
 	for (auto& button : m_buttonList)
 		button->Draw();
 
@@ -164,22 +189,9 @@ void GSColor::HandleMouseMoveEvents(float x, float y)
 }
 
 void GSColor::UpdateChoiceObjects() {
-	int totalWidth = key.size() * 100 + (key.size() - 1) * 20;
-	int leftAlign = (1280 - totalWidth) / 2;
-	m_choice.clear();
-	for (int i = 0; i < key.size(); i++) {
-		std::string fileName = std::string(1, key[i]);
-		auto slot = std::make_shared<Object>("Sprite2D", fileName.c_str(), "TriangleShader");
-		slot->Set2DPos(leftAlign + i * 120, 400);
-		slot->SetSize(100, 100);
-		m_choice.push_back(slot);
-	}
+	
 }
 
 void GSColor::NewQuestion() {
-	key = animals[rand() % animals.size()];
-	m_question->SetTexture(key.c_str());
-	char c = rand() % 26 + 'a';
-	index = rand() % key.size();
-	key.insert(index, 1, c);
+	
 }

@@ -8,6 +8,7 @@
 GSFood::GSFood() : index(0), isCorrect(false)
 {
 	m_stateType = STATE_PUZZLE;		
+	m_time = 1;
 }
 
 GSFood::~GSFood()
@@ -34,11 +35,15 @@ void GSFood::Init()
 	m_basket = std::make_shared<Object>("Sprite2D", "basket", "TriangleShader");
 	m_basket->SetSize(200, 200);
 
-	AddSoundByName("play");
+	m_question = std::make_shared<Object>("Sprite2D", "null", "TriangleShader");
+	m_question->Set2DPos(1040, 200);
+	m_question->SetSize(200, 200);
+	NewQuestion();
+	m_objectVector.push_back(m_question);
 
+	AddSoundByName("play");
 	AddSoundByName("correct");
-	PlaySoundByName("play", 7, -1);
-	m_time = 1;
+	PlaySoundByName("play", 7, -1);		
 }
 
 void GSFood::Exit()
@@ -75,8 +80,13 @@ void GSFood::Update(float deltaTime) {
 		fruit->Set2DPos(fruit->GetPos().x, fruit->GetPos().y + deltaTime * 200);
 		if (fruit->GetPos().y <= 900 && !fruit->CheckCollide(m_basket))
 			falling.push_back(fruit);
-	}
 
+		if (fruit->CheckCollide(m_basket))
+			if (fruit->getTexture() == m_question->getTexture()) {
+				PlaySoundByName("correct", 8, 0);
+				NewQuestion();
+			}
+	}
 	m_falling = falling;
 }
 
@@ -160,3 +170,7 @@ void GSFood::NewFruit() {
 	m_falling.push_back(fruit);
 }
 
+void GSFood::NewQuestion() {
+	index = rand() % fruits.size();
+	m_question->SetTexture(fruits[index].c_str());
+}

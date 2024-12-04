@@ -29,6 +29,7 @@ public:
 	void	HandleTouchEvents(float x, float y, bool bIsPressed) override;
 	void	HandleMouseMoveEvents(float x, float y) override;
 
+	void	NewQuestion();
 	void	NewFruit();
 private:
 	std::vector<std::shared_ptr<Object>> m_objectVector;
@@ -39,6 +40,7 @@ private:
 
 	
 	std::shared_ptr<Object>m_question;
+	std::vector<std::shared_ptr<Object>> m_choice;
 	std::string key;
 	int index;
 	float m_time;
