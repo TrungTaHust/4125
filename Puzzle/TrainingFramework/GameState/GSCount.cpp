@@ -5,9 +5,9 @@
 #include <random>
 #include <iterator>
 
-GSCount::GSCount() : index(0), isCorrect(false)
+GSCount::GSCount() : isCorrect(false)
 {
-	m_stateType = STATE_PUZZLE;		
+	m_stateType = STATE_COUNT;		
 }
 
 GSCount::~GSCount()
@@ -17,6 +17,7 @@ GSCount::~GSCount()
 void GSCount::Init()
 {
 	srand(static_cast<unsigned>(time(0)));
+	count = 0;
 
 	auto sceneManager = SceneManager::GetInstance();
 	m_objectVector.push_back(sceneManager->GetObjectByID("zoo_background"));
@@ -36,7 +37,6 @@ void GSCount::Init()
 	m_question->SetSize(200, 200);
 
 	NewQuestion();	
-	UpdateChoiceObjects();	
 
 	m_objectVector.push_back(m_question);
 	AddSoundByName("play");
@@ -68,15 +68,36 @@ void GSCount::Resume() {
 }
 
 void GSCount::Update(float deltaTime) {
-	if (!isCorrect) UpdateChoiceObjects();
-	else {
+	if (isCorrect) {
 		m_time -= deltaTime;
 		if (m_time <= 0) {
 			isCorrect = false;
 			m_time = 1;
-			NewQuestion();			
+			NewQuestion();
 		}
 	}
+	else
+		for (auto& it : m_choice)
+			if (it->GetTouch())	{
+				it->Set2DPos(it->GetPos().x + 400 * deltaTime, it->GetPos().y);
+				if (it->GetPos().x >= 1000) {
+					std::string fileName = color[rand() % color.size()];
+
+					PlaySoundByName("correct", 8, 0);
+					it->Set2DPos(300, it->GetPos().y);
+					it->SetTexture(fileName.c_str());
+					it->SetTouch(false);
+
+					count++;
+					if (key == count) {
+						PlaySoundByName("correct", 8, 0);
+						printf("Correct\n");
+						count = 0;
+						isCorrect = true;
+						return;
+					}
+				}
+			}
 
 }
 
@@ -116,20 +137,11 @@ void GSCount::HandleTouchEvents(float x, float y, bool bIsPressed) {
 			}
 		}
 		
-		for (int i = 0; i < m_choice.size(); i++) {
-			if (m_choice[i]->HandleTouchEvent(x, y, bIsPressed)) {
-				if (i==index) {
-					PlaySoundByName("correct", 8, 0);
-					printf("Correct\n");
-					key.erase(i, 1);
-					isCorrect = true;
-					return;
-				}					
-			}
-		}
+		for (int i = 0; i < m_choice.size(); i++) 
+			if (m_choice[i]->HandleTouchEvent(x, y, bIsPressed)) 
+				m_choice[i]->SetTouch(true);		
 	}
-	else
-	{
+	else {
 		for (auto& button : m_pauseButtonList)
 			if (button->HandleTouchEvent(x, y, bIsPressed))
 			{
@@ -163,23 +175,15 @@ void GSCount::HandleMouseMoveEvents(float x, float y)
 			button->HandleMoveEvent(x, y);		
 }
 
-void GSCount::UpdateChoiceObjects() {
-	int totalWidth = key.size() * 100 + (key.size() - 1) * 20;
-	int leftAlign = (1280 - totalWidth) / 2;
+void GSCount::NewQuestion() {
+	key = rand() % 8 + 1;
+	m_question->SetTexture(("0" + std::to_string(key)).c_str());
 	m_choice.clear();
-	for (int i = 0; i < key.size(); i++) {
-		std::string fileName = std::string(1, key[i]);
+	for (int i = 0; i < 5; i++) {
+		std::string fileName = color[rand() % color.size()];
 		auto slot = std::make_shared<Object>("Sprite2D", fileName.c_str(), "TriangleShader");
-		slot->Set2DPos(leftAlign + i * 120, 400);
+		slot->Set2DPos(300, 240 + i * 120);
 		slot->SetSize(100, 100);
 		m_choice.push_back(slot);
 	}
-}
-
-void GSCount::NewQuestion() {
-	key = animals[rand() % animals.size()];
-	m_question->SetTexture(key.c_str());
-	char c = rand() % 26 + 'a';
-	index = rand() % key.size();
-	key.insert(index, 1, c);
 }

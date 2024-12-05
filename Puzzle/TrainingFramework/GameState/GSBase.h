@@ -14,7 +14,6 @@ enum StateType {
 	STATE_GAMEOVER,
 	STATE_SCORE,
 	STATE_TUTORIAL,
-	STATE_SELECT_MAP,
 	STATE_FOOD,
 	STATE_PUZZLE,
 	STATE_WORD,
@@ -48,7 +47,6 @@ public:
 
 	void AddSoundByName(const char* soundName);
 	void PlaySoundByName(const char* soundName, int channel, int loop);
-	//void PlaySingleSoundByName(const char* soundName);
 	void PauseSoundByName(const char* soundName);
 	void ResumeSoundByName(const char* soundName);
 	void StopSoundByName(const char* soundName, int channel);
@@ -71,6 +69,5 @@ protected:
 	std::vector<std::shared_ptr<Text>> m_upgradeTextCostVector;
 
 	std::vector<int> soundChannelStates;
-
 };
 

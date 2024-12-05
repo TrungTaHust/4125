@@ -7,7 +7,7 @@
 
 GSAction::GSAction() : index(0), isCorrect(false)
 {
-	m_stateType = STATE_PUZZLE;		
+	m_stateType = STATE_ACTION;		
 }
 
 GSAction::~GSAction()
@@ -31,18 +31,24 @@ void GSAction::Init()
 		sceneManager->GetButtonByID("button_tutorial")
 	};
 
+	for (int i = 0; i < 6; i++) {		
+		auto slot = std::make_shared<Object>("Sprite2D", "null", "TriangleShader");
+		slot->Set2DPos(290 + i * 120, 700);
+		slot->SetSize(100, 100);
+		m_keyboard.push_back(slot);
+	}
+
 	m_question = std::make_shared<Object>("Sprite2D", "null", "TriangleShader");
 	m_question->Set2DPos(640, 200);
 	m_question->SetSize(200, 200);
 
 	NewQuestion();	
-	UpdateChoiceObjects();	
 
 	m_objectVector.push_back(m_question);
 	AddSoundByName("play");
 
 	AddSoundByName("correct");
-	PlaySoundByName("play", 7, -1);
+	PlaySoundByName("play", 7, -1);	
 }
 
 void GSAction::Exit()
@@ -68,8 +74,8 @@ void GSAction::Resume() {
 }
 
 void GSAction::Update(float deltaTime) {
-	if (!isCorrect) UpdateChoiceObjects();
-	else {
+	if (isCorrect) {
+		UpdateChoiceObjects();
 		m_time -= deltaTime;
 		if (m_time <= 0) {
 			isCorrect = false;
@@ -77,7 +83,6 @@ void GSAction::Update(float deltaTime) {
 			NewQuestion();			
 		}
 	}
-
 }
 
 void GSAction::Draw(){
@@ -86,7 +91,8 @@ void GSAction::Draw(){
 	for (auto& button : m_buttonList)
 		button->Draw();
 
-	DrawVectorObject(m_choice);	
+	DrawVectorObject(m_choice);
+	DrawVectorObject(m_keyboard);
 
 	if (!GSMachine::GetInstance()->IsRunning())	{
 		SceneManager::GetInstance()->GetObjectByID("pause_frame")->Draw();
@@ -105,7 +111,7 @@ void GSAction::HandleKeyEvents(int key, bool bIsPressed)
 
 void GSAction::HandleTouchEvents(float x, float y, bool bIsPressed) {
 	if (GSMachine::GetInstance()->IsRunning()) {
-		for (auto& button : m_buttonList) {
+		for (auto& button : m_buttonList) 
 			if (button->HandleTouchEvent(x, y, bIsPressed)) {
 				switch (button->m_type) {
 				case BUTTON_PAUSE:
@@ -113,21 +119,17 @@ void GSAction::HandleTouchEvents(float x, float y, bool bIsPressed) {
 					button->SetAlpha(0.5f);
 					break;
 				};
-			}
-		}
-		
-		for (int i = 0; i < m_choice.size(); i++) {
-			if (m_choice[i]->HandleTouchEvent(x, y, bIsPressed)) {
-				if (i==index) {
+			}			
+		std::string str(1, c);
+		for (auto& button : m_keyboard)
+			if (button->HandleTouchEvent(x, y, bIsPressed)) {
+				if (button->getTexture()->GetID() == str) {
 					PlaySoundByName("correct", 8, 0);
-					printf("Correct\n");
-					key.erase(i, 1);
 					isCorrect = true;
-					return;
-				}					
+				};
 			}
-		}
 	}
+
 	else
 	{
 		for (auto& button : m_pauseButtonList)
@@ -177,9 +179,32 @@ void GSAction::UpdateChoiceObjects() {
 }
 
 void GSAction::NewQuestion() {
-	key = animals[rand() % animals.size()];
+	key = action[rand() % action.size()];
 	m_question->SetTexture(key.c_str());
-	char c = rand() % 26 + 'a';
-	index = rand() % key.size();
-	key.insert(index, 1, c);
+	int index = rand() % key.size();
+	c = key[index];
+	std::string str(1, c);
+	UpdateChoiceObjects();
+	m_choice[index]->SetTexture("star");
+
+	std::set<char> uniqueChars;
+	uniqueChars.insert(c);
+	std::srand(static_cast<unsigned>(std::time(nullptr)));
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> dis(0, 25);
+	while (uniqueChars.size() < 6) {
+		char randomChar = static_cast<char>('a' + std::rand() % 26);
+		if (uniqueChars.find(randomChar) == uniqueChars.end()) {
+			uniqueChars.insert(randomChar);
+		}
+	}
+
+	std::vector<char> shuffledChars(uniqueChars.begin(), uniqueChars.end());
+	std::shuffle(shuffledChars.begin(), shuffledChars.end(), gen);
+
+	for (int i = 0; i < 6; i++) {
+		std::string fileName = std::string(1, shuffledChars[i]);
+		m_keyboard[i]->SetTexture(fileName.c_str());
+	}
 }

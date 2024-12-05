@@ -65,6 +65,8 @@ public:
 
 	bool HandleTouchEvent(GLfloat x, GLfloat y, bool bIsPressed);
 	void HandleMoveEvent(GLfloat x, GLfloat y);
+	void SetTouch(bool isTouch);
+	bool GetTouch() { return m_isClick;	};
 
 protected:
 	std::string m_objectID;
@@ -81,7 +83,7 @@ protected:
 	GLfloat m_width;
 	GLfloat m_height;
 
-	bool m_isHover;
-	bool m_isClick;
+	bool m_isHover = false;
+	bool m_isClick = false;
 };
 

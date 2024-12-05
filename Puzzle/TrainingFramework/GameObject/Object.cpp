@@ -240,3 +240,8 @@ bool Object::CheckCollide(std::shared_ptr<Object> target)
 	}
 	return true; 
 }
+
+void Object::SetTouch(bool isTouch) {
+	m_isClick = isTouch;
+	return;
+}

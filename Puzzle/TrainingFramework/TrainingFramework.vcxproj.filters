@@ -101,9 +101,6 @@
     <ClCompile Include="GameState\GSCount.cpp">
       <Filter>SourceFile\GameState</Filter>
     </ClCompile>
-    <ClCompile Include="GameState\GSSelectMap.cpp">
-      <Filter>SourceFile\GameState</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager\ResourceManager.h">
@@ -194,9 +191,6 @@
       <Filter>SourceFile\GameState</Filter>
     </ClInclude>
     <ClInclude Include="GameState\GSCount.h">
-      <Filter>SourceFile\GameState</Filter>
-    </ClInclude>
-    <ClInclude Include="GameState\GSSelectMap.h">
       <Filter>SourceFile\GameState</Filter>
     </ClInclude>
   </ItemGroup>

@@ -131,7 +131,6 @@
     <ClCompile Include="GameState\GSMenu.cpp" />
     <ClCompile Include="GameState\GSOver.cpp" />
     <ClCompile Include="GameState\GSScore.cpp" />
-    <ClCompile Include="GameState\GSSelectMap.cpp" />
     <ClCompile Include="GameState\GSTutorial.cpp" />
     <ClCompile Include="GameState\GSWord.cpp" />
     <ClCompile Include="GameState\GS_Puzzle.cpp" />
@@ -163,7 +162,6 @@
     <ClInclude Include="GameState\GSMenu.h" />
     <ClInclude Include="GameState\GSOver.h" />
     <ClInclude Include="GameState\GSScore.h" />
-    <ClInclude Include="GameState\GSSelectMap.h" />
     <ClInclude Include="GameState\GSTutorial.h" />
     <ClInclude Include="GameState\GSWord.h" />
     <ClInclude Include="GameState\GS_Puzzle.h" />

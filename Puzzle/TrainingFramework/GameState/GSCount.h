@@ -29,7 +29,6 @@ public:
 	void	HandleTouchEvents(float x, float y, bool bIsPressed) override;
 	void	HandleMouseMoveEvents(float x, float y) override;
 
-	void	UpdateChoiceObjects();
 	void	NewQuestion();
 private:
 	std::vector<std::shared_ptr<Object>> m_objectVector;
@@ -37,21 +36,16 @@ private:
 	std::vector<std::shared_ptr<GameButton>> m_pauseButtonList;
 	std::vector<std::shared_ptr<Object>> m_choice;
 
-	std::shared_ptr<Object>m_question;
-	std::string key;
-	int index;
-	int m_time = 1;
+	std::shared_ptr<Object> m_question;
+	int key;
+	int count;
+	float m_time = 1;
 	bool isCorrect;
 
-	std::vector<std::string> animals = {
-		"bear", "cat", "cow", "crab", "deer", "dog", "dolphin", "duck",
-		"elephant", "fox", "giraffe", "hippo", "horse", "koala", "lion",
-		"monkey", "mouse", "owl", "panda", "parrot", "pig", "rabbit",
-		"rhino", "sheep", "tiger", "turtle", "zebra"
-	};
-
-	std::vector<std::string> fruits = {
-		"apple", "avocado", "grape", "lemon", "mango", "orange",
-		"pineapple", "watermelon"
+	std::vector<std::string> color = {
+		"black_vec", "blue_vec", "brown_vec", "cyan_vec",
+		"dark_blue_vec", "green_vec", "grey_vec", "lime_vec",
+		"orange_vec", "pink_vec", "purple_vec", "red_vec",
+		"white_vec", "yellow_vec"
 	};	
 };

@@ -7,7 +7,7 @@
 
 GSColor::GSColor() : index(0), isCorrect(false)
 {
-	m_stateType = STATE_PUZZLE;		
+	m_stateType = STATE_COLOR;		
 }
 
 GSColor::~GSColor()
@@ -44,6 +44,7 @@ void GSColor::Init()
 		auto slot = std::make_shared<Object>("Sprite2D", fileName.c_str(), "TriangleShader");
 		slot->Set2DPos(390 + i * 100, 300);
 		slot->SetSize(100, 100);
+		slot->SetTouch(false);
 		m_choice.push_back(slot);
 	}
 
@@ -55,23 +56,13 @@ void GSColor::Init()
 		m_question.push_back(slot);
 	}
 
-	/*for (int i = 0; i < 3; i++) {
-		for (int j = 0; j < 2; j++) {
-			int index = i * 2 + j; 
-			if (index < uniqueIndices.size()) {
-				std::string fileName = color[uniqueIndices[index]];
-				auto slot = std::make_shared<Object>("Sprite2D", fileName.c_str(), "TriangleShader");
-				slot->Set2DPos(400 + i * 240, 600 + j * 200);
-				slot->SetSize(200, 200);
-				m_question.push_back(slot);
-			}
-		}
-	}*/
+	std::random_device rd;
+	std::mt19937 g(rd());
+	std::shuffle(m_question.begin(), m_question.end(), g);
 
-
-	NewQuestion();	
-	UpdateChoiceObjects();	
-
+	for (size_t i = 0; i < m_question.size(); i++) 
+		m_question[i]->Set2DPos(390 + i * 100, 600); 
+	
 	AddSoundByName("play");
 
 	AddSoundByName("correct");
@@ -101,7 +92,21 @@ void GSColor::Resume() {
 }
 
 void GSColor::Update(float deltaTime) {
-	
+	std::vector<std::shared_ptr<Object>> choice;
+	for (auto &it : m_choice)	{
+		bool check = true;
+		if (!it->GetTouch()) {			
+			for (auto& question : m_question)
+				if (it->CheckCollide(question)) {
+					check = false;
+					PlaySoundByName("correct", 8, 0);
+				}			
+		}
+		if (check)
+			choice.push_back(it);
+	}
+
+	m_choice = choice;
 }
 
 void GSColor::Draw(){
@@ -141,17 +146,8 @@ void GSColor::HandleTouchEvents(float x, float y, bool bIsPressed) {
 			}
 		}
 		
-		for (int i = 0; i < m_choice.size(); i++) {
-			if (m_choice[i]->HandleTouchEvent(x, y, bIsPressed)) {
-				if (i==index) {
-					PlaySoundByName("correct", 8, 0);
-					printf("Correct\n");
-					key.erase(i, 1);
-					isCorrect = true;
-					return;
-				}					
-			}
-		}
+		for (int i = 0; i < m_choice.size(); i++) 			
+			m_choice[i]->SetTouch(m_choice[i]->HandleTouchEvent(x, y, bIsPressed));			
 	}
 	else
 	{
@@ -180,8 +176,11 @@ void GSColor::HandleMouseMoveEvents(float x, float y)
 	for (auto& button : m_buttonList)
 		button->HandleMoveEvent(x, y);
 
-	for (auto& button : m_choice)
+	for (auto& button : m_choice) {
 		button->HandleMoveEvent(x, y);
+		if (button->GetTouch())
+			button->Set2DPos(x, y);
+	}
 
 	if (!GSMachine::GetInstance()->IsRunning())
 		for (auto& button : m_pauseButtonList)		

@@ -44,10 +44,10 @@ private:
 	bool isCorrect;
 
 	std::vector<std::string> color = {
-		"black", "blue", "brown", "cyan", 
-		"dark_blue", "green", "grey", "lime", 
-		"orange", "pink", "purple", "red",
-		"white", "yellow"
+		"black_vec", "blue_vec", "brown_vec", "cyan_vec", 
+		"dark_blue_vec", "green_vec", "grey_vec", "lime_vec", 
+		"orange_vec", "pink_vec", "purple_vec", "red_vec",
+		"white_vec", "yellow_vec"
 	};
 
 	

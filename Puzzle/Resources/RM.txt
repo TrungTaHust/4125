@@ -2,7 +2,7 @@
 ID 0	FILE Sprite2D
 ID 1	FILE Rectangle
 
-#2DTextures: 148
+#2DTextures: 155
 ID 1 FILE btn/btn_start
 ID 2 FILE btn/btn_exit
 ID 3 FILE btn/btn_menu
@@ -127,20 +127,20 @@ ID 121 FILE animals/watermelon
 ID 122 FILE animals/zebra
 ID 123 FILE zoo_background
 ID 124 FILE basket
-ID 125 FILE vehicle/black
-ID 126 FILE vehicle/blue
-ID 127 FILE vehicle/brown
-ID 128 FILE vehicle/cyan
-ID 129 FILE vehicle/dark_blue
-ID 130 FILE vehicle/green
-ID 131 FILE vehicle/grey
-ID 132 FILE vehicle/lime
-ID 133 FILE vehicle/orange
-ID 134 FILE vehicle/pink
-ID 135 FILE vehicle/purple
-ID 136 FILE vehicle/red
-ID 137 FILE vehicle/white
-ID 138 FILE vehicle/yellow
+ID 125 FILE vehicle/black_vec
+ID 126 FILE vehicle/blue_vec
+ID 127 FILE vehicle/brown_vec
+ID 128 FILE vehicle/cyan_vec
+ID 129 FILE vehicle/dark_blue_vec
+ID 130 FILE vehicle/green_vec
+ID 131 FILE vehicle/grey_vec
+ID 132 FILE vehicle/lime_vec
+ID 133 FILE vehicle/orange_vec
+ID 134 FILE vehicle/pink_vec
+ID 135 FILE vehicle/purple_vec
+ID 136 FILE vehicle/red_vec
+ID 137 FILE vehicle/white_vec
+ID 138 FILE vehicle/yellow_vec
 ID 139 FILE num/01
 ID 140 FILE num/02
 ID 141 FILE num/03
@@ -151,6 +151,13 @@ ID 145 FILE num/07
 ID 146 FILE num/08
 ID 147 FILE num/09
 ID 148 FILE num/10
+ID 149 FILE action/soccer
+ID 150 FILE action/skating
+ID 151 FILE action/skipping
+ID 152 FILE action/drawing
+ID 153 FILE action/running
+ID 154 FILE action/riding
+ID 155 FILE star
 
 
 #Shaders: 3

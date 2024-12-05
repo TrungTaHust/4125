@@ -10,7 +10,7 @@
 #include "GSFood.h"
 #include "GSColor.h"
 #include "GSAction.h"
-#include "GSSelectMap.h"	
+#include "GSCount.h"
 
 GSBase::GSBase()
 {
@@ -52,8 +52,8 @@ std::shared_ptr<GSBase> GSBase::CreateState(StateType stateType)
 		return std::make_shared<GSColor>();
 	case STATE_ACTION:
 		return std::make_shared<GSAction>();
-	case STATE_SELECT_MAP:	
-		return std::make_shared<GSSelectMap>();
+	case STATE_COUNT:
+		return std::make_shared<GSCount>();
 	default:
 		break;
 	}

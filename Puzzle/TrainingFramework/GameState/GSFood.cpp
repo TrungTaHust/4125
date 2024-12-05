@@ -7,7 +7,7 @@
 
 GSFood::GSFood() : index(0), isCorrect(false)
 {
-	m_stateType = STATE_PUZZLE;		
+	m_stateType = STATE_FOOD;		
 	m_time = 1;
 }
 
