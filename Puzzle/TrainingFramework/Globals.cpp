@@ -66,23 +66,6 @@ void writeFile(const std::vector<DayData>& data) {
     file.close();
 }
 
-void updateData(std::vector<DayData>& data, const DayData& newData) {
-    for (auto& day : data) {
-        if (day.date == newData.date) {
-            for (const auto& pair : newData.values) {
-                const std::string& key = pair.first;
-                int newValue = pair.second;
-
-                if (day.values[key] < newValue) {
-                    day.values[key] = newValue; 
-                }
-            }
-            return;
-        }
-    }
-    data.push_back(newData);
-}
-
 std::string getTodayDate() {
     auto now = std::time(nullptr);
     std::tm* tm = std::localtime(&now);
@@ -104,4 +87,26 @@ DayData createDefaultDayData(const std::string& date) {
         {"fruit", 0}
     };
     return dayData;
+}
+
+void updateData(    
+    const std::string& key,
+    int value
+) {
+    std::vector<DayData> data = readFile();
+    std::string todayDate = getTodayDate();
+    auto it = std::find_if(data.begin(), data.end(), [&todayDate](const DayData& d) {
+        return d.date == todayDate;
+        });
+
+    if (it != data.end()) {
+        it->values[key] = std::max(it->values[key], value);
+        return;
+    }
+    else {
+        DayData newDayData = createDefaultDayData(todayDate);
+        newDayData.values[key] = std::max(newDayData.values[key], value);
+        data.push_back(newDayData);
+        writeFile(data);
+    }
 }

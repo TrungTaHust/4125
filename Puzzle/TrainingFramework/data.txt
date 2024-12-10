@@ -1,6 +1,6 @@
 10/12/2024
 action: 0
-anim1: 0
+anim1: 28
 anim2: 0
 fruit: 0
 number: 0

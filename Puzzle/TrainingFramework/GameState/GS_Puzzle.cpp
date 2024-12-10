@@ -182,26 +182,7 @@ void GSPuzzle::HandleTouchEvents(float x, float y, bool bIsPressed) {
 				}
 				if (totalClick == 20 || correctAns == 2) {
 					int anim1Value = correctAns * 100 / totalClick;
-
-					std::vector<DayData> data = readFile();
-					std::string todayDate = getTodayDate();
-
-					auto it = std::find_if(data.begin(), data.end(), [&todayDate](const DayData& d) {
-						return d.date == todayDate;
-						});
-
-					DayData todayData;
-					if (it != data.end()) {
-						todayData = *it;
-					}
-					else {
-						todayData = createDefaultDayData(todayDate);
-						data.push_back(todayData); 
-					}
-
-					todayData.values["anim1"] = max(todayData.values["anim1"], anim1Value);
-					writeFile(data);
-
+					updateData("anim1", anim1Value);	
 					GSMachine::GetInstance()->PushState(STATE_GAMEOVER);
 				}
 				printf("Total click: %d\nCorrect: %d\nScore: %d\n", totalClick, correctAns, correctAns * 100 / totalClick);

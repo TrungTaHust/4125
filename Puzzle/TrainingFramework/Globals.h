@@ -31,9 +31,9 @@ public:
 // Các hàm xử lý dữ liệu file
 std::vector<DayData> readFile();
 void writeFile(const std::vector<DayData>& data);
-void updateData(std::vector<DayData>& data, const DayData& newData);
 std::string getTodayDate();
 DayData createDefaultDayData(const std::string& date);
+void updateData(const std::string& key, int value);
 
 // Định nghĩa các phím
 #define KEY_UP     VK_UP
