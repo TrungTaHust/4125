@@ -5,9 +5,7 @@
 #include <random>
 #include <iterator>
 
-GSPuzzle::GSPuzzle()
-	: answer("     "), check("00000")
-{
+GSPuzzle::GSPuzzle() {
 	m_stateType = STATE_PUZZLE;	
 }
 
@@ -59,9 +57,11 @@ void GSPuzzle::Init()
 			++it;
 		}
 	}	
-	m_question = std::make_shared<Object>("Sprite2D", animals[key].c_str(), "TriangleShader");
+
+	std::string fileName = "q_" + animals[key];
+	m_question = std::make_shared<Object>("Sprite2D", fileName.c_str(), "TriangleShader");
 	m_question->Set2DPos(640, 200);
-	m_question->SetSize(200, 200);
+	m_question->SetSize(300, 200);
 
 	m_objectVector.push_back(m_question);
 	AddSoundByName("play");
@@ -96,11 +96,12 @@ void GSPuzzle::Update(float deltaTime) {
 		m_time -= deltaTime;
 		if (m_time <= 0) {
 			isCorrect = false;
-			m_time = 2;
+			m_time = 1;
 
 			int key = rand() % animals.size();
 
-			m_question->SetTexture(animals[key].c_str()); // Change question
+			std::string fileName = "q_" + animals[key];
+			m_question->SetTexture(fileName.c_str()); // Change question
 
 			std::set<int> uniqueIndices;
 			uniqueIndices.insert(key);
@@ -168,14 +169,42 @@ void GSPuzzle::HandleTouchEvents(float x, float y, bool bIsPressed) {
 			}
 		}
 		
+	if(!isCorrect)
 		for (auto& button : m_choice) {
 			if (button->HandleTouchEvent(x, y, bIsPressed)) {
-				if (button->getTexture() == m_question->getTexture()) {
+				std::string result = "q_" + button->getTexture()->GetID();
+				totalClick++;
+				if (result == m_question->getTexture()->GetID()) {
 					printf("Correct\n");
+					correctAns++;
 					isCorrect = true;
 					PlaySoundByName("correct", 8, 0);
-					return;
-				}					
+				}
+				if (totalClick == 20 || correctAns == 2) {
+					int anim1Value = correctAns * 100 / totalClick;
+
+					std::vector<DayData> data = readFile();
+					std::string todayDate = getTodayDate();
+
+					auto it = std::find_if(data.begin(), data.end(), [&todayDate](const DayData& d) {
+						return d.date == todayDate;
+						});
+
+					DayData todayData;
+					if (it != data.end()) {
+						todayData = *it;
+					}
+					else {
+						todayData = createDefaultDayData(todayDate);
+						data.push_back(todayData); 
+					}
+
+					todayData.values["anim1"] = max(todayData.values["anim1"], anim1Value);
+					writeFile(data);
+
+					GSMachine::GetInstance()->PushState(STATE_GAMEOVER);
+				}
+				printf("Total click: %d\nCorrect: %d\nScore: %d\n", totalClick, correctAns, correctAns * 100 / totalClick);
 			}
 		}
 	}
@@ -190,7 +219,8 @@ void GSPuzzle::HandleTouchEvents(float x, float y, bool bIsPressed) {
 					GSMachine::GetInstance()->Resume();
 					break;
 				case BUTTON_BACK_TO_MENU:
-					GSMachine::GetInstance()->PopState();
+					GSMachine::GetInstance()->Resume();
+					GSMachine::GetInstance()->PopState();					
 					break;
 				case BUTTON_TUTORIAL:
 					GSMachine::GetInstance()->Resume();

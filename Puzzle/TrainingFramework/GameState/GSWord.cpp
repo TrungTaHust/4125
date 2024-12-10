@@ -44,6 +44,7 @@ void GSWord::Init()
 	AddSoundByName("correct");
 	PlaySoundByName("play", 7, -1);
 	m_time = 1;
+
 }
 
 void GSWord::Exit()
@@ -140,6 +141,7 @@ void GSWord::HandleTouchEvents(float x, float y, bool bIsPressed) {
 					GSMachine::GetInstance()->Resume();
 					break;
 				case BUTTON_BACK_TO_MENU:
+					GSMachine::GetInstance()->Resume();
 					GSMachine::GetInstance()->PopState();
 					break;
 				case BUTTON_TUTORIAL:

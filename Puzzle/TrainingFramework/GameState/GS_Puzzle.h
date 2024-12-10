@@ -32,17 +32,14 @@ private:
 	std::vector<std::shared_ptr<Object>> m_objectVector;
 	std::vector<std::shared_ptr<GameButton>> m_buttonList;
 	std::vector<std::shared_ptr<GameButton>> m_pauseButtonList;
-	std::vector<std::shared_ptr<Object>> m_frame;
-	std::vector<std::shared_ptr<Object>> m_ans;
 	std::vector<std::shared_ptr<Object>> m_choice;
 
 	std::shared_ptr<Object>m_question;
-	std::string answer;
 	std::string key;
-	int keyInt;
-	std::string check;	
-	int m_time = 2;
+	float m_time = 1;
 	bool isCorrect = false;
+	int totalClick = 0;
+	int correctAns = 0;
 
 	std::vector<std::string> animals = {
 		"bear", "cat", "cow", "crab", "deer", "dog", "dolphin", "duck",

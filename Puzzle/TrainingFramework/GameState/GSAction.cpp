@@ -141,6 +141,7 @@ void GSAction::HandleTouchEvents(float x, float y, bool bIsPressed) {
 					GSMachine::GetInstance()->Resume();
 					break;
 				case BUTTON_BACK_TO_MENU:
+					GSMachine::GetInstance()->Resume();
 					GSMachine::GetInstance()->PopState();
 					break;
 				case BUTTON_TUTORIAL:
@@ -166,13 +167,13 @@ void GSAction::HandleMouseMoveEvents(float x, float y)
 }
 
 void GSAction::UpdateChoiceObjects() {
-	int totalWidth = key.size() * 100 + (key.size() - 1) * 20;
+	int totalWidth = key.size() * 100;
 	int leftAlign = (1280 - totalWidth) / 2;
 	m_choice.clear();
 	for (int i = 0; i < key.size(); i++) {
 		std::string fileName = std::string(1, key[i]);
 		auto slot = std::make_shared<Object>("Sprite2D", fileName.c_str(), "TriangleShader");
-		slot->Set2DPos(leftAlign + i * 120, 400);
+		slot->Set2DPos(leftAlign + i * 100, 400);
 		slot->SetSize(100, 100);
 		m_choice.push_back(slot);
 	}

@@ -101,6 +101,9 @@
     <ClCompile Include="GameState\GSCount.cpp">
       <Filter>SourceFile\GameState</Filter>
     </ClCompile>
+    <ClCompile Include="Globals.cpp">
+      <Filter>SourceFile</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager\ResourceManager.h">

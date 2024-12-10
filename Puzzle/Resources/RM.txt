@@ -2,7 +2,7 @@
 ID 0	FILE Sprite2D
 ID 1	FILE Rectangle
 
-#2DTextures: 155
+#2DTextures: 182
 ID 1 FILE btn/btn_start
 ID 2 FILE btn/btn_exit
 ID 3 FILE btn/btn_menu
@@ -158,6 +158,34 @@ ID 152 FILE action/drawing
 ID 153 FILE action/running
 ID 154 FILE action/riding
 ID 155 FILE star
+ID 156 FILE animals/q_bear
+ID 157 FILE animals/q_cat
+ID 158 FILE animals/q_cow
+ID 159 FILE animals/q_crab
+ID 160 FILE animals/q_deer
+ID 161 FILE animals/q_dog
+ID 162 FILE animals/q_dolphin
+ID 163 FILE animals/q_duck
+ID 164 FILE animals/q_elephant
+ID 165 FILE animals/q_fox
+ID 166 FILE animals/q_giraffe
+ID 167 FILE animals/q_hippo
+ID 168 FILE animals/q_horse
+ID 169 FILE animals/q_koala
+ID 170 FILE animals/q_lion
+ID 171 FILE animals/q_monkey
+ID 172 FILE animals/q_mouse
+ID 173 FILE animals/q_owl
+ID 174 FILE animals/q_panda
+ID 175 FILE animals/q_parrot
+ID 176 FILE animals/q_pig
+ID 177 FILE animals/q_rabbit
+ID 178 FILE animals/q_rhino
+ID 179 FILE animals/q_sheep
+ID 180 FILE animals/q_tiger
+ID 181 FILE animals/q_turtle
+ID 182 FILE animals/q_zebra
+
 
 
 #Shaders: 3

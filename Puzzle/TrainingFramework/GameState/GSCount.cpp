@@ -151,6 +151,7 @@ void GSCount::HandleTouchEvents(float x, float y, bool bIsPressed) {
 					GSMachine::GetInstance()->Resume();
 					break;
 				case BUTTON_BACK_TO_MENU:
+					GSMachine::GetInstance()->Resume();
 					GSMachine::GetInstance()->PopState();
 					break;
 				case BUTTON_TUTORIAL:
