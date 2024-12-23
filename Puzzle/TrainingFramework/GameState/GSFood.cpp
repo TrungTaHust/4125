@@ -71,28 +71,43 @@ void GSFood::Resume() {
 void GSFood::Update(float deltaTime) {
 	m_time -= deltaTime;
 	if (m_time <= 0) {
-		m_time += 1.5;
+		m_time += 1;
 		NewFruit();
 	}
 	std::vector<std::shared_ptr<Object>> falling;
 
-	for (auto &fruit : m_falling) {
-		fruit->Set2DPos(fruit->GetPos().x, fruit->GetPos().y + deltaTime * 200);
-		if (fruit->GetPos().y <= 900 && !fruit->CheckCollide(m_basket))
-			falling.push_back(fruit);
+	for (auto &letter : m_falling) {
+		letter->Set2DPos(letter->GetPos().x, letter->GetPos().y + deltaTime * 200);
+		if (letter->GetPos().y <= 900 && !letter->CheckCollide(m_basket))
+			falling.push_back(letter);
 
-		if (fruit->CheckCollide(m_basket))
-			if (fruit->getTexture() == m_question->getTexture()) {
-				PlaySoundByName("correct", 8, 0);
-				NewQuestion();
-			}
+		if (letter->CheckCollide(m_basket)) {
+			std::string key = m_question->getTexture()->GetID();
+			std::string drop = letter->getTexture()->GetID();
+
+			for (int i = 0; i < key.size(); i++ )
+				if (drop[0] == key[i] && m_textAnswer[i]->getTexture()->GetID() == "star") {
+					PlaySoundByName("correct", 8, 0);
+					m_textAnswer[i]->SetTexture(drop.c_str());
+
+					auto it = std::find(nameChars.begin(), nameChars.end(), drop[0]);
+					if (it != nameChars.end()) {
+						nameChars.erase(it);
+						if (std::find(nameChars.begin(), nameChars.end(), drop[0]) == nameChars.end())
+							nonNameChars.push_back(drop[0]);
+					}
+					break;
+				}
+			if (nameChars.size() == 0) NewQuestion();
+		}
 	}
 	m_falling = falling;
 }
 
 void GSFood::Draw(){
 	DrawVectorObject(m_objectVector);	
-	
+	DrawVectorObject(m_textAnswer);
+
 	for (auto& button : m_buttonList)
 		button->Draw();
 
@@ -126,8 +141,7 @@ void GSFood::HandleTouchEvents(float x, float y, bool bIsPressed) {
 			}
 		}		
 	}
-	else
-	{
+	else {
 		for (auto& button : m_pauseButtonList)
 			if (button->HandleTouchEvent(x, y, bIsPressed))
 			{
@@ -157,14 +171,26 @@ void GSFood::HandleMouseMoveEvents(float x, float y)
 	else {
 		for (auto& button : m_buttonList)
 			button->HandleMoveEvent(x, y);
+
 		m_basket->Set2DPos(x, 800);
 	}
 }
 
 void GSFood::NewFruit() {
-	if (m_falling.size() >= 7) return;
-	key = fruits[rand() % fruits.size()];
-	auto fruit = std::make_shared<Object>("Sprite2D", key.c_str(), "TriangleShader");
+	if (m_falling.size() >= 7 || nameChars.size() == 0) return;
+	int rate = rand() % 100;
+	char c;
+	int temp1 = nameChars.size();
+	int temp2 = nonNameChars.size();
+
+	if (rate < 70 && temp1 > 0)
+		c = nameChars[rand() % temp1];
+	else if (temp2 > 0)
+		c = nonNameChars[rand() % temp2];
+	else return;
+	
+	std::string fileName(1, c);
+	auto fruit = std::make_shared<Object>("Sprite2D", fileName.c_str(), "TriangleShader");
 	int x = (rand() % 5) * 150 + 340;
 	fruit->Set2DPos(x, 50);
 	fruit->SetSize(100, 100);
@@ -173,5 +199,35 @@ void GSFood::NewFruit() {
 
 void GSFood::NewQuestion() {
 	index = rand() % fruits.size();
-	m_question->SetTexture(fruits[index].c_str());
+	//key = fruits[index];
+	key = "apple";
+	m_question->SetTexture(key.c_str());
+
+	nonNameChars.clear();
+	nameChars.clear();
+
+	std::vector<int> charCount(26, 0);
+
+	for (char c : key) {
+		if (std::isalpha(c)) {  
+			charCount[c - 'a']++;
+		}
+	}
+
+	for (char c = 'a'; c <= 'z'; ++c) {
+		if (charCount[c - 'a'] > 0) 
+			nameChars.insert(nameChars.end(), charCount[c - 'a'], c);
+		else 
+			nonNameChars.push_back(c);		
+	}
+
+	int totalWidth = key.size() * 100 + (key.size() - 1) * 20;
+	int leftAlign = (1280 - totalWidth) / 2;
+	m_textAnswer.clear();
+	for (int i = 0; i < key.size(); i++) {
+		auto slot = std::make_shared<Object>("Sprite2D", "star", "TriangleShader");
+		slot->Set2DPos(leftAlign + i * 120, 200);
+		slot->SetSize(100, 100);
+		m_textAnswer.push_back(slot);
+	}
 }

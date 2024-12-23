@@ -37,7 +37,7 @@ private:
 	std::vector<std::shared_ptr<GameButton>> m_pauseButtonList;
 	std::vector<std::shared_ptr<Object>> m_falling;
 	std::shared_ptr<Object> m_basket;
-
+	std::vector<std::shared_ptr<Object>> m_textAnswer;
 	
 	std::shared_ptr<Object>m_question;
 	std::vector<std::shared_ptr<Object>> m_choice;
@@ -45,6 +45,9 @@ private:
 	int index;
 	float m_time;
 	bool isCorrect;		
+
+	std::vector<char> nonNameChars;
+	std::vector<char> nameChars;
 
 	std::vector<std::string> fruits = {
 		"apple", "avocado", "grape", "lemon", "mango", "orange",
