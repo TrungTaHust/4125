@@ -46,7 +46,9 @@ private:
 	char c;
 
 	std::vector<std::string> action = {
-		"skating", "skipping", "drawing", "soccer", "riding", "running"
+		"skating", "skateboarding", "badminton", "basketball", "boxing", "cricket",
+		"cycling", "football", "golf", "pingpong", "running", "sailing",
+		"skiing", "surfing", "swimming", "tennis"
 	};
 
 	
