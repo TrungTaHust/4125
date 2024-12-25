@@ -49,7 +49,7 @@ void GSColor::Init()
 	}
 
 	for (int i = 0; i < 6; i++) {
-		std::string fileName = color[uniqueIndices[i]];
+		std::string fileName = "0" + std::to_string(uniqueIndices[i] + 1);
 		auto slot = std::make_shared<Object>("Sprite2D", fileName.c_str(), "TriangleShader");
 		slot->Set2DPos(390 + i * 100, 600);
 		slot->SetSize(100, 100);
@@ -95,14 +95,17 @@ void GSColor::Update(float deltaTime) {
 	std::vector<std::shared_ptr<Object>> choice;
 	for (auto &it : m_choice)	{
 		bool check = true;
-		if (!it->GetTouch()) {			
+		if (!it->GetTouch()) {		
+			std::vector<std::shared_ptr<Object>> questions;
 			for (auto& question : m_question)
-				if (it->CheckCollide(question)) {
+				if (it->CheckCollide(question) && it->getTexture()->GetID()[0] == question->getTexture()->GetID()[1]) {
 					check = false;
 					PlaySoundByName("correct", 8, 0);
-				}			
+				}
+				else questions.push_back(question);
+			m_question = questions;
 		}
-		if (check)
+		if (check) 
 			choice.push_back(it);
 	}
 

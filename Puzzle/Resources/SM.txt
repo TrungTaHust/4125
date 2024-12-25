@@ -4,19 +4,227 @@ FAR 500.0
 FOV 1.0
 SPEED 5.0
 ###########################################################################
-#Animations: 1
-ID coins
+#Animations: 17
+ID question_null
 MODEL Sprite2D
 TEXTURES 1
-TEXTURE coins
-NUM_FRAMES 5
+TEXTURE null
+NUM_FRAMES 15
 NUM_ACTION 1
 CURRENT_ACTION 0 
 FRAME_TIME 0.1
 SHADER Animation 
-POSITION 50.0 50.0 
+POSITION 640.0 200.0 
 ROTATION 0.0 0.0 0.0 
-SCALE 60.0 60.0 
+SCALE 200.0 200.0 
+--------------------------------------------------------------------------
+ID badminton
+MODEL Sprite2D
+TEXTURES 1
+TEXTURE badminton
+NUM_FRAMES 15
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+SHADER Animation 
+POSITION 640.0 200.0 
+ROTATION 0.0 0.0 0.0 
+SCALE 200.0 200.0 
+--------------------------------------------------------------------------
+ID basketball
+MODEL Sprite2D
+TEXTURES 1
+TEXTURE basketball
+NUM_FRAMES 15
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+SHADER Animation 
+POSITION 640.0 200.0 
+ROTATION 0.0 0.0 0.0 
+SCALE 200.0 200.0 
+--------------------------------------------------------------------------
+ID boxing
+MODEL Sprite2D
+TEXTURES 1
+TEXTURE boxing
+NUM_FRAMES 15
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+SHADER Animation 
+POSITION 640.0 200.0 
+ROTATION 0.0 0.0 0.0 
+SCALE 200.0 200.0 
+--------------------------------------------------------------------------
+ID cricket
+MODEL Sprite2D
+TEXTURES 1
+TEXTURE cricket
+NUM_FRAMES 15
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+SHADER Animation 
+POSITION 640.0 200.0 
+ROTATION 0.0 0.0 0.0 
+SCALE 200.0 200.0 
+--------------------------------------------------------------------------
+ID cycling
+MODEL Sprite2D
+TEXTURES 1
+TEXTURE cycling
+NUM_FRAMES 15
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+SHADER Animation 
+POSITION 640.0 200.0 
+ROTATION 0.0 0.0 0.0 
+SCALE 200.0 200.0 
+--------------------------------------------------------------------------
+ID football
+MODEL Sprite2D
+TEXTURES 1
+TEXTURE football
+NUM_FRAMES 15
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+SHADER Animation 
+POSITION 640.0 200.0 
+ROTATION 0.0 0.0 0.0 
+SCALE 200.0 200.0 
+--------------------------------------------------------------------------
+ID golf
+MODEL Sprite2D
+TEXTURES 1
+TEXTURE golf
+NUM_FRAMES 15
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+SHADER Animation 
+POSITION 640.0 200.0 
+ROTATION 0.0 0.0 0.0 
+SCALE 200.0 200.0 
+--------------------------------------------------------------------------
+ID pingpong
+MODEL Sprite2D
+TEXTURES 1
+TEXTURE pingpong
+NUM_FRAMES 15
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+SHADER Animation 
+POSITION 640.0 200.0 
+ROTATION 0.0 0.0 0.0 
+SCALE 200.0 200.0 
+--------------------------------------------------------------------------
+ID running
+MODEL Sprite2D
+TEXTURES 1
+TEXTURE running
+NUM_FRAMES 15
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+SHADER Animation 
+POSITION 640.0 200.0 
+ROTATION 0.0 0.0 0.0 
+SCALE 200.0 200.0 
+--------------------------------------------------------------------------
+ID sailing
+MODEL Sprite2D
+TEXTURES 1
+TEXTURE sailing
+NUM_FRAMES 15
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+SHADER Animation 
+POSITION 640.0 200.0 
+ROTATION 0.0 0.0 0.0 
+SCALE 200.0 200.0 
+--------------------------------------------------------------------------
+ID skateboarding
+MODEL Sprite2D
+TEXTURES 1
+TEXTURE skateboarding
+NUM_FRAMES 15
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+SHADER Animation 
+POSITION 640.0 200.0 
+ROTATION 0.0 0.0 0.0 
+SCALE 200.0 200.0 
+--------------------------------------------------------------------------
+ID skating
+MODEL Sprite2D
+TEXTURES 1
+TEXTURE skating
+NUM_FRAMES 15
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+SHADER Animation 
+POSITION 640.0 200.0 
+ROTATION 0.0 0.0 0.0 
+SCALE 200.0 200.0 
+--------------------------------------------------------------------------
+ID skiing
+MODEL Sprite2D
+TEXTURES 1
+TEXTURE skiing
+NUM_FRAMES 15
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+SHADER Animation 
+POSITION 640.0 200.0 
+ROTATION 0.0 0.0 0.0 
+SCALE 200.0 200.0 
+--------------------------------------------------------------------------
+ID surfing
+MODEL Sprite2D
+TEXTURES 1
+TEXTURE surfing
+NUM_FRAMES 15
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+SHADER Animation 
+POSITION 640.0 200.0 
+ROTATION 0.0 0.0 0.0 
+SCALE 200.0 200.0 
+--------------------------------------------------------------------------
+ID swimming
+MODEL Sprite2D
+TEXTURES 1
+TEXTURE swimming
+NUM_FRAMES 15
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+SHADER Animation 
+POSITION 640.0 200.0 
+ROTATION 0.0 0.0 0.0 
+SCALE 200.0 200.0 
+--------------------------------------------------------------------------
+ID tennis
+MODEL Sprite2D
+TEXTURES 1
+TEXTURE tennis
+NUM_FRAMES 15
+NUM_ACTION 1
+CURRENT_ACTION 0 
+FRAME_TIME 0.1
+SHADER Animation 
+POSITION 640.0 200.0 
+ROTATION 0.0 0.0 0.0 
+SCALE 200.0 200.0 
 --------------------------------------------------------------------------
 ###########################################################################
 #Objects: 12

@@ -38,7 +38,7 @@ private:
 	std::vector<std::shared_ptr<Object>> m_choice;
 	std::vector<std::shared_ptr<Object>> m_keyboard;
 
-	std::shared_ptr<Object>m_question;
+	std::shared_ptr<Animation>m_question;
 	std::string key;
 	int index;
 	float m_time = 1;

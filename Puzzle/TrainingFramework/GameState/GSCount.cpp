@@ -33,8 +33,8 @@ void GSCount::Init()
 	};
 
 	m_question = std::make_shared<Object>("Sprite2D", "null", "TriangleShader");
-	m_question->Set2DPos(640, 200);
-	m_question->SetSize(200, 200);
+	m_question->Set2DPos(640, 300);
+	m_question->SetSize(700, 400);
 
 	NewQuestion();	
 
@@ -42,7 +42,18 @@ void GSCount::Init()
 	AddSoundByName("play");
 
 	AddSoundByName("correct");
+	AddSoundByName("error");
 	PlaySoundByName("play", 7, -1);
+
+	for (int i = 0; i < 5; i++) {
+		for (int j = 0; j < 2; j++) {
+			std::string fileName = "0" + std::to_string(j * 5 + i);
+			auto slot = std::make_shared<Object>("Sprite2D", fileName.c_str(), "TriangleShader");
+			slot->Set2DPos(240 + i * 200, 600 + j * 200);
+			slot->SetSize(150, 150);
+			m_choice.push_back(slot);
+		}
+	}
 }
 
 void GSCount::Exit()
@@ -76,29 +87,6 @@ void GSCount::Update(float deltaTime) {
 			NewQuestion();
 		}
 	}
-	else
-		for (auto& it : m_choice)
-			if (it->GetTouch())	{
-				it->Set2DPos(it->GetPos().x + 400 * deltaTime, it->GetPos().y);
-				if (it->GetPos().x >= 1000) {
-					std::string fileName = color[rand() % color.size()];
-
-					PlaySoundByName("correct", 8, 0);
-					it->Set2DPos(300, it->GetPos().y);
-					it->SetTexture(fileName.c_str());
-					it->SetTouch(false);
-
-					count++;
-					if (key == count) {
-						PlaySoundByName("correct", 8, 0);
-						printf("Correct\n");
-						count = 0;
-						isCorrect = true;
-						return;
-					}
-				}
-			}
-
 }
 
 void GSCount::Draw(){
@@ -139,7 +127,10 @@ void GSCount::HandleTouchEvents(float x, float y, bool bIsPressed) {
 		
 		for (int i = 0; i < m_choice.size(); i++) 
 			if (m_choice[i]->HandleTouchEvent(x, y, bIsPressed)) 
-				m_choice[i]->SetTouch(true);		
+				if (m_choice[i]->getTexture()->GetID()[1] == m_question->getTexture()->GetID()[0]) {
+					isCorrect = true;
+					PlaySoundByName("correct", 8, 0);
+				} else PlaySoundByName("error", 9, 0);
 	}
 	else {
 		for (auto& button : m_pauseButtonList)
@@ -177,14 +168,6 @@ void GSCount::HandleMouseMoveEvents(float x, float y)
 }
 
 void GSCount::NewQuestion() {
-	key = rand() % 8 + 1;
-	m_question->SetTexture(("0" + std::to_string(key)).c_str());
-	m_choice.clear();
-	for (int i = 0; i < 5; i++) {
-		std::string fileName = color[rand() % color.size()];
-		auto slot = std::make_shared<Object>("Sprite2D", fileName.c_str(), "TriangleShader");
-		slot->Set2DPos(300, 240 + i * 120);
-		slot->SetSize(100, 100);
-		m_choice.push_back(slot);
-	}
+	key = rand() % 10;
+	m_question->SetTexture((std::to_string(key) + "_cow1").c_str());	
 }

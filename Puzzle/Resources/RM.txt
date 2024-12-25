@@ -2,7 +2,7 @@
 ID 0	FILE Sprite2D
 ID 1	FILE Rectangle
 
-#2DTextures: 210
+#2DTextures: 211
 ID 1 FILE btn/btn_start
 ID 2 FILE btn/btn_exit
 ID 3 FILE btn/btn_menu
@@ -126,20 +126,21 @@ ID 120 FILE animals/watermelon
 ID 121 FILE animals/zebra
 ID 122 FILE zoo_background
 ID 123 FILE basket
-ID 124 FILE vehicle/black
-ID 125 FILE vehicle/blue
-ID 126 FILE vehicle/brown
-ID 127 FILE vehicle/cyan
-ID 128 FILE vehicle/dark_blue
-ID 129 FILE vehicle/green
-ID 130 FILE vehicle/grey
-ID 131 FILE vehicle/lime
-ID 132 FILE vehicle/orange
-ID 133 FILE vehicle/pink
-ID 134 FILE vehicle/purple
-ID 135 FILE vehicle/red
-ID 136 FILE vehicle/white
-ID 137 FILE vehicle/yellow
+ID 124 FILE vehicle/black_vec
+ID 125 FILE vehicle/blue_vec
+ID 126 FILE vehicle/brown_vec
+ID 127 FILE vehicle/cyan_vec
+ID 128 FILE vehicle/dark_blue_vec
+ID 129 FILE vehicle/green_vec
+ID 130 FILE vehicle/grey_vec
+ID 131 FILE vehicle/lime_vec
+ID 132 FILE vehicle/orange_vec
+ID 133 FILE vehicle/pink_vec
+ID 134 FILE vehicle/purple_vec
+ID 135 FILE vehicle/red_vec
+ID 136 FILE vehicle/white_vec
+ID 137 FILE vehicle/yellow_vec
+ID 211 FILE num/00
 ID 138 FILE num/01
 ID 139 FILE num/02
 ID 140 FILE num/03
@@ -221,7 +222,7 @@ ID 1	FILE Animation
 ID 3	FILE Text
 
 #Sound: 6
-FILE explosion
+FILE error
 FILE intro
 FILE menu
 FILE play

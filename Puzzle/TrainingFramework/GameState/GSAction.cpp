@@ -38,13 +38,10 @@ void GSAction::Init()
 		m_keyboard.push_back(slot);
 	}
 
-	m_question = std::make_shared<Object>("Sprite2D", "null", "TriangleShader");
-	m_question->Set2DPos(640, 200);
-	m_question->SetSize(200, 200);
+	m_question = sceneManager->GetAnimationByID("null");
 
 	NewQuestion();	
 
-	m_objectVector.push_back(m_question);
 	AddSoundByName("play");
 
 	AddSoundByName("correct");
@@ -83,10 +80,12 @@ void GSAction::Update(float deltaTime) {
 			NewQuestion();			
 		}
 	}
+	m_question->Update(deltaTime);
 }
 
 void GSAction::Draw(){
 	DrawVectorObject(m_objectVector);	
+	m_question->Draw();
 	
 	for (auto& button : m_buttonList)
 		button->Draw();
@@ -181,7 +180,7 @@ void GSAction::UpdateChoiceObjects() {
 
 void GSAction::NewQuestion() {
 	key = action[rand() % action.size()];
-	m_question->SetTexture(key.c_str());
+	m_question = SceneManager::GetInstance()->GetAnimationByID(key.c_str());
 	int index = rand() % key.size();
 	c = key[index];
 	std::string str(1, c);
