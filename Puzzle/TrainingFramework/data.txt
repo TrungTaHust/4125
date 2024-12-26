@@ -14,3 +14,11 @@ fruit: 0
 number: 0
 vehicles: 0
 
+26/12/2024
+action: 0
+anim1: 100
+anim2: 0
+fruit: 0
+number: 0
+vehicles: 0
+

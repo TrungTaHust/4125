@@ -7,7 +7,7 @@
 
 GSWord::GSWord() : index(0), isCorrect(false)
 {
-	m_stateType = STATE_PUZZLE;		
+	m_stateType = STATE_WORD;		
 }
 
 GSWord::~GSWord()

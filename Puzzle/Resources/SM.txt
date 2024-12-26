@@ -280,9 +280,9 @@ ID score_frame
 MODEL Sprite2D
 TEXTURE score_frame
 SHADER TriangleShader
-POSITION 640.0 480.0
+POSITION 640.0 300.0
 ROTATION 0.0 0.0 0.0
-SCALE 700.0 700.0
+SCALE 500.0 150.0
 --------------------------------------------------------------------------
 ID pause_frame
 MODEL Sprite2D
@@ -377,7 +377,7 @@ Type BUTTON_BACK_TO_MENU
 MODEL Sprite2D
 TEXTURE btn_menu
 SHADER TriangleShader
-POSITION 640.0 480.0
+POSITION 640.0 700.0
 ROTATION 0.0 0.0 0.0
 SCALE 200.0 60.0
 --------------------------------------------------------------------------

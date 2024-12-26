@@ -42,8 +42,13 @@ void GSFood::Init()
 	m_objectVector.push_back(m_question);
 
 	AddSoundByName("play");
+	AddSoundByName("error");
 	AddSoundByName("correct");
 	PlaySoundByName("play", 7, -1);		
+
+	AddText("your_scores");
+	AddText("end_scores");
+	m_scoreFrame = SceneManager::GetInstance()->GetObjectByID("score_frame");
 }
 
 void GSFood::Exit()
@@ -69,39 +74,56 @@ void GSFood::Resume() {
 }
 
 void GSFood::Update(float deltaTime) {
-	m_time -= deltaTime;
-	if (m_time <= 0) {
-		m_time += 1;
-		NewFruit();
-	}
-	std::vector<std::shared_ptr<Object>> falling;
-
-	for (auto &letter : m_falling) {
-		letter->Set2DPos(letter->GetPos().x, letter->GetPos().y + deltaTime * 200);
-		if (letter->GetPos().y <= 900 && !letter->CheckCollide(m_basket))
-			falling.push_back(letter);
-
-		if (letter->CheckCollide(m_basket)) {
-			std::string key = m_question->getTexture()->GetID();
-			std::string drop = letter->getTexture()->GetID();
-
-			for (int i = 0; i < key.size(); i++ )
-				if (drop[0] == key[i] && m_textAnswer[i]->getTexture()->GetID() == "star") {
-					PlaySoundByName("correct", 8, 0);
-					m_textAnswer[i]->SetTexture(drop.c_str());
-
-					auto it = std::find(nameChars.begin(), nameChars.end(), drop[0]);
-					if (it != nameChars.end()) {
-						nameChars.erase(it);
-						if (std::find(nameChars.begin(), nameChars.end(), drop[0]) == nameChars.end())
-							nonNameChars.push_back(drop[0]);
-					}
-					break;
-				}
-			if (nameChars.size() == 0) NewQuestion();
+	if (!isCompleted)
+	{
+		m_time -= deltaTime;
+		if (m_time <= 0) {
+			m_time += 1;
+			NewFruit();
 		}
+		std::vector<std::shared_ptr<Object>> falling;
+
+		for (auto& letter : m_falling) {
+			letter->Set2DPos(letter->GetPos().x, letter->GetPos().y + deltaTime * 200);
+			if (letter->GetPos().y <= 900 && !letter->CheckCollide(m_basket))
+				falling.push_back(letter);
+
+			if (letter->GetPos().y >= 900 &&
+				std::find(nameChars.begin(), nameChars.end(), letter->getTexture()->GetID()[0]) != nameChars.end())
+				PlaySoundByName("error", 9, 0);
+
+			if (letter->CheckCollide(m_basket)) {
+				std::string key = m_question->getTexture()->GetID();
+				std::string drop = letter->getTexture()->GetID();
+
+				for (int i = 0; i < key.size(); i++)
+					if (drop[0] == key[i] && m_textAnswer[i]->getTexture()->GetID() == "star") {
+						PlaySoundByName("correct", 8, 0);
+						m_textAnswer[i]->SetTexture(drop.c_str());
+
+						auto it = std::find(nameChars.begin(), nameChars.end(), drop[0]);
+						if (it != nameChars.end()) {
+							nameChars.erase(it);
+							if (std::find(nameChars.begin(), nameChars.end(), drop[0]) == nameChars.end())
+								nonNameChars.push_back(drop[0]);
+						}
+						break;
+					}
+				if (nameChars.size() == 0) {
+					count++;
+					if (count < 3) NewQuestion();
+					else isCompleted = true;
+				}
+			}
+		}
+		m_falling = falling;
 	}
-	m_falling = falling;
+	else {
+		end_time -= deltaTime;
+		if (end_time <= 0)
+			GSMachine::GetInstance()->PushState(STATE_GAMEOVER);
+		UpdateText("end_scores", 100, deltaTime);
+	}
 }
 
 void GSFood::Draw(){
@@ -118,6 +140,12 @@ void GSFood::Draw(){
 	}	
 	m_basket->Draw();
 	DrawVectorObject(m_falling);
+
+	if (isCompleted) {
+		m_scoreFrame->Draw();
+		RenderText("your_scores");
+		RenderText("end_scores");
+	}
 }
 
 void GSFood::HandleEvents()
@@ -199,8 +227,8 @@ void GSFood::NewFruit() {
 
 void GSFood::NewQuestion() {
 	index = rand() % fruits.size();
-	//key = fruits[index];
-	key = "apple";
+	key = fruits[index];
+	//key = "apple";
 	m_question->SetTexture(key.c_str());
 
 	nonNameChars.clear();

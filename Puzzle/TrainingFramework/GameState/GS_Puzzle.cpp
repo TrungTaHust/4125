@@ -67,6 +67,10 @@ void GSPuzzle::Init()
 	AddSoundByName("play");
 	PlaySoundByName("play", 7, -1);
 	AddSoundByName("correct");
+
+	AddText("your_scores");
+	AddText("end_scores");
+	m_scoreFrame = SceneManager::GetInstance()->GetObjectByID("score_frame");
 }
 
 void GSPuzzle::Exit()
@@ -92,44 +96,52 @@ void GSPuzzle::Resume() {
 }
 
 void GSPuzzle::Update(float deltaTime) {
-	if (isCorrect) {
-		m_time -= deltaTime;
-		if (m_time <= 0) {
-			isCorrect = false;
-			m_time = 1;
+	if (!isCompleted) {
+		if (isCorrect) {
+			m_time -= deltaTime;
+			if (m_time <= 0) {
+				isCorrect = false;
+				m_time = 1;
 
-			int key = rand() % animals.size();
+				int key = rand() % animals.size();
 
-			std::string fileName = "q_" + animals[key];
-			m_question->SetTexture(fileName.c_str()); // Change question
+				std::string fileName = "q_" + animals[key];
+				m_question->SetTexture(fileName.c_str()); // Change question
 
-			std::set<int> uniqueIndices;
-			uniqueIndices.insert(key);
-			while (uniqueIndices.size() < 6) {
-				int randomIndex = rand() % animals.size();
-				if (randomIndex != key) {
-					uniqueIndices.insert(randomIndex);
+				std::set<int> uniqueIndices;
+				uniqueIndices.insert(key);
+				while (uniqueIndices.size() < 6) {
+					int randomIndex = rand() % animals.size();
+					if (randomIndex != key) {
+						uniqueIndices.insert(randomIndex);
+					}
 				}
-			}
 
-			std::vector<int> indices(uniqueIndices.begin(), uniqueIndices.end());
-			std::random_device rd;
-			std::mt19937 g(rd());
-			std::shuffle(indices.begin(), indices.end(), g);
-			m_choice.clear();
+				std::vector<int> indices(uniqueIndices.begin(), uniqueIndices.end());
+				std::random_device rd;
+				std::mt19937 g(rd());
+				std::shuffle(indices.begin(), indices.end(), g);
+				m_choice.clear();
 
-			auto it = indices.begin();
-			for (int i = 0; i < 3; i++) {
-				for (int j = 0; j < 2; j++) {
-					std::string fileName = animals[*it];
-					auto slot = std::make_shared<Object>("Sprite2D", fileName.c_str(), "TriangleShader");					
-					slot->Set2DPos(400 + i * 240, 400 + j * 200);
-					slot->SetSize(200, 200);
-					m_choice.push_back(slot);
-					++it;
+				auto it = indices.begin();
+				for (int i = 0; i < 3; i++) {
+					for (int j = 0; j < 2; j++) {
+						std::string fileName = animals[*it];
+						auto slot = std::make_shared<Object>("Sprite2D", fileName.c_str(), "TriangleShader");
+						slot->Set2DPos(400 + i * 240, 400 + j * 200);
+						slot->SetSize(200, 200);
+						m_choice.push_back(slot);
+						++it;
+					}
 				}
 			}
 		}
+	}
+	else {
+		end_time -= deltaTime;
+		if (end_time <= 0)
+			GSMachine::GetInstance()->PushState(STATE_GAMEOVER);
+		UpdateText("end_scores", anim1Value, deltaTime);
 	}
 }
 
@@ -146,6 +158,12 @@ void GSPuzzle::Draw(){
 		for (auto &button : m_pauseButtonList)
 			button->Draw();
 	}	
+
+	if (isCompleted) {
+		m_scoreFrame->Draw();
+		RenderText("your_scores");
+		RenderText("end_scores");
+	}
 }
 
 void GSPuzzle::HandleEvents()
@@ -181,9 +199,9 @@ void GSPuzzle::HandleTouchEvents(float x, float y, bool bIsPressed) {
 					PlaySoundByName("correct", 8, 0);
 				}
 				if (totalClick == 20 || correctAns == 2) {
-					int anim1Value = correctAns * 100 / totalClick;
+					anim1Value = correctAns * 100 / totalClick;
 					updateData("anim1", anim1Value);	
-					GSMachine::GetInstance()->PushState(STATE_GAMEOVER);
+					isCompleted = true;
 				}
 				printf("Total click: %d\nCorrect: %d\nScore: %d\n", totalClick, correctAns, correctAns * 100 / totalClick);
 			}

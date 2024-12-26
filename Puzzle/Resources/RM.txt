@@ -229,7 +229,7 @@ FILE play
 FILE over
 FILE correct
 
-#Texts: 9
+#Texts: 10
 ID		scores
 POS		400 50
 COLOR 		0 128 0 255
@@ -280,7 +280,7 @@ MESSAGE		Scores:
 FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
 
 ID		over_scores
-POS		760 300
+POS		640 300
 COLOR 		255 255 255 255
 SIZE		50
 MESSAGE		...
@@ -288,7 +288,14 @@ FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
 
 ID		your_scores
 POS		600 300
-COLOR 		255 255 255 255
+COLOR 		255 0 0 255
 SIZE		50
 MESSAGE		Scores: 
+FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
+
+ID		end_scores
+POS		760 300
+COLOR 		255 0 0 255
+SIZE		50
+MESSAGE		...
 FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf

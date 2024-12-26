@@ -38,8 +38,13 @@ private:
 	std::string key;
 	float m_time = 1;
 	bool isCorrect = false;
+	bool isCompleted = false;
 	int totalClick = 0;
 	int correctAns = 0;
+	int anim1Value = 0;
+	float end_time = 2;
+
+	std::shared_ptr<Object>m_scoreFrame;
 
 	std::vector<std::string> animals = {
 		"bear", "cat", "cow", "crab", "deer", "dog", "dolphin", "duck",

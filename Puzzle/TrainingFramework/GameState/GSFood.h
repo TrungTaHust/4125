@@ -44,7 +44,14 @@ private:
 	std::string key;
 	int index;
 	float m_time;
-	bool isCorrect;		
+	float end_time = 2;
+	bool isCorrect;
+	bool isCompleted = false;
+	int count = 0;
+	int score = 0;
+
+	std::shared_ptr<Object>m_scoreFrame;
+
 
 	std::vector<char> nonNameChars;
 	std::vector<char> nameChars;

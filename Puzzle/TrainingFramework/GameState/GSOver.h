@@ -5,8 +5,6 @@
 #include "../TrainingFramework/GameObject/GameButton.h"
 #include "../TrainingFramework/GameObject/Text.h"
 
-void GetScore();
-
 class GSOver :
     public GSBase
 {
@@ -26,11 +24,14 @@ public:
 	void	HandleTouchEvents(float x, float y, bool bIsPressed) override;
 	void	HandleMouseMoveEvents(float x, float y) override;
 
-	void	SetScore(int score);
 private:
 	std::shared_ptr<Object> m_overBackground;
 	std::vector<std::shared_ptr<GameButton>> m_buttonList;
+	std::vector<std::shared_ptr<Object>> m_choice;
 	Text m_text;
-	int m_score;
+	std::vector<std::string> buttonTexture = {
+		"btn_action", "btn_animals1", "btn_animals2",
+		"btn_food", "btn_number", "btn_vehicles"
+	};
 };
 
