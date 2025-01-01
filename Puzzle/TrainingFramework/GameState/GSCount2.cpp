@@ -1,20 +1,20 @@
 ﻿#include "../TrainingFramework/stdafx.h"
-#include "GSColor.h"
+#include "GSCount2.h"
 #include <set>
 #include <algorithm>
 #include <random>
 #include <iterator>
 
-GSColor::GSColor() : index(0), isCorrect(false)
+GSCount2::GSCount2() : index(0), isCorrect(false)
 {
-	m_stateType = STATE_COLOR;		
+	m_stateType = STATE_COUNT2;		
 }
 
-GSColor::~GSColor()
+GSCount2::~GSCount2()
 {
 }
 
-void GSColor::Init()
+void GSCount2::Init()
 {
 	srand(static_cast<unsigned>(time(0)));
 
@@ -69,12 +69,12 @@ void GSColor::Init()
 	PlaySoundByName("play", 7, -1);
 }
 
-void GSColor::Exit()
+void GSCount2::Exit()
 {
 	StopSoundByName("play", 7);
 }
 
-void GSColor::Pause()
+void GSCount2::Pause()
 {
 	for (int i = 2; i < 9; i++) {
 		if (Mix_Playing(i)) {
@@ -84,14 +84,14 @@ void GSColor::Pause()
 	}
 }
 
-void GSColor::Resume() {
+void GSCount2::Resume() {
 	for (int channel : soundChannelStates) {
 		Mix_Resume(channel);
 	}
 	soundChannelStates.clear();
 }
 
-void GSColor::Update(float deltaTime) {
+void GSCount2::Update(float deltaTime) {
 	std::vector<std::shared_ptr<Object>> choice;
 	for (auto &it : m_choice)	{
 		bool check = true;
@@ -112,7 +112,7 @@ void GSColor::Update(float deltaTime) {
 	m_choice = choice;
 }
 
-void GSColor::Draw(){
+void GSCount2::Draw(){
 	DrawVectorObject(m_objectVector);
 	DrawVectorObject(m_question);
 
@@ -128,15 +128,15 @@ void GSColor::Draw(){
 	}	
 }
 
-void GSColor::HandleEvents()
+void GSCount2::HandleEvents()
 {
 }
 
-void GSColor::HandleKeyEvents(int key, bool bIsPressed)
+void GSCount2::HandleKeyEvents(int key, bool bIsPressed)
 {
 }
 
-void GSColor::HandleTouchEvents(float x, float y, bool bIsPressed) {
+void GSCount2::HandleTouchEvents(float x, float y, bool bIsPressed) {
 	if (GSMachine::GetInstance()->IsRunning()) {
 		for (auto& button : m_buttonList) {
 			if (button->HandleTouchEvent(x, y, bIsPressed)) {
@@ -168,14 +168,13 @@ void GSColor::HandleTouchEvents(float x, float y, bool bIsPressed) {
 					break;
 				case BUTTON_TUTORIAL:
 					GSMachine::GetInstance()->Resume();
-					GSMachine::GetInstance()->PushState(STATE_TUTORIAL);
 					break;
 				}
 			};
 	}
 }
 
-void GSColor::HandleMouseMoveEvents(float x, float y)
+void GSCount2::HandleMouseMoveEvents(float x, float y)
 {
 	for (auto& button : m_buttonList)
 		button->HandleMoveEvent(x, y);
@@ -191,10 +190,10 @@ void GSColor::HandleMouseMoveEvents(float x, float y)
 			button->HandleMoveEvent(x, y);		
 }
 
-void GSColor::UpdateChoiceObjects() {
+void GSCount2::UpdateChoiceObjects() {
 	
 }
 
-void GSColor::NewQuestion() {
+void GSCount2::NewQuestion() {
 	
 }

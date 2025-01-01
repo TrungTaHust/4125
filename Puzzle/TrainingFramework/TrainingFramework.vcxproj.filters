@@ -77,16 +77,10 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>SourceFile</Filter>
     </ClCompile>
-    <ClCompile Include="GameState\GSScore.cpp">
+    <ClCompile Include="GameState\GSAnim1.cpp">
       <Filter>SourceFile\GameState</Filter>
     </ClCompile>
-    <ClCompile Include="GameState\GSTutorial.cpp">
-      <Filter>SourceFile\GameState</Filter>
-    </ClCompile>
-    <ClCompile Include="GameState\GS_Puzzle.cpp">
-      <Filter>SourceFile\GameState</Filter>
-    </ClCompile>
-    <ClCompile Include="GameState\GSWord.cpp">
+    <ClCompile Include="GameState\GSAnim2.cpp">
       <Filter>SourceFile\GameState</Filter>
     </ClCompile>
     <ClCompile Include="GameState\GSFood.cpp">
@@ -95,7 +89,7 @@
     <ClCompile Include="GameState\GSAction.cpp">
       <Filter>SourceFile\GameState</Filter>
     </ClCompile>
-    <ClCompile Include="GameState\GSColor.cpp">
+    <ClCompile Include="GameState\GSCount2.cpp">
       <Filter>SourceFile\GameState</Filter>
     </ClCompile>
     <ClCompile Include="GameState\GSCount.cpp">
@@ -172,16 +166,10 @@
     <ClInclude Include="targetver.h">
       <Filter>SourceFile</Filter>
     </ClInclude>
-    <ClInclude Include="GameState\GSScore.h">
+    <ClInclude Include="GameState\GSAnim1.h">
       <Filter>SourceFile\GameState</Filter>
     </ClInclude>
-    <ClInclude Include="GameState\GSTutorial.h">
-      <Filter>SourceFile\GameState</Filter>
-    </ClInclude>
-    <ClInclude Include="GameState\GS_Puzzle.h">
-      <Filter>SourceFile\GameState</Filter>
-    </ClInclude>
-    <ClInclude Include="GameState\GSWord.h">
+    <ClInclude Include="GameState\GSAnim2.h">
       <Filter>SourceFile\GameState</Filter>
     </ClInclude>
     <ClInclude Include="GameState\GSFood.h">
@@ -190,7 +178,7 @@
     <ClInclude Include="GameState\GSAction.h">
       <Filter>SourceFile\GameState</Filter>
     </ClInclude>
-    <ClInclude Include="GameState\GSColor.h">
+    <ClInclude Include="GameState\GSCount2.h">
       <Filter>SourceFile\GameState</Filter>
     </ClInclude>
     <ClInclude Include="GameState\GSCount.h">

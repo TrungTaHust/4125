@@ -102,12 +102,12 @@ void GSOver::HandleTouchEvents(float x, float y, bool bIsPressed) {
 			else if (str == "btn_animals1") {
 				GSMachine::GetInstance()->PopState();
 				GSMachine::GetInstance()->PopState();
-				GSMachine::GetInstance()->PushState(STATE_PUZZLE);
+				GSMachine::GetInstance()->PushState(STATE_ANIM1);
 			}
 			else if (str == "btn_animals2") {
 				GSMachine::GetInstance()->PopState();
 				GSMachine::GetInstance()->PopState();
-				GSMachine::GetInstance()->PushState(STATE_WORD);
+				GSMachine::GetInstance()->PushState(STATE_ANIM2);
 			}
 			else if (str == "btn_food") {
 				GSMachine::GetInstance()->PopState();
@@ -122,7 +122,7 @@ void GSOver::HandleTouchEvents(float x, float y, bool bIsPressed) {
 			else if (str == "btn_vehicles") {
 				GSMachine::GetInstance()->PopState();
 				GSMachine::GetInstance()->PopState();
-				GSMachine::GetInstance()->PushState(STATE_COLOR);
+				GSMachine::GetInstance()->PushState(STATE_COUNT2);
 			}			
 		};
 	}

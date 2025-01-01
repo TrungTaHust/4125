@@ -10,12 +10,12 @@
 #include "../TrainingFramework/Globals.h"
 #include <cstdlib>
 
-class GSPuzzle :
+class GSAnim2 :
 	public GSBase
 {
 public:
-	GSPuzzle();
-	~GSPuzzle();
+	GSAnim2();
+	~GSAnim2();
 
 	void	Init() override;
 	void	Exit() override;
@@ -28,6 +28,9 @@ public:
 	void	HandleKeyEvents(int key, bool bIsPressed) override;
 	void	HandleTouchEvents(float x, float y, bool bIsPressed) override;
 	void	HandleMouseMoveEvents(float x, float y) override;
+
+	void	UpdateChoiceObjects();
+	void	NewQuestion();
 private:
 	std::vector<std::shared_ptr<Object>> m_objectVector;
 	std::vector<std::shared_ptr<GameButton>> m_buttonList;
@@ -36,15 +39,9 @@ private:
 
 	std::shared_ptr<Object>m_question;
 	std::string key;
+	int index;
 	float m_time = 1;
-	bool isCorrect = false;
-	bool isCompleted = false;
-	int totalClick = 0;
-	int correctAns = 0;
-	int anim1Value = 0;
-	float end_time = 2;
-
-	std::shared_ptr<Object>m_scoreFrame;
+	bool isCorrect;
 
 	std::vector<std::string> animals = {
 		"bear", "cat", "cow", "crab", "deer", "dog", "dolphin", "duck",

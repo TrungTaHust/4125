@@ -95,22 +95,22 @@ void GSMenu::HandleTouchEvents(float x, float y, bool bIsPressed)
 			switch (button->m_type)
 			{
 			case BUTTON_ANIMALS1:
-				GSMachine::GetInstance()->PushState(StateType::STATE_PUZZLE);
+				GSMachine::GetInstance()->PushState(StateType::STATE_ANIM1);
 				break;
 			case BUTTON_ANIMALS2:
-				GSMachine::GetInstance()->PushState(StateType::STATE_WORD);
+				GSMachine::GetInstance()->PushState(StateType::STATE_ANIM2);
 				break;
 			case BUTTON_ACTION:
 				GSMachine::GetInstance()->PushState(StateType::STATE_ACTION);
 				break;
 			case BUTTON_FOOD:
 				GSMachine::GetInstance()->PushState(StateType::STATE_FOOD);
-				break;
-			case BUTTON_VEHICLES:
-				GSMachine::GetInstance()->PushState(StateType::STATE_COLOR);
-				break;
+				break;			
 			case BUTTON_NUMBER:
 				GSMachine::GetInstance()->PushState(StateType::STATE_COUNT);
+				break;
+			case BUTTON_VEHICLES:
+				GSMachine::GetInstance()->PushState(StateType::STATE_COUNT2);
 				break;
 			case BUTTON_EXIT:
 				exit(0);

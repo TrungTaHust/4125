@@ -3,14 +3,12 @@
 #include "GSIntro.h"
 #include "GSMenu.h"
 #include "GSOver.h"
-#include "GSScore.h"
-#include "GSTutorial.h"
-#include "GS_Puzzle.h"
-#include "GSWord.h"
-#include "GSFood.h"
-#include "GSColor.h"
-#include "GSAction.h"
+#include "GSAnim1.h"
+#include "GSAnim2.h"
 #include "GSCount.h"
+#include "GSCount2.h"
+#include "GSFood.h"
+#include "GSAction.h"
 
 GSBase::GSBase()
 {
@@ -37,23 +35,19 @@ std::shared_ptr<GSBase> GSBase::CreateState(StateType stateType)
 	case STATE_MENU:
 		return std::make_shared<GSMenu>();
 	case STATE_GAMEOVER:
-		return std::make_shared<GSOver>();
-	case STATE_SCORE:
-		return std::make_shared<GSScore>();
-	case STATE_TUTORIAL:
-		return std::make_shared<GSTutorial>();
-	case STATE_PUZZLE:
-		return std::make_shared<GSPuzzle>();
-	case STATE_WORD:
-		return std::make_shared<GSWord>();	
+		return std::make_shared<GSOver>();	
+	case STATE_ANIM1:
+		return std::make_shared<GSAnim1>();
+	case STATE_ANIM2:
+		return std::make_shared<GSAnim2>();	
+	case STATE_COUNT:
+		return std::make_shared<GSCount>(); 
+	case STATE_COUNT2:
+		return std::make_shared<GSCount2>();
+	case STATE_ACTION:
+		return std::make_shared<GSAction>();	
 	case STATE_FOOD:
 		return std::make_shared<GSFood>();
-	case STATE_COLOR:
-		return std::make_shared<GSColor>();
-	case STATE_ACTION:
-		return std::make_shared<GSAction>();
-	case STATE_COUNT:
-		return std::make_shared<GSCount>();
 	default:
 		break;
 	}
