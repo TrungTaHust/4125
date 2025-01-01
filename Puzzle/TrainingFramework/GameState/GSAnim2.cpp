@@ -173,7 +173,7 @@ void GSAnim2::UpdateChoiceObjects() {
 		std::string fileName = std::string(1, key[i]);
 		auto slot = std::make_shared<Object>("Sprite2D", fileName.c_str(), "TriangleShader");
 		slot->Set2DPos(leftAlign + i * 120, 400);
-		slot->SetSize(100, 100);
+		slot->SetSize(150, 150);
 		m_choice.push_back(slot);
 	}
 }

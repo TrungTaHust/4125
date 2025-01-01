@@ -49,9 +49,4 @@ private:
 		"monkey", "mouse", "owl", "panda", "parrot", "pig", "rabbit",
 		"rhino", "sheep", "tiger", "turtle", "zebra"
 	};
-
-	std::vector<std::string> fruits = {
-		"apple", "avocado", "grape", "lemon", "mango", "orange",
-		"pineapple", "watermelon"
-	};	
 };

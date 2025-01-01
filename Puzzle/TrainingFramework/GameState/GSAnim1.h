@@ -45,6 +45,7 @@ private:
 	int correctAns = 0;
 	int anim1Value = 0;
 	float end_time = 2;
+	float tuto_time = 2;
 
 	std::shared_ptr<Object>m_scoreFrame;
 
@@ -54,9 +55,4 @@ private:
 		"monkey", "mouse", "owl", "panda", "parrot", "pig", "rabbit",
 		"rhino", "sheep", "tiger", "turtle", "zebra"
 	};
-
-	std::vector<std::string> fruits = {
-		"apple", "avocado", "grape", "lemon", "mango", "orange",
-		"pineapple", "watermelon"
-	};	
 };

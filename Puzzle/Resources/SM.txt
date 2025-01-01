@@ -325,61 +325,15 @@ ROTATION 0.0 0.0 0.0
 SCALE 50.0 50.0
 --------------------------------------------------------------------------
 ###########################################################################
-#Buttons: 21
-
-ID button_start
-Type BUTTON_START
-MODEL Sprite2D
-TEXTURE Map_BTN
-SHADER TriangleShader
-POSITION 640.0 430.0
-ROTATION 0.0 0.0 0.0
-SCALE 200.0 80.0
---------------------------------------------------------------------------
-ID button_endless
-Type BUTTON_ENDLESS
-MODEL Sprite2D
-TEXTURE btn_start
-SHADER TriangleShader
-POSITION 640.0 530.0
-ROTATION 0.0 0.0 0.0
-SCALE 200.0 80.0
---------------------------------------------------------------------------
+#Buttons: 13
 ID button_exit
 Type BUTTON_EXIT
 MODEL Sprite2D
 TEXTURE btn_exit
 SHADER TriangleShader
-POSITION 640.0 730.0
+POSITION 640.0 830.0
 ROTATION 0.0 0.0 0.0
 SCALE 200.0 80.0
---------------------------------------------------------------------------
-ID button_restart
-Type BUTTON_RESTART
-MODEL Sprite2D
-TEXTURE btn_new_game
-SHADER TriangleShader
-POSITION 640.0 400.0
-ROTATION 0.0 0.0 0.0
-SCALE 200.0 60.0
---------------------------------------------------------------------------
-ID button_score
-Type BUTTON_SCORE
-MODEL Sprite2D
-TEXTURE btn_high_score
-SHADER TriangleShader
-POSITION 640.0 560.0
-ROTATION 0.0 0.0 0.0
-SCALE 200.0 60.0
---------------------------------------------------------------------------
-ID button_back_to_menu
-Type BUTTON_BACK_TO_MENU
-MODEL Sprite2D
-TEXTURE btn_menu
-SHADER TriangleShader
-POSITION 640.0 700.0
-ROTATION 0.0 0.0 0.0
-SCALE 200.0 60.0
 --------------------------------------------------------------------------
 ID button_pause
 Type BUTTON_PAUSE
@@ -434,33 +388,6 @@ SHADER TriangleShader
 POSITION 580.0 480.0
 ROTATION 0.0 0.0 0.0
 SCALE 50.0 50.0 
---------------------------------------------------------------------------
-ID long_button_tutorial
-Type BUTTON_TUTORIAL
-MODEL Sprite2D
-TEXTURE btn_tutorial
-SHADER TriangleShader
-POSITION 640.0 630.0
-ROTATION 0.0 0.0 0.0
-SCALE 200.0 80.0
---------------------------------------------------------------------------
-ID button_check
-Type BUTTON_CHECK
-MODEL Sprite2D
-TEXTURE btn_check
-SHADER TriangleShader
-POSITION 1050.0 600.0
-ROTATION 0.0 0.0 0.0
-SCALE 100.0 50.0
---------------------------------------------------------------------------
-ID button_end
-Type BUTTON_END
-MODEL Sprite2D
-TEXTURE btn_check
-SHADER TriangleShader
-POSITION 1200.0 600.0
-ROTATION 0.0 0.0 0.0
-SCALE 100.0 50.0
 --------------------------------------------------------------------------
 ID button_animals1
 Type BUTTON_ANIMALS1

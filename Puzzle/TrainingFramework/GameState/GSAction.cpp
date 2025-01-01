@@ -31,9 +31,9 @@ void GSAction::Init()
 		sceneManager->GetButtonByID("button_tutorial")
 	};
 
-	for (int i = 0; i < 6; i++) {		
+	for (int i = 0; i < 4; i++) {		
 		auto slot = std::make_shared<Object>("Sprite2D", "null", "TriangleShader");
-		slot->Set2DPos(290 + i * 120, 700);
+		slot->Set2DPos(460 + i * 120, 700);
 		slot->SetSize(100, 100);
 		m_keyboard.push_back(slot);
 	}
@@ -172,7 +172,7 @@ void GSAction::UpdateChoiceObjects() {
 		std::string fileName = std::string(1, key[i]);
 		auto slot = std::make_shared<Object>("Sprite2D", fileName.c_str(), "TriangleShader");
 		slot->Set2DPos(leftAlign + i * 100, 400);
-		slot->SetSize(100, 100);
+		slot->SetSize(150, 150);
 		m_choice.push_back(slot);
 	}
 }
@@ -192,7 +192,7 @@ void GSAction::NewQuestion() {
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::uniform_int_distribution<> dis(0, 25);
-	while (uniqueChars.size() < 6) {
+	while (uniqueChars.size() < 4) {
 		char randomChar = static_cast<char>('a' + std::rand() % 26);
 		if (uniqueChars.find(randomChar) == uniqueChars.end()) {
 			uniqueChars.insert(randomChar);
@@ -202,7 +202,7 @@ void GSAction::NewQuestion() {
 	std::vector<char> shuffledChars(uniqueChars.begin(), uniqueChars.end());
 	std::shuffle(shuffledChars.begin(), shuffledChars.end(), gen);
 
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < 4; i++) {
 		std::string fileName = std::string(1, shuffledChars[i]);
 		m_keyboard[i]->SetTexture(fileName.c_str());
 	}

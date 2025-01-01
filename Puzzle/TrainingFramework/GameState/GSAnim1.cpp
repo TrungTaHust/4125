@@ -171,6 +171,7 @@ void GSAnim1::HandleTouchEvents(float x, float y, bool bIsPressed) {
 					break;
 				case BUTTON_TUTORIAL:
 					GSMachine::GetInstance()->Resume();
+					tuto_time = 2;
 					break;
 				}
 			};

@@ -52,7 +52,6 @@ private:
 
 	std::shared_ptr<Object>m_scoreFrame;
 
-
 	std::vector<char> nonNameChars;
 	std::vector<char> nameChars;
 
