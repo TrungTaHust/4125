@@ -270,7 +270,7 @@ SCALE 1280.0 960.0
 --------------------------------------------------------------------------
 ID over_background
 MODEL Sprite2D
-TEXTURE temp
+TEXTURE zoo_background
 SHADER TriangleShader
 POSITION 640.0 480.0
 ROTATION 0.0 0.0 0.0
@@ -278,11 +278,11 @@ SCALE 1280.0 960.0
 --------------------------------------------------------------------------
 ID score_frame
 MODEL Sprite2D
-TEXTURE score_frame
+TEXTURE result_frame
 SHADER TriangleShader
 POSITION 640.0 300.0
 ROTATION 0.0 0.0 0.0
-SCALE 500.0 150.0
+SCALE 500.0 250.0
 --------------------------------------------------------------------------
 ID pause_frame
 MODEL Sprite2D
@@ -325,7 +325,7 @@ ROTATION 0.0 0.0 0.0
 SCALE 50.0 50.0
 --------------------------------------------------------------------------
 ###########################################################################
-#Buttons: 13
+#Buttons: 14
 ID button_exit
 Type BUTTON_EXIT
 MODEL Sprite2D
@@ -442,5 +442,14 @@ SHADER TriangleShader
 POSITION 780.0 700.0
 ROTATION 0.0 0.0 0.0
 SCALE 250.0 70.0
+--------------------------------------------------------------------------
+ID button_back_to_menu
+Type BUTTON_BACK_TO_MENU
+MODEL Sprite2D
+TEXTURE btn_menu
+SHADER TriangleShader
+POSITION 640.0 780.0
+ROTATION 0.0 0.0 0.0
+SCALE 200.0 60.0
 --------------------------------------------------------------------------
 ###########################################################################

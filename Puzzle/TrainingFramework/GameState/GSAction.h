@@ -44,6 +44,8 @@ private:
 	float m_time = 1;
 	bool isCorrect;
 	char c;
+	std::shared_ptr<Object> m_tuto;
+	float m_tutoTime = 3;
 
 	std::vector<std::string> action = {
 		"skating", "skateboarding", "badminton", "basketball", "boxing", "cricket",

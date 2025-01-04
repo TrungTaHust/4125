@@ -55,6 +55,9 @@ private:
 	std::vector<char> nonNameChars;
 	std::vector<char> nameChars;
 
+	std::shared_ptr<Object> m_tuto;
+	float m_tutoTime = 3;
+
 	std::vector<std::string> fruits = {
 		"apple", "avocado", "grape", "lemon", "mango", "orange",
 		"pineapple", "watermelon"

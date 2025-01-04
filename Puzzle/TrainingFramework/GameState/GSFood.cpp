@@ -8,7 +8,7 @@
 GSFood::GSFood() : index(0), isCorrect(false)
 {
 	m_stateType = STATE_FOOD;		
-	m_time = 1;
+	m_time = 3;
 }
 
 GSFood::~GSFood()
@@ -49,6 +49,10 @@ void GSFood::Init()
 	AddText("your_scores");
 	AddText("end_scores");
 	m_scoreFrame = SceneManager::GetInstance()->GetObjectByID("score_frame");
+
+	m_tuto = std::make_shared<Object>("Sprite2D", "tuto_food", "TriangleShader");
+	m_tuto->Set2DPos(640, 480);
+	m_tuto->SetSize(800, 400);
 }
 
 void GSFood::Exit()
@@ -124,6 +128,9 @@ void GSFood::Update(float deltaTime) {
 			GSMachine::GetInstance()->PushState(STATE_GAMEOVER);
 		UpdateText("end_scores", 100, deltaTime);
 	}
+
+	if (m_tutoTime >= 0) m_tutoTime -= deltaTime;
+
 }
 
 void GSFood::Draw(){
@@ -146,6 +153,9 @@ void GSFood::Draw(){
 		RenderText("your_scores");
 		RenderText("end_scores");
 	}
+
+	if (m_tutoTime >= 0) m_tuto->Draw();
+
 }
 
 void GSFood::HandleEvents()
@@ -184,6 +194,8 @@ void GSFood::HandleTouchEvents(float x, float y, bool bIsPressed) {
 					break;
 				case BUTTON_TUTORIAL:
 					GSMachine::GetInstance()->Resume();
+					m_tutoTime = 2;
+
 					break;
 				}
 			};

@@ -50,9 +50,12 @@ void GSAnim1::Init()
 	PlaySoundByName("play", 7, -1);
 	AddSoundByName("correct");
 
-	AddText("your_scores");
 	AddText("end_scores");
 	m_scoreFrame = SceneManager::GetInstance()->GetObjectByID("score_frame");
+
+	m_tuto = std::make_shared<Object>("Sprite2D", "tuto_anim1", "TriangleShader");
+	m_tuto->Set2DPos(640, 480);
+	m_tuto->SetSize(800, 400);
 }
 
 void GSAnim1::Exit()
@@ -91,8 +94,10 @@ void GSAnim1::Update(float deltaTime) {
 	else {
 		UpdateText("end_scores", anim1Value, deltaTime);
 		end_time -= deltaTime;
-		if (end_time <= 0)	GSMachine::GetInstance()->PushState(STATE_GAMEOVER);
+		if (end_time <= 0)	GSMachine::GetInstance()->PushState(STATE_GAMEOVER);		
 	}
+	if (m_tutoTime >= 0) m_tutoTime -= deltaTime;
+	
 }
 
 void GSAnim1::Draw(){
@@ -111,9 +116,11 @@ void GSAnim1::Draw(){
 
 	if (isCompleted) {
 		m_scoreFrame->Draw();
-		RenderText("your_scores");
 		RenderText("end_scores");
 	}
+
+	if (m_tutoTime >= 0) m_tuto->Draw();
+
 }
 
 void GSAnim1::HandleEvents()
@@ -153,7 +160,6 @@ void GSAnim1::HandleTouchEvents(float x, float y, bool bIsPressed) {
 					updateData("anim1", anim1Value);	
 					isCompleted = true;
 				}
-				printf("Total click: %d\nCorrect: %d\nScore: %d\n", totalClick, correctAns, correctAns * 100 / totalClick);
 			}
 		}
 	}
@@ -171,7 +177,7 @@ void GSAnim1::HandleTouchEvents(float x, float y, bool bIsPressed) {
 					break;
 				case BUTTON_TUTORIAL:
 					GSMachine::GetInstance()->Resume();
-					tuto_time = 2;
+					m_tutoTime = 2;
 					break;
 				}
 			};

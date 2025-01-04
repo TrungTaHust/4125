@@ -2,7 +2,7 @@
 ID 0	FILE Sprite2D
 ID 1	FILE Rectangle
 
-#2DTextures: 211
+#2DTextures: 218
 ID 1 FILE btn/btn_start
 ID 2 FILE btn/btn_exit
 ID 3 FILE btn/btn_menu
@@ -140,7 +140,6 @@ ID 134 FILE vehicle/purple_vec
 ID 135 FILE vehicle/red_vec
 ID 136 FILE vehicle/white_vec
 ID 137 FILE vehicle/yellow_vec
-ID 211 FILE num/00
 ID 138 FILE num/01
 ID 139 FILE num/02
 ID 140 FILE num/03
@@ -213,8 +212,15 @@ ID 206 FILE action/skiing
 ID 207 FILE action/surfing
 ID 208 FILE action/swimming
 ID 209 FILE action/tennis
-ID 210 FILE star
-
+ID 210 FILE tuto/tuto_anim1
+ID 211 FILE tuto/tuto_anim2
+ID 212 FILE tuto/tuto_count1
+ID 213 FILE tuto/tuto_count2
+ID 214 FILE tuto/tuto_action
+ID 215 FILE tuto/tuto_food
+ID 216 FILE star
+ID 217 FILE num/00
+ID 218 FILE result_frame
 
 #Shaders: 3
 ID 0	FILE TriangleShader
@@ -294,8 +300,8 @@ MESSAGE		Scores:
 FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf
 
 ID		end_scores
-POS		760 300
+POS		640 350
 COLOR 		255 0 0 255
-SIZE		50
+SIZE		100
 MESSAGE		...
 FONT		../Resources/Fonts/orbitron/Orbitron-Black.ttf

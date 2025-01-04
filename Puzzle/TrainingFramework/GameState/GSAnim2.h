@@ -43,6 +43,9 @@ private:
 	float m_time = 1;
 	bool isCorrect;
 
+	std::shared_ptr<Object> m_tuto;
+	float m_tutoTime = 3;
+
 	std::vector<std::string> animals = {
 		"bear", "cat", "cow", "crab", "deer", "dog", "dolphin", "duck",
 		"elephant", "fox", "giraffe", "hippo", "horse", "koala", "lion",

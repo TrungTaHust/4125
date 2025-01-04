@@ -43,6 +43,9 @@ private:
 	int m_time = 1;
 	bool isCorrect;
 
+	std::shared_ptr<Object> m_tuto;
+	float m_tutoTime = 3;
+
 	std::vector<std::string> color = {
 		"1_cow", "2_cow", "3_cow", "4_cow",
 		"5_cow", "6_cow", "7_cow", "8_cow", "9_cow"

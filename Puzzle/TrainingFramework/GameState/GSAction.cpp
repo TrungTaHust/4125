@@ -46,6 +46,9 @@ void GSAction::Init()
 
 	AddSoundByName("correct");
 	PlaySoundByName("play", 7, -1);	
+	m_tuto = std::make_shared<Object>("Sprite2D", "tuto_action", "TriangleShader");
+	m_tuto->Set2DPos(640, 480);
+	m_tuto->SetSize(800, 400);	
 }
 
 void GSAction::Exit()
@@ -72,7 +75,7 @@ void GSAction::Resume() {
 
 void GSAction::Update(float deltaTime) {
 	if (isCorrect) {
-		UpdateChoiceObjects();
+		UpdateChoiceObjects();		
 		m_time -= deltaTime;
 		if (m_time <= 0) {
 			isCorrect = false;
@@ -81,6 +84,7 @@ void GSAction::Update(float deltaTime) {
 		}
 	}
 	m_question->Update(deltaTime);
+	if(m_tutoTime >= 0) m_tutoTime -= deltaTime;
 }
 
 void GSAction::Draw(){
@@ -97,7 +101,8 @@ void GSAction::Draw(){
 		SceneManager::GetInstance()->GetObjectByID("pause_frame")->Draw();
 		for (auto &button : m_pauseButtonList)
 			button->Draw();
-	}	
+	}
+	if (m_tutoTime >= 0) m_tuto->Draw();
 }
 
 void GSAction::HandleEvents()
@@ -145,6 +150,7 @@ void GSAction::HandleTouchEvents(float x, float y, bool bIsPressed) {
 					break;
 				case BUTTON_TUTORIAL:
 					GSMachine::GetInstance()->Resume();
+					m_tutoTime = 2;
 					break;
 				}
 			};

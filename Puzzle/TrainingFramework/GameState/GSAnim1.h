@@ -45,7 +45,8 @@ private:
 	int correctAns = 0;
 	int anim1Value = 0;
 	float end_time = 2;
-	float tuto_time = 2;
+	std::shared_ptr<Object> m_tuto;
+	float m_tutoTime = 3;
 
 	std::shared_ptr<Object>m_scoreFrame;
 
