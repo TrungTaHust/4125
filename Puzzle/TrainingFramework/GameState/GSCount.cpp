@@ -58,6 +58,9 @@ void GSCount::Init()
 	m_tuto = std::make_shared<Object>("Sprite2D", "tuto_count2", "TriangleShader");
 	m_tuto->Set2DPos(640, 480);
 	m_tuto->SetSize(800, 400);
+
+	AddText("end_scores");
+	m_scoreFrame = SceneManager::GetInstance()->GetObjectByID("score_frame");
 }
 
 void GSCount::Exit()
@@ -83,15 +86,26 @@ void GSCount::Resume() {
 }
 
 void GSCount::Update(float deltaTime) {
-	if (isCorrect) {
-		m_time -= deltaTime;
-		if (m_time <= 0) {
-			isCorrect = false;
-			m_time = 1;
-			NewQuestion();
+	if(!isCompleted) {
+		if (isCorrect) {
+			m_time -= deltaTime;
+			if (m_time <= 0) {
+				isCorrect = false;
+				m_time = 1;
+				NewQuestion();
+			}
 		}
+		if (m_tutoTime >= 0) m_tutoTime -= deltaTime;
 	}
-	if (m_tutoTime >= 0) m_tutoTime -= deltaTime;
+
+	else {
+		value = count * 100 / click;
+		UpdateText("end_scores", value, deltaTime);
+		end_time -= deltaTime;
+		if (end_time <= 0)
+			GSMachine::GetInstance()->PushState(STATE_GAMEOVER);
+	}
+	if (click == 20 || count == 1) isCompleted = true;
 
 }
 
@@ -111,6 +125,10 @@ void GSCount::Draw(){
 
 	if (m_tutoTime >= 0) m_tuto->Draw();
 
+	if (isCompleted) {
+		m_scoreFrame->Draw();
+		RenderText("end_scores");
+	}
 }
 
 void GSCount::HandleEvents()
@@ -134,12 +152,17 @@ void GSCount::HandleTouchEvents(float x, float y, bool bIsPressed) {
 			}
 		}
 		
-		for (int i = 0; i < m_choice.size(); i++) 
-			if (m_choice[i]->HandleTouchEvent(x, y, bIsPressed)) 
+		for (int i = 0; i < m_choice.size(); i++)
+			if (m_choice[i]->HandleTouchEvent(x, y, bIsPressed))
+			{
+				click++;
 				if (m_choice[i]->getTexture()->GetID()[1] == m_question->getTexture()->GetID()[0]) {
 					isCorrect = true;
+					count++;
 					PlaySoundByName("correct", 8, 0);
-				} else PlaySoundByName("error", 9, 0);
+				}
+				else PlaySoundByName("error", 9, 0);
+			}
 	}
 	else {
 		for (auto& button : m_pauseButtonList)

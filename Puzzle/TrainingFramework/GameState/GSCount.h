@@ -38,12 +38,18 @@ private:
 
 	std::shared_ptr<Object> m_question;
 	int key;
-	int count;
 	float m_time = 1;
 	bool isCorrect;
 
 	std::shared_ptr<Object> m_tuto;
 	float m_tutoTime = 3;
+
+	int count = 0;
+	int click = 0;
+	float end_time = 2;
+	std::shared_ptr<Object>m_scoreFrame;
+	bool isCompleted = false;
+	int value;
 
 	std::vector<std::string> color = {
 		"0_cow1", "1_cow1", "2_cow1", "3_cow1",

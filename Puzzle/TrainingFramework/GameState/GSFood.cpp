@@ -32,11 +32,16 @@ void GSFood::Init()
 		sceneManager->GetButtonByID("button_tutorial")
 	};
 
+	auto pane = std::make_shared<Object>("Sprite2D", "score_frame", "TriangleShader");
+	pane->Set2DPos(640, 300);
+	pane->SetSize(300, 300);
+	m_objectVector.push_back(pane);
+
 	m_basket = std::make_shared<Object>("Sprite2D", "basket", "TriangleShader");
 	m_basket->SetSize(200, 200);
 
 	m_question = std::make_shared<Object>("Sprite2D", "null", "TriangleShader");
-	m_question->Set2DPos(1040, 200);
+	m_question->Set2DPos(640, 300);
 	m_question->SetSize(200, 200);
 	NewQuestion();
 	m_objectVector.push_back(m_question);
@@ -53,6 +58,9 @@ void GSFood::Init()
 	m_tuto = std::make_shared<Object>("Sprite2D", "tuto_food", "TriangleShader");
 	m_tuto->Set2DPos(640, 480);
 	m_tuto->SetSize(800, 400);
+
+	AddText("end_scores");
+	m_scoreFrame = SceneManager::GetInstance()->GetObjectByID("score_frame");
 }
 
 void GSFood::Exit()
@@ -130,6 +138,7 @@ void GSFood::Update(float deltaTime) {
 	}
 
 	if (m_tutoTime >= 0) m_tutoTime -= deltaTime;
+	if (count == 3) isCompleted = true;
 
 }
 
@@ -156,6 +165,10 @@ void GSFood::Draw(){
 
 	if (m_tutoTime >= 0) m_tuto->Draw();
 
+	if (isCompleted) {
+		m_scoreFrame->Draw();
+		RenderText("end_scores");
+	}
 }
 
 void GSFood::HandleEvents()
@@ -237,9 +250,9 @@ void GSFood::NewFruit() {
 }
 
 void GSFood::NewQuestion() {
+	if (count == 4) return;
 	index = rand() % fruits.size();
 	key = fruits[index];
-	//key = "apple";
 	m_question->SetTexture(key.c_str());
 
 	nonNameChars.clear();
@@ -260,13 +273,14 @@ void GSFood::NewQuestion() {
 			nonNameChars.push_back(c);		
 	}
 
-	int totalWidth = key.size() * 100 + (key.size() - 1) * 20;
+	int totalWidth = 100 + (key.size() - 1) * 90;
 	int leftAlign = (1280 - totalWidth) / 2;
 	m_textAnswer.clear();
 	for (int i = 0; i < key.size(); i++) {
 		auto slot = std::make_shared<Object>("Sprite2D", "star", "TriangleShader");
-		slot->Set2DPos(leftAlign + i * 120, 200);
+		slot->Set2DPos(leftAlign + i * 90, 100);
 		slot->SetSize(100, 100);
 		m_textAnswer.push_back(slot);
 	}
+	count++;
 }

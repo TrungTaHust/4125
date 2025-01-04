@@ -43,20 +43,21 @@ private:
 	std::vector<std::shared_ptr<Object>> m_choice;
 	std::string key;
 	int index;
-	float m_time;
-	float end_time = 2;
-	bool isCorrect;
-	bool isCompleted = false;
-	int count = 0;
-	int score = 0;
-
-	std::shared_ptr<Object>m_scoreFrame;
+	float m_time;	
+	bool isCorrect;	
 
 	std::vector<char> nonNameChars;
 	std::vector<char> nameChars;
 
 	std::shared_ptr<Object> m_tuto;
 	float m_tutoTime = 3;
+
+	int count = 0;
+	int click = 0;
+	float end_time = 2;
+	std::shared_ptr<Object>m_scoreFrame;
+	bool isCompleted = false;
+	int value;
 
 	std::vector<std::string> fruits = {
 		"apple", "avocado", "grape", "lemon", "mango", "orange",

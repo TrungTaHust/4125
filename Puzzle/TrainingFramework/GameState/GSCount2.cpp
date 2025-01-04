@@ -40,6 +40,9 @@ void GSCount2::Init()
 	m_tuto = std::make_shared<Object>("Sprite2D", "tuto_count2", "TriangleShader");
 	m_tuto->Set2DPos(640, 480);
 	m_tuto->SetSize(800, 400);
+
+	AddText("end_scores");
+	m_scoreFrame = SceneManager::GetInstance()->GetObjectByID("score_frame");
 }
 
 void GSCount2::Exit()
@@ -65,30 +68,39 @@ void GSCount2::Resume() {
 }
 
 void GSCount2::Update(float deltaTime) {
-	if (!m_choice.empty()) {
-		std::vector<std::shared_ptr<Object>> choice;
-		for (auto& it : m_choice) {
-			bool check = true;
-			if (!it->GetTouch()) {
-				std::vector<std::shared_ptr<Object>> questions;
-				for (auto& question : m_question)
-					if (it->CheckCollide(question) && it->getTexture()->GetID()[0] == question->getTexture()->GetID()[1]) {
-						check = false;
-						PlaySoundByName("correct", 8, 0);
-					}
-					else questions.push_back(question);
-				m_question = questions;
+	if (!isCompleted) {
+		if (!m_choice.empty()) {
+			std::vector<std::shared_ptr<Object>> choice;
+			for (auto& it : m_choice) {
+				bool check = true;
+				if (!it->GetTouch()) {
+					std::vector<std::shared_ptr<Object>> questions;
+					for (auto& question : m_question)
+						if (it->CheckCollide(question) && it->getTexture()->GetID()[0] == question->getTexture()->GetID()[1]) {
+							check = false;
+							PlaySoundByName("correct", 8, 0);							
+						}
+						else questions.push_back(question);
+					m_question = questions;
+				}
+				if (check)
+					choice.push_back(it);
 			}
-			if (check)
-				choice.push_back(it);
-		}
 
-		m_choice = choice;
+			m_choice = choice;			
+		}
+		else NewQuestion();				
+	}	
+	else {
+		value = count * 100;
+		UpdateText("end_scores", value, deltaTime);
+		end_time -= deltaTime;
+		if (end_time <= 0)
+			GSMachine::GetInstance()->PushState(STATE_GAMEOVER);
 	}
-	else NewQuestion();
 
 	if (m_tutoTime >= 0) m_tutoTime -= deltaTime;
-
+	if (count == 3) isCompleted = true;
 }
 
 void GSCount2::Draw(){
@@ -108,6 +120,10 @@ void GSCount2::Draw(){
 
 	if (m_tutoTime >= 0) m_tuto->Draw();
 
+	if (isCompleted) {
+		m_scoreFrame->Draw();
+		RenderText("end_scores");
+	}
 }
 
 void GSCount2::HandleEvents()
@@ -179,6 +195,7 @@ void GSCount2::UpdateChoiceObjects() {
 }
 
 void GSCount2::NewQuestion() {
+	if (count == 4) return;
 	std::vector<int> uniqueIndices;
 	while (uniqueIndices.size() < 3) {
 		int randomIndex = rand() % color.size();
@@ -212,4 +229,7 @@ void GSCount2::NewQuestion() {
 
 	for (size_t i = 0; i < m_question.size(); i++)
 		m_question[i]->Set2DPos(300 + i * 340, 700);
+
+	count++;
+	printf("\nNew question\n");
 }

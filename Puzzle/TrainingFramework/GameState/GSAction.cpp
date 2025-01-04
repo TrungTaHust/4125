@@ -49,6 +49,9 @@ void GSAction::Init()
 	m_tuto = std::make_shared<Object>("Sprite2D", "tuto_action", "TriangleShader");
 	m_tuto->Set2DPos(640, 480);
 	m_tuto->SetSize(800, 400);	
+
+	AddText("end_scores");
+	m_scoreFrame = SceneManager::GetInstance()->GetObjectByID("score_frame");
 }
 
 void GSAction::Exit()
@@ -74,17 +77,28 @@ void GSAction::Resume() {
 }
 
 void GSAction::Update(float deltaTime) {
-	if (isCorrect) {
-		UpdateChoiceObjects();		
-		m_time -= deltaTime;
-		if (m_time <= 0) {
-			isCorrect = false;
-			m_time = 1;
-			NewQuestion();			
+	if(!isCompleted) {
+		if (isCorrect) {
+			UpdateChoiceObjects();
+			m_time -= deltaTime;
+			if (m_time <= 0) {
+				isCorrect = false;
+				m_time = 1;
+				NewQuestion();
+			}
 		}
+		m_question->Update(deltaTime);
+		if (m_tutoTime >= 0) m_tutoTime -= deltaTime;
 	}
-	m_question->Update(deltaTime);
-	if(m_tutoTime >= 0) m_tutoTime -= deltaTime;
+
+	else {
+		value = count * 100 / click;
+		UpdateText("end_scores", value, deltaTime);
+		end_time -= deltaTime;
+		if (end_time <= 0)
+			GSMachine::GetInstance()->PushState(STATE_GAMEOVER);
+	}
+	if (click == 20 || count == 1) isCompleted = true;
 }
 
 void GSAction::Draw(){
@@ -103,6 +117,11 @@ void GSAction::Draw(){
 			button->Draw();
 	}
 	if (m_tutoTime >= 0) m_tuto->Draw();
+
+	if (isCompleted) {
+		m_scoreFrame->Draw();
+		RenderText("end_scores");
+	}
 }
 
 void GSAction::HandleEvents()
@@ -127,9 +146,11 @@ void GSAction::HandleTouchEvents(float x, float y, bool bIsPressed) {
 		std::string str(1, c);
 		for (auto& button : m_keyboard)
 			if (button->HandleTouchEvent(x, y, bIsPressed)) {
+				click++;
 				if (button->getTexture()->GetID() == str) {
 					PlaySoundByName("correct", 8, 0);
 					isCorrect = true;
+					count++;
 				};
 			}
 	}

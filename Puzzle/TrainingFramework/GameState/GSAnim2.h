@@ -42,6 +42,12 @@ private:
 	int index;
 	float m_time = 1;
 	bool isCorrect;
+	int count = 0;
+	int click = 0;
+	float end_time = 2;
+	std::shared_ptr<Object>m_scoreFrame;
+	bool isCompleted = false;
+	int value;
 
 	std::shared_ptr<Object> m_tuto;
 	float m_tutoTime = 3;

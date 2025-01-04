@@ -46,6 +46,13 @@ private:
 	std::shared_ptr<Object> m_tuto;
 	float m_tutoTime = 3;
 
+	int count = 0;
+	int click = 0;
+	float end_time = 2;
+	std::shared_ptr<Object>m_scoreFrame;
+	bool isCompleted = false;
+	int value;
+
 	std::vector<std::string> color = {
 		"1_cow", "2_cow", "3_cow", "4_cow",
 		"5_cow", "6_cow", "7_cow", "8_cow", "9_cow"

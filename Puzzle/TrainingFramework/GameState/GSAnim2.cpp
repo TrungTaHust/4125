@@ -49,6 +49,8 @@ void GSAnim2::Init()
 	m_tuto->Set2DPos(640, 480);
 	m_tuto->SetSize(800, 400);
 
+	AddText("end_scores");
+	m_scoreFrame = SceneManager::GetInstance()->GetObjectByID("score_frame");
 }
 
 void GSAnim2::Exit()
@@ -74,17 +76,25 @@ void GSAnim2::Resume() {
 }
 
 void GSAnim2::Update(float deltaTime) {
-	UpdateChoiceObjects();
-	if (isCorrect) {
-		m_time -= deltaTime;
-		if (m_time <= 0) {
-			isCorrect = false;
-			m_time += 1;
-			NewQuestion();			
+	if(!isCompleted) {
+		UpdateChoiceObjects();
+		if (isCorrect) {
+			m_time -= deltaTime;
+			if (m_time <= 0) {
+				isCorrect = false;
+				m_time += 1;
+				NewQuestion();
+			}
 		}
+		if (m_tutoTime >= 0) m_tutoTime -= deltaTime;
 	}
-	if (m_tutoTime >= 0) m_tutoTime -= deltaTime;
-
+	else {
+		value = count * 100 / click;
+		UpdateText("end_scores", value, deltaTime);
+		end_time -= deltaTime;
+		if (end_time <= 0)	GSMachine::GetInstance()->PushState(STATE_GAMEOVER);
+	}
+	if (click == 20 || count == 5) isCompleted = true;
 }
 
 void GSAnim2::Draw(){
@@ -102,6 +112,11 @@ void GSAnim2::Draw(){
 	}	
 
 	if (m_tutoTime >= 0) m_tuto->Draw();
+
+	if (isCompleted) {
+		m_scoreFrame->Draw();
+		RenderText("end_scores");
+	}
 
 }
 
@@ -128,11 +143,13 @@ void GSAnim2::HandleTouchEvents(float x, float y, bool bIsPressed) {
 		
 		for (int i = 0; i < m_choice.size(); i++) {
 			if (m_choice[i]->HandleTouchEvent(x, y, bIsPressed)) {
+				click++;
 				if (i==index) {
 					PlaySoundByName("correct", 8, 0);
 					printf("Correct\n");
 					key.erase(i, 1);
 					isCorrect = true;
+					count++;
 					return;
 				}					
 			}

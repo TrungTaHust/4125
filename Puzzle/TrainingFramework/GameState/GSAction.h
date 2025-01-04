@@ -43,9 +43,16 @@ private:
 	int index;
 	float m_time = 1;
 	bool isCorrect;
-	char c;
+	char c = '0';
 	std::shared_ptr<Object> m_tuto;
 	float m_tutoTime = 3;
+
+	int count = 0;
+	int click = 0;
+	float end_time = 2;
+	std::shared_ptr<Object>m_scoreFrame;
+	bool isCompleted = false;
+	int value;
 
 	std::vector<std::string> action = {
 		"skating", "skateboarding", "badminton", "basketball", "boxing", "cricket",
