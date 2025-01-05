@@ -1,7 +1,12 @@
+#pragma warning(disable: 2440)
+#pragma warning(disable: 2664)
+#pragma warning(disable: 0513)
+#pragma warning(disable: 0167)
 #include "stdafx.h"
 #include <windows.h>
 #include "esUtil.h"
 POINT WDpoint;
+
 
 
 // Main window procedure
@@ -215,7 +220,7 @@ GLboolean WinCreate ( ESContext *esContext, const char *title )
 
    AdjustWindowRect ( &windowRect, wStyle, FALSE );
 
-   esContext->hWnd = CreateWindow(
+   esContext->hWnd = CreateWindowA(
                          "opengles2.0",
                          title,
                          wStyle,

@@ -1,4 +1,5 @@
-﻿#include "Globals.h"
+﻿#include "../TrainingFramework/stdafx.h"
+#include "Globals.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>

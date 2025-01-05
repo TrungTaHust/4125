@@ -27,7 +27,7 @@ int Init ( ESContext *esContext ) {
 	ResourceManager::GetInstance()->LoadResource("../Resources/RM.txt");
 	SceneManager::GetInstance()->LoadScene("../Resources/SM.txt");
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-	GSMachine::GetInstance()->PushState(STATE_FOOD);
+	GSMachine::GetInstance()->PushState(STATE_MENU);
 	return 0;
 }
 
@@ -71,7 +71,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 	ESContext esContext;
 
     esInitContext ( &esContext );
-	esCreateWindow ( &esContext, "PUZZLE!!!", Globals::screenWidth, Globals::screenHeight, ES_WINDOW_RGB | ES_WINDOW_DEPTH);
+	esCreateWindow ( &esContext, "WORDHUNTER!!!", Globals::screenWidth, Globals::screenHeight, ES_WINDOW_RGB | ES_WINDOW_DEPTH);
 
 	if ( Init ( &esContext ) != 0 )
 		return 0;

@@ -102,7 +102,12 @@ void GSFood::Update(float deltaTime) {
 
 			if (letter->GetPos().y >= 900 &&
 				std::find(nameChars.begin(), nameChars.end(), letter->getTexture()->GetID()[0]) != nameChars.end())
+			{
+				click++;
+				if (click == 20)
+					isCompleted = true;
 				PlaySoundByName("error", 9, 0);
+			}
 
 			if (letter->CheckCollide(m_basket)) {
 				std::string key = m_question->getTexture()->GetID();
@@ -123,7 +128,7 @@ void GSFood::Update(float deltaTime) {
 					}
 				if (nameChars.size() == 0) {
 					count++;
-					if (count < 3) NewQuestion();
+					if (count < 4) NewQuestion();
 					else isCompleted = true;
 				}
 			}
@@ -134,12 +139,10 @@ void GSFood::Update(float deltaTime) {
 		end_time -= deltaTime;
 		if (end_time <= 0)
 			GSMachine::GetInstance()->PushState(STATE_GAMEOVER);
-		UpdateText("end_scores", 100, deltaTime);
+		UpdateText("end_scores", count * 100 / click, deltaTime);
 	}
 
 	if (m_tutoTime >= 0) m_tutoTime -= deltaTime;
-	if (count == 3) isCompleted = true;
-
 }
 
 void GSFood::Draw(){
@@ -250,7 +253,6 @@ void GSFood::NewFruit() {
 }
 
 void GSFood::NewQuestion() {
-	if (count == 4) return;
 	index = rand() % fruits.size();
 	key = fruits[index];
 	m_question->SetTexture(key.c_str());
@@ -281,6 +283,5 @@ void GSFood::NewQuestion() {
 		slot->Set2DPos(leftAlign + i * 90, 100);
 		slot->SetSize(100, 100);
 		m_textAnswer.push_back(slot);
-	}
-	count++;
+	}	
 }

@@ -98,7 +98,7 @@ void GSAction::Update(float deltaTime) {
 		if (end_time <= 0)
 			GSMachine::GetInstance()->PushState(STATE_GAMEOVER);
 	}
-	if (click == 20 || count == 1) isCompleted = true;
+	if (click == 20 || count == 5) isCompleted = true;
 }
 
 void GSAction::Draw(){

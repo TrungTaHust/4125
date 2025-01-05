@@ -1,4 +1,5 @@
-﻿#include "Sound.h"
+﻿#include "../TrainingFramework/stdafx.h"
+#include "Sound.h"
 #include<string>
 
 Sound::Sound()

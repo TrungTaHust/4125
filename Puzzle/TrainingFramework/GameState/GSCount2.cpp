@@ -37,7 +37,7 @@ void GSCount2::Init()
 	AddSoundByName("correct");
 	PlaySoundByName("play", 7, -1);
 
-	m_tuto = std::make_shared<Object>("Sprite2D", "tuto_count2", "TriangleShader");
+	m_tuto = std::make_shared<Object>("Sprite2D", "tuto_count1", "TriangleShader");
 	m_tuto->Set2DPos(640, 480);
 	m_tuto->SetSize(800, 400);
 

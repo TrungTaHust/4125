@@ -38,3 +38,11 @@ fruit: 0
 number: 0
 vehicles: 0
 
+05/01/2025
+action: 0
+anim1: 100
+anim2: 0
+fruit: 0
+number: 0
+vehicles: 0
+

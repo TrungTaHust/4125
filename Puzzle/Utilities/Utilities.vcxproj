@@ -47,6 +47,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
+    <LibraryWPath>C:\Users\Admin\OneDrive\Desktop\4125\Puzzle\Include\GLES2;C:\Users\Admin\OneDrive\Desktop\4125\Puzzle\Include\EGL;$(LibraryWPath)</LibraryWPath>
+    <LibraryPath>C:\Users\Admin\OneDrive\Desktop\4125\Puzzle\Lib;C:\Users\Admin\OneDrive\Desktop\4125\Puzzle\Include\GLES2;C:\Users\Admin\OneDrive\Desktop\4125\Puzzle\Include\EGL;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Admin\OneDrive\Desktop\4125\Puzzle\Include\GLES2;C:\Users\Admin\OneDrive\Desktop\4125\Puzzle\Include\EGL;C:\Users\Admin\OneDrive\Desktop\4125\Puzzle\Include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -72,6 +75,9 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
+    <Lib>
+      <AdditionalDependencies>libGLESv2.lib;libEGL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="esShader.cpp" />
