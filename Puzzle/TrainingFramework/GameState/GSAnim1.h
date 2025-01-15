@@ -49,6 +49,8 @@ private:
 	float m_tutoTime = 3;
 
 	std::shared_ptr<Object>m_scoreFrame;
+	std::shared_ptr<Object> m_cursor;
+
 
 	std::vector<std::string> animals = {
 		"bear", "cat", "cow", "crab", "deer", "dog", "dolphin", "duck",

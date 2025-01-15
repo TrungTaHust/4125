@@ -56,6 +56,11 @@ void GSAnim1::Init()
 	m_tuto = std::make_shared<Object>("Sprite2D", "tuto_anim1", "TriangleShader");
 	m_tuto->Set2DPos(640, 480);
 	m_tuto->SetSize(800, 400);
+
+	m_cursor = std::make_shared<Object>("Sprite2D", "hand", "TriangleShader");
+	m_cursor->Set2DPos(640, 480);
+	m_cursor->SetSize(50, 50);
+	m_objectVector.push_back(m_cursor);
 }
 
 void GSAnim1::Exit()
@@ -195,6 +200,9 @@ void GSAnim1::HandleMouseMoveEvents(float x, float y)
 	if (!GSMachine::GetInstance()->IsRunning())
 		for (auto& button : m_pauseButtonList)		
 			button->HandleMoveEvent(x, y);		
+
+	m_cursor->Set2DPos(x, y);
+
 }
 
 void GSAnim1::NewQuestion() {

@@ -21,17 +21,13 @@ GSOver::~GSOver() {
 void GSOver::Init() {
 	srand(static_cast<unsigned>(time(0)));
 
-	m_overBackground = SceneManager::GetInstance()->GetObjectByID("over_background");
-	m_buttonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_back_to_menu"));
-	m_text.SetPos({ 640, 190, 1 }); // Đặt vị trí của văn bản
-	m_text.GetTextColor() = SDL_Color({ 255, 255, 255, 255 }); // Đặt màu sắc của văn bản
-	m_text.GetTextSize() = 80; // Đặt kích thước của văn bản
-	m_text.GetTextMessage() = "CONGRATULATION!"; // Đặt nội dung văn bản
-	m_text.Init("../Resources/Fonts/orbitron/Orbitron-Black.ttf");
-	AddSoundByName("over");
-	PlaySoundByName("over", 9, -1);
+	m_overBackground.push_back(SceneManager::GetInstance()->GetObjectByID("over_background"));
+	m_overBackground.push_back(SceneManager::GetInstance()->GetObjectByID("congrat"));
 
-	AddText("over_scores");
+	m_buttonList.push_back(SceneManager::GetInstance()->GetButtonByID("button_back_to_menu"));	
+
+	AddSoundByName("menu");
+	PlaySoundByName("menu", 9, -1);
 
 	std::set<int> uniqueIndices;	
 	while (uniqueIndices.size() < 3) {
@@ -42,35 +38,32 @@ void GSOver::Init() {
 
 	for (int i = 0; i < 3; i++) {
 		auto button = std::make_shared<Object>("Sprite2D", "null", "TriangleShader");
-		button->Set2DPos(640, 400 + i * 100);
-		button->SetSize(250, 70);
+		button->Set2DPos(300 + i * 340, 480);
+		button->SetSize(300, 300);
 		button->SetTexture(buttonTexture[indices[i]].c_str());
 		m_choice.push_back(button);
 	}
 }
 
 void GSOver::Exit() {
-	StopSoundByName("over", 9);
+	StopSoundByName("menu", 9);
 }
 
 void GSOver::Pause() {
-	PauseSoundByName("over");
+	PauseSoundByName("menu");
 }
 
 void GSOver::Resume() {
-	ResumeSoundByName("over");
+	ResumeSoundByName("menu");
 }
 
 void GSOver::Update(float deltaTime) {
-	UpdateText("over_scores", "Continue learning?", deltaTime);
 }
 
 void GSOver::Draw() {
-	m_overBackground->Draw();
-	m_text.Draw();
+	DrawVectorObject(m_overBackground);
 	for (auto& button : m_buttonList)
 		button->Draw();
-	RenderText("over_scores");
 	DrawVectorObject(m_choice);
 }
 

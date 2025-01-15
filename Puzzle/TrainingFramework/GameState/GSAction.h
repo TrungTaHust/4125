@@ -37,6 +37,8 @@ private:
 	std::vector<std::shared_ptr<GameButton>> m_pauseButtonList;
 	std::vector<std::shared_ptr<Object>> m_choice;
 	std::vector<std::shared_ptr<Object>> m_keyboard;
+	std::shared_ptr<Object> m_cursor;
+
 
 	std::shared_ptr<Animation>m_question;
 	std::string key;

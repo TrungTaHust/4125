@@ -37,6 +37,8 @@ private:
 	std::vector<std::shared_ptr<Object>> m_choice;
 
 	std::shared_ptr<Object> m_question;
+	std::shared_ptr<Object> m_cursor;
+
 	int key;
 	float m_time = 1;
 	bool isCorrect;

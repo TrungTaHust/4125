@@ -2,7 +2,7 @@
 ID 0	FILE Sprite2D
 ID 1	FILE Rectangle
 
-#2DTextures: 218
+#2DTextures: 220
 ID 1 FILE btn/btn_start
 ID 2 FILE btn/btn_exit
 ID 3 FILE btn/btn_menu
@@ -221,6 +221,8 @@ ID 215 FILE tuto/tuto_food
 ID 216 FILE star
 ID 217 FILE num/00
 ID 218 FILE result_frame
+ID 219 FILE congrat
+ID 220 FILE hand
 
 #Shaders: 3
 ID 0	FILE TriangleShader

@@ -204,7 +204,7 @@ GLboolean WinCreate ( ESContext *esContext, const char *title )
    wndclass.lpfnWndProc   = (WNDPROC)ESWindowProc; 
    wndclass.hInstance     = hInstance; 
    wndclass.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH); 
-   wndclass.lpszClassName = "opengles2.0"; 
+   wndclass.lpszClassName = L"opengles2.0"; 
 
    if (!RegisterClass (&wndclass) ) 
       return FALSE; 

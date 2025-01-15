@@ -51,6 +51,11 @@ void GSAnim2::Init()
 
 	AddText("end_scores");
 	m_scoreFrame = SceneManager::GetInstance()->GetObjectByID("score_frame");
+
+	m_cursor = std::make_shared<Object>("Sprite2D", "hand", "TriangleShader");
+	m_cursor->Set2DPos(640, 480);
+	m_cursor->SetSize(50, 50);
+	m_objectVector.push_back(m_cursor);
 }
 
 void GSAnim2::Exit()
@@ -190,6 +195,9 @@ void GSAnim2::HandleMouseMoveEvents(float x, float y)
 	if (!GSMachine::GetInstance()->IsRunning())
 		for (auto& button : m_pauseButtonList)		
 			button->HandleMoveEvent(x, y);		
+
+	m_cursor->Set2DPos(x, y);
+
 }
 
 void GSAnim2::UpdateChoiceObjects() {
